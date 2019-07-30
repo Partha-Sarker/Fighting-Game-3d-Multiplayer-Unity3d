@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +10,12 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 5;
     private Rigidbody rb;
     private Vector3 velocity = Vector3.zero;
+    public Joystick joystick;
 
     // Start is called before the first frame update
     void Start()
     {
+        joystick = FindObjectOfType<Joystick>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
     }
@@ -20,14 +23,32 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        HInput = Input.GetAxisRaw("Horizontal");
-        VInput = Input.GetAxisRaw("Vertical");
+        getPcInput();
+        //getAndroidInput();
+
         animator.SetFloat("HInput", HInput);
         animator.SetFloat("VInput", VInput);
 
         MovePlayer();
 
+    }
+
+    private void getAndroidInput()
+    {
+        HInput = joystick.Horizontal;
+        if (HInput > .33) HInput = 1;
+        else if (HInput < -.33) HInput = -1;
+        else HInput = 0;
+        VInput = joystick.Vertical;
+        if (VInput > .33) VInput = 1;
+        else if (VInput < -.33) VInput = -1;
+        else VInput = 0;
+    }
+
+    private void getPcInput()
+    {
+        HInput = Input.GetAxisRaw("Horizontal");
+        VInput = Input.GetAxisRaw("Vertical");
     }
 
     private void MovePlayer()
