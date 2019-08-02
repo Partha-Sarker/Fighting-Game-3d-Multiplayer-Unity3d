@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     public Joystick joystick;
     public Transform oponent;
+    public bool lockOponent = true;
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +26,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //GetPcInput();
-        GetAndroidInput();
-        if(oponent != null)
+        GetPcInput();
+        //GetAndroidInput();
+        if(oponent != null && lockOponent)
             RotatePlayer();
 
         animator.SetFloat("HInput", HInput);
@@ -39,9 +40,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void RotatePlayer()
     {
+        float AngularDistance = Quaternion.Angle(transform.rotation, oponent.rotation);
         Vector3 direction = oponent.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
-        transform.rotation = rotation;
+        if (180 - AngularDistance < 15)
+            transform.rotation = rotation;
+        else
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 10 * Time.deltaTime);
     }
 
     private void GetAndroidInput()

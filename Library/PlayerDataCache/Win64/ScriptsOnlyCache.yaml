@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - FixedJoystick
+    - Manager
     - MyNetManager
     - PlayerMovement
     - PlayerSetup
@@ -23,14 +24,11 @@ ScriptsOnlyBuild:
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
-    com.unity.multiplayer-hlapi.Editor.dll:
-    - UnityEditor.NetworkAnimatorEditor
-    - UnityEditor.NetworkBehaviourInspector
-    - UnityEditor.NetworkIdentityEditor
-    - UnityEditor.NetworkTransformEditor
+    - UnityEngine.UI.Text
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkAnimator
     - UnityEngine.Networking.NetworkCallbacks
@@ -69,6 +67,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
     - Class: 90
       Script: {instanceID: 0}
     - Class: 91
@@ -82,6 +82,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9456}
     - Class: 114
+      Script: {instanceID: 9500}
+    - Class: 114
       Script: {instanceID: 9502}
     - Class: 114
       Script: {instanceID: 9508}
@@ -91,6 +93,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 9522}
     - Class: 114
       Script: {instanceID: 9558}
+    - Class: 114
+      Script: {instanceID: 9560}
     - Class: 114
       Script: {instanceID: 9602}
     - Class: 114
@@ -109,7 +113,11 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10926}
     - Class: 114
       Script: {instanceID: 11012}
+    - Class: 114
+      Script: {instanceID: 17774}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
       Script: {instanceID: 0}
     - Class: 136
       Script: {instanceID: 0}
@@ -124,6 +132,8 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 258
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -758,7 +768,7 @@ ScriptsOnlyBuild:
     className: NetworkManager
   - hash:
       serializedVersion: 2
-      Hash: f284cb4b0f7467e94dfaae53852795fe
+      Hash: 55e721573fc64ed04474b2d0b3c32e5e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
@@ -1044,6 +1054,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Manager
   platform: 19
   scenePathNames:
   - Assets/Scenes/FightScene.unity

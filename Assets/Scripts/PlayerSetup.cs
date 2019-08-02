@@ -23,7 +23,7 @@ public class PlayerSetup : NetworkBehaviour
             }
             else
             {
-                print("local player not found");
+                Debug.Log("local player not found");
             }
 
             for (int i = 0; i < componentsToDisable.Length; i++)
