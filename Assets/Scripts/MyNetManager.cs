@@ -13,7 +13,7 @@ public class MyNetManager : NetworkManager
 		discovery.StartAsServer();
 
 	}
-
+    
 	public override void OnStartClient(NetworkClient client)
 	{
 		discovery.showGUI = false;

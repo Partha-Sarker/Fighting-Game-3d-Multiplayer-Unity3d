@@ -5,20 +5,35 @@ ScriptsOnlyBuild:
     - MyNetManager
     - PlayerMovement
     - PlayerSetup
+    - RPGCharacterAnims.GUIControlsFREE
+    - RPGCharacterAnims.IKHandsFREE
+    - RPGCharacterAnims.RPGCharacterControllerFREE
+    - RPGCharacterAnims.RPGCharacterInputControllerFREE
+    - RPGCharacterAnims.RPGCharacterMovementControllerFREE
+    - RPGCharacterAnims.RPGCharacterWeaponControllerFREE
+    - SuperCharacterController
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
     - UnityEditor.Graphs.AnimatorControllerTool
+    UnityEditor.TestRunner.dll:
+    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    com.unity.multiplayer-hlapi.Editor.dll:
+    - UnityEditor.NetworkAnimatorEditor
+    - UnityEditor.NetworkBehaviourInspector
+    - UnityEditor.NetworkIdentityEditor
+    - UnityEditor.NetworkTransformEditor
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkAnimator
+    - UnityEngine.Networking.NetworkCallbacks
     - UnityEngine.Networking.NetworkDiscovery
     - UnityEngine.Networking.NetworkIdentity
     - UnityEngine.Networking.NetworkManagerHUD
@@ -53,6 +68,8 @@ ScriptsOnlyBuild:
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
       Script: {instanceID: 0}
     - Class: 90
       Script: {instanceID: 0}
@@ -109,6 +126,8 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 258
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -743,7 +762,7 @@ ScriptsOnlyBuild:
     className: NetworkManager
   - hash:
       serializedVersion: 2
-      Hash: 58ff3a0c97b47c1ba72ae64aa4372c10
+      Hash: f284cb4b0f7467e94dfaae53852795fe
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement

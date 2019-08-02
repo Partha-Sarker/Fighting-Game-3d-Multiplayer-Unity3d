@@ -26,8 +26,14 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    com.unity.multiplayer-hlapi.Editor.dll:
+    - UnityEditor.NetworkAnimatorEditor
+    - UnityEditor.NetworkBehaviourInspector
+    - UnityEditor.NetworkIdentityEditor
+    - UnityEditor.NetworkTransformEditor
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkAnimator
+    - UnityEngine.Networking.NetworkCallbacks
     - UnityEngine.Networking.NetworkDiscovery
     - UnityEngine.Networking.NetworkIdentity
     - UnityEngine.Networking.NetworkManagerHUD
@@ -752,7 +758,7 @@ ScriptsOnlyBuild:
     className: NetworkManager
   - hash:
       serializedVersion: 2
-      Hash: 58ff3a0c97b47c1ba72ae64aa4372c10
+      Hash: f284cb4b0f7467e94dfaae53852795fe
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement

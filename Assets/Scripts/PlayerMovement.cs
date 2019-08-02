@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private Vector3 velocity = Vector3.zero;
     public Joystick joystick;
+    public Transform oponent;
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +25,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        getPcInput();
-        //getAndroidInput();
+        //GetPcInput();
+        GetAndroidInput();
+        if(oponent != null)
+            RotatePlayer();
 
         animator.SetFloat("HInput", HInput);
         animator.SetFloat("VInput", VInput);
@@ -33,7 +37,14 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void getAndroidInput()
+    private void RotatePlayer()
+    {
+        Vector3 direction = oponent.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        transform.rotation = rotation;
+    }
+
+    private void GetAndroidInput()
     {
         HInput = joystick.Horizontal;
         if (HInput > .33) HInput = 1;
@@ -45,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         else VInput = 0;
     }
 
-    private void getPcInput()
+    private void GetPcInput()
     {
         HInput = Input.GetAxisRaw("Horizontal");
         VInput = Input.GetAxisRaw("Vertical");
@@ -62,4 +73,5 @@ public class PlayerMovement : MonoBehaviour
             rb.MovePosition(rb.position + velocity * Time.deltaTime);
         }
     }
+
 }
