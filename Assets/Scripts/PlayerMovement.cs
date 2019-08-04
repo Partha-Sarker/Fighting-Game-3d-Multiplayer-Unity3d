@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("HInput", HInput);
         animator.SetFloat("VInput", VInput);
 
-        MovePlayer();
+        //MovePlayer();
 
     }
 
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         float AngularDistance = Quaternion.Angle(transform.rotation, oponent.rotation);
         Vector3 direction = oponent.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
-        if (180 - AngularDistance < 15)
+        if (180 - AngularDistance < 25)
             transform.rotation = rotation;
         else
             transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 10 * Time.deltaTime);
@@ -63,8 +63,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void GetPcInput()
     {
-        HInput = Input.GetAxisRaw("Horizontal");
-        VInput = Input.GetAxisRaw("Vertical");
+        HInput = Input.GetAxis("Horizontal");
+        VInput = Input.GetAxis("Vertical");
     }
 
     private void MovePlayer()
