@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public Joystick joystick;
     public Transform oponent;
     public bool lockOponent = true;
+    public bool canMove = true;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("HInput", HInput);
         animator.SetFloat("VInput", VInput);
 
-        //MovePlayer();
+        if(canMove) MovePlayer();
 
     }
 
@@ -63,8 +64,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void GetPcInput()
     {
-        HInput = Input.GetAxis("Horizontal");
-        VInput = Input.GetAxis("Vertical");
+        HInput = Input.GetAxisRaw("Horizontal");
+        VInput = Input.GetAxisRaw("Vertical");
     }
 
     private void MovePlayer()

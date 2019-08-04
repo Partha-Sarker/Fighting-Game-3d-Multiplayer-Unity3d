@@ -1,15 +1,24 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AnimationEvent
     - FixedJoystick
     - Manager
     - MyNetManager
     - PlayerMovement
     - PlayerSetup
+    - RPGCharacterAnims.GUIControlsFREE
+    - RPGCharacterAnims.IKHandsFREE
+    - RPGCharacterAnims.RPGCharacterControllerFREE
+    - RPGCharacterAnims.RPGCharacterInputControllerFREE
+    - RPGCharacterAnims.RPGCharacterMovementControllerFREE
+    - RPGCharacterAnims.RPGCharacterWeaponControllerFREE
+    - StartMoving
+    - StopMoving
+    - SuperCharacterController
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationBlendTree.Node
     - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
@@ -92,25 +101,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9560}
     - Class: 114
-      Script: {instanceID: 9602}
+      Script: {instanceID: 9596}
     - Class: 114
-      Script: {instanceID: 10214}
+      Script: {instanceID: 9604}
     - Class: 114
-      Script: {instanceID: 10242}
+      Script: {instanceID: 10216}
     - Class: 114
-      Script: {instanceID: 10346}
+      Script: {instanceID: 10244}
     - Class: 114
-      Script: {instanceID: 10358}
+      Script: {instanceID: 10348}
     - Class: 114
-      Script: {instanceID: 10528}
+      Script: {instanceID: 10360}
     - Class: 114
-      Script: {instanceID: 10784}
+      Script: {instanceID: 10530}
     - Class: 114
-      Script: {instanceID: 10860}
+      Script: {instanceID: 10558}
     - Class: 114
-      Script: {instanceID: 10928}
+      Script: {instanceID: 10788}
     - Class: 114
-      Script: {instanceID: 11014}
+      Script: {instanceID: 10866}
+    - Class: 114
+      Script: {instanceID: 10934}
+    - Class: 114
+      Script: {instanceID: 11020}
+    - Class: 114
+      Script: {instanceID: 30696}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -396,6 +411,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_InputField
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: StopMoving
   - hash:
       serializedVersion: 2
       Hash: beb32a07dd690af1f470894c3aebf12b
@@ -764,7 +785,7 @@ ScriptsOnlyBuild:
     className: NetworkManager
   - hash:
       serializedVersion: 2
-      Hash: 55e721573fc64ed04474b2d0b3c32e5e
+      Hash: 21c0bcf737bba26ef88d65ba72c09fca
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
@@ -921,6 +942,12 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: StartMoving
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
     className: NetworkBehaviour
@@ -950,10 +977,16 @@ ScriptsOnlyBuild:
     className: JoystickPlayerExample
   - hash:
       serializedVersion: 2
-      Hash: 1103c4e4f77a5f86684a3bdc576b9e2b
+      Hash: a588306aaea23fdde59829f9fbb78f24
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Manager
+  - hash:
+      serializedVersion: 2
+      Hash: fdf4cae5f3675d963d871e475e3f945d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LocalPlayerManager
   - hash:
       serializedVersion: 2
       Hash: 1dcb82730d983b77cec736c6ef19f814
@@ -1056,6 +1089,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AnimationEvent
   platform: 19
   scenePathNames:
   - Assets/Scenes/FightScene.unity
