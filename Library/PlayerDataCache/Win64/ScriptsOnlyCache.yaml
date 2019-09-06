@@ -16,13 +16,17 @@ ScriptsOnlyBuild:
     - StartMoving
     - StopMoving
     - SuperCharacterController
+    Unity.TextMeshPro.dll:
+    - TMPro.TMP_FontAsset
+    - TMPro.TMP_Settings
+    - TMPro.TMP_SpriteAsset
+    - TMPro.TMP_StyleSheet
+    - TMPro.TextMeshProUGUI
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -33,7 +37,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
-    - UnityEngine.UI.Text
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkAnimator
     - UnityEngine.Networking.NetworkCallbacks
@@ -62,6 +65,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
     - Class: 54
       Script: {instanceID: 0}
     - Class: 64
@@ -84,48 +89,58 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
+    - Class: 109
+      Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9456}
-    - Class: 114
-      Script: {instanceID: 9500}
-    - Class: 114
-      Script: {instanceID: 9502}
-    - Class: 114
-      Script: {instanceID: 9508}
-    - Class: 114
-      Script: {instanceID: 9514}
+      Script: {instanceID: 9478}
     - Class: 114
       Script: {instanceID: 9522}
     - Class: 114
-      Script: {instanceID: 9558}
+      Script: {instanceID: 9524}
     - Class: 114
-      Script: {instanceID: 9560}
+      Script: {instanceID: 9530}
     - Class: 114
-      Script: {instanceID: 9596}
+      Script: {instanceID: 9536}
     - Class: 114
-      Script: {instanceID: 9604}
+      Script: {instanceID: 9544}
     - Class: 114
-      Script: {instanceID: 10216}
+      Script: {instanceID: 9580}
     - Class: 114
-      Script: {instanceID: 10244}
+      Script: {instanceID: 9618}
     - Class: 114
-      Script: {instanceID: 10348}
+      Script: {instanceID: 9626}
     - Class: 114
-      Script: {instanceID: 10360}
+      Script: {instanceID: 10012}
     - Class: 114
-      Script: {instanceID: 10530}
+      Script: {instanceID: 10020}
     - Class: 114
-      Script: {instanceID: 10558}
+      Script: {instanceID: 10240}
     - Class: 114
-      Script: {instanceID: 10788}
+      Script: {instanceID: 10268}
     - Class: 114
-      Script: {instanceID: 10866}
+      Script: {instanceID: 10372}
     - Class: 114
-      Script: {instanceID: 10934}
+      Script: {instanceID: 10384}
     - Class: 114
-      Script: {instanceID: 11020}
+      Script: {instanceID: 10476}
     - Class: 114
-      Script: {instanceID: 30696}
+      Script: {instanceID: 10490}
+    - Class: 114
+      Script: {instanceID: 10554}
+    - Class: 114
+      Script: {instanceID: 10582}
+    - Class: 114
+      Script: {instanceID: 10652}
+    - Class: 114
+      Script: {instanceID: 10812}
+    - Class: 114
+      Script: {instanceID: 10890}
+    - Class: 114
+      Script: {instanceID: 10922}
+    - Class: 114
+      Script: {instanceID: 10958}
+    - Class: 114
+      Script: {instanceID: 11044}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -713,6 +728,12 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAsset
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AnimationEvent
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -839,7 +860,7 @@ ScriptsOnlyBuild:
     className: ScreenSpaceAmbientOcclusion
   - hash:
       serializedVersion: 2
-      Hash: b9bf7950a9c11e2e6f7450dbd44bfc3c
+      Hash: a43c1c1350f46bf3820a27711e5b4c47
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MyNetManager
@@ -977,7 +998,7 @@ ScriptsOnlyBuild:
     className: JoystickPlayerExample
   - hash:
       serializedVersion: 2
-      Hash: a588306aaea23fdde59829f9fbb78f24
+      Hash: 62425178f54279c17a129610caa9e1f5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Manager
@@ -989,7 +1010,7 @@ ScriptsOnlyBuild:
     className: LocalPlayerManager
   - hash:
       serializedVersion: 2
-      Hash: 1dcb82730d983b77cec736c6ef19f814
+      Hash: 7dabd5160fb606458b37b84b7eabe98e
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
     className: NetworkDiscovery
@@ -1089,12 +1110,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: AnimationEvent
   platform: 19
   scenePathNames:
   - Assets/Scenes/FightScene.unity

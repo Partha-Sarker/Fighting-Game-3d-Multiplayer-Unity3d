@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
+    public bool pcInput = true;
+    public GameObject joystick;
     private GameObject localPlayer;
     private GameObject oponent;
     public GameObject rightPanel;
@@ -41,33 +43,12 @@ public class Manager : MonoBehaviour
     {
         animator = localPlayer.GetComponent<Animator>();
         animator.SetBool("Armed", true);
-        //StartCoroutine("ShowSword");
-        //localPlayer.GetComponent<LocalPlayerManager>().Unsheath();
     }
 
     public void Sheath()
     {
         animator = localPlayer.GetComponent<Animator>();
         animator.SetBool("Armed", false);
-        //StartCoroutine("HideSword");
-        //localPlayer.GetComponent<LocalPlayerManager>().Sheath();
     }
-
-    //public void ShowSword()
-    //{
-    //    //yield return new WaitForSeconds(showTimer);
-    //    GameObject sword = GameObject.Find
-    //        ("/local player/Motion/B_Pelvis/B_Spine/B_Spine1/B_Spine2/B_R_Clavicle/B_R_UpperArm/B_R_Forearm/B_R_Hand/2Hand-Sword");
-    //    sword.GetComponent<MeshRenderer>().enabled = true;
-    //}
-
-
-    //public void HideSword()
-    //{
-    //    //yield return new WaitForSeconds(hideTimer);
-    //    GameObject sword = GameObject.Find
-    //        ("/local player/Motion/B_Pelvis/B_Spine/B_Spine1/B_Spine2/B_R_Clavicle/B_R_UpperArm/B_R_Forearm/B_R_Hand/2Hand-Sword");
-    //    sword.GetComponent<MeshRenderer>().enabled = false;
-    //}
 
 }

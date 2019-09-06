@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private bool pcInput;
     private Animator animator;
     private float HInput = 0, VInput = 0;
     public float speed = 5;
@@ -19,16 +20,29 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        joystick = FindObjectOfType<Joystick>();
+        pcInput = FindObjectOfType<Manager>().pcInput;
+        if (!pcInput)
+        {
+            joystick = FindObjectOfType<Manager>().joystick.GetComponent<Joystick>();
+            joystick.gameObject.SetActive(true);
+        }
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+    }
+
+    private void OnDestroy()
+    {
+        if(!pcInput)
+        joystick.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetPcInput();
-        //GetAndroidInput();
+        if(pcInput)
+            GetPcInput();
+        else
+            GetAndroidInput();
         if(oponent != null && lockOponent)
             RotatePlayer();
 
@@ -44,10 +58,7 @@ public class PlayerMovement : MonoBehaviour
         float AngularDistance = Quaternion.Angle(transform.rotation, oponent.rotation);
         Vector3 direction = oponent.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
-        if (180 - AngularDistance < 25)
-            transform.rotation = rotation;
-        else
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 10 * Time.deltaTime);
+        transform.rotation = rotation;
     }
 
     private void GetAndroidInput()
