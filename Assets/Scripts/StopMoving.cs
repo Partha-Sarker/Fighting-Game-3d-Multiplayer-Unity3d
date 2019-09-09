@@ -1,29 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class StopMoving : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (!FindObjectOfType<Manager>().transitioning)
+            return;
         GameObject localPlayer = GameObject.Find("local player");
         PlayerMovement movment = localPlayer.GetComponent<PlayerMovement>();
         movment.canMove = false;
-        //string player = "/" + animator.gameObject.name;
-        //if (stateInfo.IsName("2Hand-Sword-Unsheath-Back-Unarmed"))
-        //{
-        //    //sword drawing
-        //    GameObject sword = GameObject.Find
-        //        (player+"/Motion/B_Pelvis/B_Spine/B_Spine1/B_Spine2/B_R_Clavicle/B_R_UpperArm/B_R_Forearm/B_R_Hand/2Hand-Sword");
-        //    sword.GetComponent<MeshRenderer>().enabled = true;
-        //}
-        //else
-        //{
-        //    GameObject sword = GameObject.Find
-        //        (player+"/Motion/B_Pelvis/B_Spine/B_Spine1/B_Spine2/B_R_Clavicle/B_R_UpperArm/B_R_Forearm/B_R_Hand/2Hand-Sword");
-        //    sword.GetComponent<MeshRenderer>().enabled = false;
-        //}
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

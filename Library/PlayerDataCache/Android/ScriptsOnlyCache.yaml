@@ -7,8 +7,15 @@ ScriptsOnlyBuild:
     - MyNetManager
     - PlayerMovement
     - PlayerSetup
+    - RPGCharacterAnims.GUIControlsFREE
+    - RPGCharacterAnims.IKHandsFREE
+    - RPGCharacterAnims.RPGCharacterControllerFREE
+    - RPGCharacterAnims.RPGCharacterInputControllerFREE
+    - RPGCharacterAnims.RPGCharacterMovementControllerFREE
+    - RPGCharacterAnims.RPGCharacterWeaponControllerFREE
     - StartMoving
     - StopMoving
+    - SuperCharacterController
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
     - TMPro.TMP_Settings
@@ -18,8 +25,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -32,6 +41,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Image
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkAnimator
+    - UnityEngine.Networking.NetworkCallbacks
     - UnityEngine.Networking.NetworkDiscovery
     - UnityEngine.Networking.NetworkIdentity
     - UnityEngine.Networking.NetworkManagerHUD
@@ -816,7 +826,7 @@ ScriptsOnlyBuild:
     className: Math3d
   - hash:
       serializedVersion: 2
-      Hash: b93532430f519ca6f8a812b1c210423c
+      Hash: 4f676476e4d48f3fea0b3a9c29ab3914
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerSetup
@@ -990,7 +1000,7 @@ ScriptsOnlyBuild:
     className: JoystickPlayerExample
   - hash:
       serializedVersion: 2
-      Hash: 62425178f54279c17a129610caa9e1f5
+      Hash: e956bd816b3cd67d4db7cea78c524308
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Manager

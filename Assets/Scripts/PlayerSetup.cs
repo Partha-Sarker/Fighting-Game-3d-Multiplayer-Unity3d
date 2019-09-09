@@ -4,11 +4,14 @@ using UnityEngine.Networking;
 public class PlayerSetup : NetworkBehaviour
 {
     public Behaviour[] componentsToDisable;
+    
+    public string player_id;
 
     Camera sceneCamera;
 
     void Start()
     {
+        player_id = GetComponent<NetworkIdentity>().netId.ToString();
 
         // Disable components that should only be
         // active on the player that we control

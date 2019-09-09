@@ -129,6 +129,7 @@
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\FisheyeShader.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\frag_ao.cginc" />
+    <None Include="Assets\Scripts\NetworkDiscoveryCode.txt" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\_DepthOfField\DepthOfField34.shader" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\SSAOShader.shader" />

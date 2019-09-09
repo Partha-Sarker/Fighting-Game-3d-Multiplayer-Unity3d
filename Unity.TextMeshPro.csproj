@@ -728,6 +728,7 @@
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\frag_ao.cginc" />
     <None Include="Assets\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\README.txt" />
+    <None Include="Assets\Scripts\NetworkDiscoveryCode.txt" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

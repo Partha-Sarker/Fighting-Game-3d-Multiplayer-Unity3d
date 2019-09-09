@@ -10,6 +10,7 @@ public class Manager : MonoBehaviour
     public GameObject rightPanel;
     public GameObject controlPanel;
     private Animator animator;
+    public bool transitioning = false;
     //public float showTimer = .3f;
     //public float hideTimer = .45f;
 
@@ -41,12 +42,14 @@ public class Manager : MonoBehaviour
 
     public void Unsheath()
     {
+        transitioning = true;
         animator = localPlayer.GetComponent<Animator>();
         animator.SetBool("Armed", true);
     }
 
     public void Sheath()
     {
+        transitioning = true;
         animator = localPlayer.GetComponent<Animator>();
         animator.SetBool("Armed", false);
     }
