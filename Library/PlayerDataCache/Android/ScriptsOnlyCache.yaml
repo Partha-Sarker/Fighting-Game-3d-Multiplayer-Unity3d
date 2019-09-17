@@ -1000,7 +1000,7 @@ ScriptsOnlyBuild:
     className: JoystickPlayerExample
   - hash:
       serializedVersion: 2
-      Hash: e956bd816b3cd67d4db7cea78c524308
+      Hash: 5570dd9af69ebf7481be0906811d2c6b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Manager

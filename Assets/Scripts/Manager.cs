@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Manager : MonoBehaviour
     private GameObject oponent;
     public GameObject rightPanel;
     public GameObject controlPanel;
+    public GameObject sheathButton;
+    public GameObject unsheathButton;
     private Animator animator;
     public bool transitioning = false;
     //public float showTimer = .3f;
@@ -43,6 +46,7 @@ public class Manager : MonoBehaviour
     public void Unsheath()
     {
         transitioning = true;
+        sheathButton.GetComponent<Button>().interactable = false;
         animator = localPlayer.GetComponent<Animator>();
         animator.SetBool("Armed", true);
     }
@@ -50,6 +54,7 @@ public class Manager : MonoBehaviour
     public void Sheath()
     {
         transitioning = true;
+        unsheathButton.GetComponent<Button>().interactable = false;
         animator = localPlayer.GetComponent<Animator>();
         animator.SetBool("Armed", false);
     }

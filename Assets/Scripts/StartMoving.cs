@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StartMoving : StateMachineBehaviour
 {
@@ -9,6 +10,16 @@ public class StartMoving : StateMachineBehaviour
     {
         if (!FindObjectOfType<Manager>().transitioning)
             return;
+        GameObject sheathButton = GameObject.Find("Sheath");
+        GameObject unsheathButton = GameObject.Find("Unsheath");
+        if(sheathButton != null)
+        {
+            sheathButton.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            unsheathButton.GetComponent<Button>().interactable = true;
+        }
         GameObject localPlayer = GameObject.Find("local player");
         PlayerMovement movment = localPlayer.GetComponent<PlayerMovement>();
         movment.canMove = true;
