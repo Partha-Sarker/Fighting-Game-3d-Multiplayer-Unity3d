@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     public Joystick joystick;
     public Transform oponent;
-    public bool lockOponent = true;
+    //public bool lockOponent = true;
     public bool canMove = true;
 
     // Start is called before the first frame update
@@ -43,13 +43,16 @@ public class PlayerMovement : MonoBehaviour
             GetPcInput();
         else
             GetAndroidInput();
-        if(oponent != null && lockOponent)
+        if(oponent != null)
+        {
             RotatePlayer();
+        }
+            
 
-        animator.SetFloat("HInput", HInput);
-        animator.SetFloat("VInput", VInput);
+        animator.SetFloat("HInput", HInput, .05f, Time.deltaTime);
+        animator.SetFloat("VInput", VInput, .05f, Time.deltaTime);
 
-        if(canMove) MovePlayer();
+        //if(canMove) MovePlayer();
 
     }
 
@@ -59,6 +62,13 @@ public class PlayerMovement : MonoBehaviour
         Vector3 direction = oponent.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(direction);
         transform.rotation = rotation;
+        //print("local: "+AngularDistance + "|" + direction + "|" + rotation);
+
+        AngularDistance = Quaternion.Angle(oponent.rotation, transform.rotation);
+        direction = transform.position - oponent.position;
+        rotation = Quaternion.LookRotation(direction);
+        oponent.rotation = rotation;
+        //print("oponent: " + AngularDistance + "|" + direction + "|" + rotation);
     }
 
     private void GetAndroidInput()

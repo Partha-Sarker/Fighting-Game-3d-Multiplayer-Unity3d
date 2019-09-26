@@ -808,7 +808,7 @@ ScriptsOnlyBuild:
     className: NetworkManager
   - hash:
       serializedVersion: 2
-      Hash: 21c0bcf737bba26ef88d65ba72c09fca
+      Hash: 6dd388fa39018413b95e78621950197f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
@@ -1000,7 +1000,7 @@ ScriptsOnlyBuild:
     className: JoystickPlayerExample
   - hash:
       serializedVersion: 2
-      Hash: 5570dd9af69ebf7481be0906811d2c6b
+      Hash: 9719c189c00b997a055a76e8d770a5fc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Manager
