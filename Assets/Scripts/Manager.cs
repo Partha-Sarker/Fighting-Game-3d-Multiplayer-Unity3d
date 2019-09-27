@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
@@ -13,6 +14,7 @@ public class Manager : MonoBehaviour
     public GameObject sheathButton;
     public GameObject unsheathButton;
     private Animator animator;
+    private NetworkAnimator networkAnimator;
     //public bool transitioning = false;
     //public float showTimer = .3f;
     //public float hideTimer = .45f;
@@ -22,15 +24,24 @@ public class Manager : MonoBehaviour
         if (oponent == null)
             oponent = GameObject.Find("oponent");
         if (localPlayer == null)
+        {
             localPlayer = GameObject.Find("local player");
+            if(controlPanel.activeSelf)
+                controlPanel.SetActive(false);
+        }
+        else
+        {
+            animator = localPlayer.GetComponent<Animator>();
+            networkAnimator = localPlayer.GetComponent<NetworkAnimator>();
+            if (!controlPanel.activeSelf)
+                controlPanel.SetActive(true);
+        }
+            
         //if (oponent == null && rightPanel.activeSelf)
         //    rightPanel.SetActive(false);
         //else if (oponent != null && !rightPanel.activeSelf)
         //    rightPanel.SetActive(true);
-        if (localPlayer == null && controlPanel.activeSelf)
-            controlPanel.SetActive(false);
-        else if (localPlayer != null && !controlPanel.activeSelf)
-            controlPanel.SetActive(true);
+            
     }
 
     //public void LockOponent()
@@ -47,7 +58,7 @@ public class Manager : MonoBehaviour
     {
         //transitioning = true;
         //sheathButton.GetComponent<Button>().interactable = false;
-        animator = localPlayer.GetComponent<Animator>();
+        animator.ResetTrigger("Attacking");
         animator.SetBool("Armed", true);
     }
 
@@ -55,8 +66,14 @@ public class Manager : MonoBehaviour
     {
         //transitioning = true;
         //unsheathButton.GetComponent<Button>().interactable = false;
-        animator = localPlayer.GetComponent<Animator>();
         animator.SetBool("Armed", false);
+    }
+
+    public void Attack()
+    {
+        animator.SetTrigger("Attacking");
+        networkAnimator.SetTrigger("Attacking");
+        animator.SetInteger("AttackNO", Random.Range(1, 6));
     }
 
 }

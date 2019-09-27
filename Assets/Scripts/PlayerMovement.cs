@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private bool pcInput;
     private Animator animator;
     private float HInput = 0, VInput = 0;
-    public float speed = 5;
+    public float speed = 1.2f;
     private Rigidbody rb;
     private Vector3 velocity = Vector3.zero;
     public Joystick joystick;
@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
         animator.SetFloat("HInput", HInput, .05f, Time.deltaTime);
         animator.SetFloat("VInput", VInput, .05f, Time.deltaTime);
+        animator.SetFloat("Speed", speed);
 
         //if(canMove) MovePlayer();
 

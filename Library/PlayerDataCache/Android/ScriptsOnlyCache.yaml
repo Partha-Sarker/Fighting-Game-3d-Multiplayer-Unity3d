@@ -13,6 +13,7 @@ ScriptsOnlyBuild:
     - RPGCharacterAnims.RPGCharacterInputControllerFREE
     - RPGCharacterAnims.RPGCharacterMovementControllerFREE
     - RPGCharacterAnims.RPGCharacterWeaponControllerFREE
+    - ResetTrigger
     - StartMoving
     - StopMoving
     - SuperCharacterController
@@ -28,6 +29,8 @@ ScriptsOnlyBuild:
     - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateMachineBehaviourEditor
+    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
     - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
@@ -143,6 +146,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10958}
     - Class: 114
       Script: {instanceID: 11044}
+    - Class: 114
+      Script: {instanceID: 25692}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1112,6 +1117,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ResetTrigger
   platform: 13
   scenePathNames:
   - Assets/Scenes/FightScene.unity
