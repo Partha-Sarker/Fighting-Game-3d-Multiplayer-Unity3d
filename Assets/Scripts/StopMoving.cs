@@ -2,14 +2,18 @@
 
 public class StopMoving : StateMachineBehaviour
 {
+
+    private GameObject player;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //if (!FindObjectOfType<Manager>().transitioning)
-        //    return;
-        //GameObject localPlayer = GameObject.Find("local player");
-        //PlayerMovement movment = localPlayer.GetComponent<PlayerMovement>();
-        //movment.canMove = false;
+        player = animator.gameObject;
+        if (player.name == "local player")
+            player.GetComponent<PlayerMovement>().canSelfRotate = false;
+        else
+            GameObject.Find("local player").GetComponent<PlayerMovement>().canOponentRotate = false;
+        //Debug.Log(player.name + ":should stop rotating");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

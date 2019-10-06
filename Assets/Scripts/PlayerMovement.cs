@@ -16,6 +16,11 @@ public class PlayerMovement : MonoBehaviour
     public Transform oponent;
     //public bool lockOponent = true;
     public bool canMove = true;
+    public bool canSelfRotate = true;
+    public bool canOponentRotate = false;
+    private float AngularDistance;
+    private Vector3 direction;
+    private Quaternion rotation;
 
     // Start is called before the first frame update
     void Start()
@@ -59,17 +64,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void RotatePlayer()
     {
-        float AngularDistance = Quaternion.Angle(transform.rotation, oponent.rotation);
-        Vector3 direction = oponent.position - transform.position;
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        transform.rotation = rotation;
-        //print("local: "+AngularDistance + "|" + direction + "|" + rotation);
-
-        AngularDistance = Quaternion.Angle(oponent.rotation, transform.rotation);
-        direction = transform.position - oponent.position;
-        rotation = Quaternion.LookRotation(direction);
-        oponent.rotation = rotation;
-        //print("oponent: " + AngularDistance + "|" + direction + "|" + rotation);
+        if (canSelfRotate)
+        {
+            AngularDistance = Quaternion.Angle(transform.rotation, oponent.rotation);
+            direction = oponent.position - transform.position;
+            rotation = Quaternion.LookRotation(direction);
+            transform.rotation = rotation;
+            //print("local: "+AngularDistance + "|" + direction + "|" + rotation);
+        }
+        if (canOponentRotate)
+        {
+            AngularDistance = Quaternion.Angle(oponent.rotation, transform.rotation);
+            direction = transform.position - oponent.position;
+            rotation = Quaternion.LookRotation(direction);
+            oponent.rotation = rotation;
+            //print("oponent: " + AngularDistance + "|" + direction + "|" + rotation);
+        }
     }
 
     private void GetAndroidInput()

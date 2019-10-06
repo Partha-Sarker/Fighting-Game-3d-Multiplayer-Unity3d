@@ -119,35 +119,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10020}
     - Class: 114
-      Script: {instanceID: 10240}
+      Script: {instanceID: 10142}
     - Class: 114
-      Script: {instanceID: 10268}
+      Script: {instanceID: 10242}
     - Class: 114
-      Script: {instanceID: 10372}
+      Script: {instanceID: 10270}
     - Class: 114
-      Script: {instanceID: 10384}
+      Script: {instanceID: 10374}
     - Class: 114
-      Script: {instanceID: 10476}
+      Script: {instanceID: 10386}
     - Class: 114
-      Script: {instanceID: 10490}
+      Script: {instanceID: 10478}
     - Class: 114
-      Script: {instanceID: 10554}
+      Script: {instanceID: 10492}
     - Class: 114
-      Script: {instanceID: 10582}
+      Script: {instanceID: 10556}
     - Class: 114
-      Script: {instanceID: 10652}
+      Script: {instanceID: 10584}
     - Class: 114
-      Script: {instanceID: 10812}
+      Script: {instanceID: 10654}
     - Class: 114
-      Script: {instanceID: 10890}
+      Script: {instanceID: 10814}
     - Class: 114
-      Script: {instanceID: 10922}
+      Script: {instanceID: 10892}
     - Class: 114
-      Script: {instanceID: 10958}
+      Script: {instanceID: 10924}
     - Class: 114
-      Script: {instanceID: 11044}
+      Script: {instanceID: 10960}
     - Class: 114
-      Script: {instanceID: 25692}
+      Script: {instanceID: 11046}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -777,6 +777,12 @@ ScriptsOnlyBuild:
     className: TMP_Asset
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ResetTrigger
+  - hash:
+      serializedVersion: 2
       Hash: 3a28aa1b6a241d053beaca5eee7a911f
     assemblyName: Assembly-CSharp.dll
     namespaceName: RPGCharacterAnims
@@ -813,7 +819,7 @@ ScriptsOnlyBuild:
     className: NetworkManager
   - hash:
       serializedVersion: 2
-      Hash: 6dd388fa39018413b95e78621950197f
+      Hash: d31e3a28d8e7f2b6f60debf993847f0b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
@@ -1117,12 +1123,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ResetTrigger
   platform: 19
   scenePathNames:
   - Assets/Scenes/FightScene.unity

@@ -5,25 +5,18 @@ using UnityEngine.UI;
 
 public class StartMoving : StateMachineBehaviour
 {
+    private GameObject player;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //if (!FindObjectOfType<Manager>().transitioning)
-        //    return;
-        //GameObject sheathButton = GameObject.Find("Sheath");
-        //GameObject unsheathButton = GameObject.Find("Unsheath");
-        //if(sheathButton != null)
-        //{
-        //    sheathButton.GetComponent<Button>().interactable = true;
-        //}
-        //else
-        //{
-        //    unsheathButton.GetComponent<Button>().interactable = true;
-        //}
-        //GameObject localPlayer = GameObject.Find("local player");
-        //PlayerMovement movment = localPlayer.GetComponent<PlayerMovement>();
-        //movment.canMove = true;
-        //FindObjectOfType<Manager>().transitioning = false;
+        player = animator.gameObject;
+        if (player.name == "local player")
+            player.GetComponent<PlayerMovement>().canSelfRotate = true;
+        else
+        {
+            GameObject.Find("local player").GetComponent<PlayerMovement>().canOponentRotate = true;
+        }
+        //Debug.Log(player.name + ":should start rotating");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
