@@ -17,10 +17,11 @@ public class PlayerMovement : MonoBehaviour
     //public bool lockOponent = true;
     public bool canMove = true;
     public bool canSelfRotate = true;
-    public bool canOponentRotate = false;
+    public bool canOponentRotate = true;
     private float AngularDistance;
     private Vector3 direction;
     private Quaternion rotation;
+    public float stopRotationWaitTime = .2f;
 
     // Start is called before the first frame update
     void Start()
@@ -80,6 +81,26 @@ public class PlayerMovement : MonoBehaviour
             oponent.rotation = rotation;
             //print("oponent: " + AngularDistance + "|" + direction + "|" + rotation);
         }
+    }
+
+    public void StopSelfRotation()
+    {
+        StartCoroutine(disableRotation(true));
+    }
+
+    public void StopOponentRotation()
+    {
+        StartCoroutine(disableRotation(false));
+    }
+
+    IEnumerator disableRotation(bool isSelf)
+    {
+        yield return new WaitForSeconds(stopRotationWaitTime);
+        if (isSelf)
+            canSelfRotate = false;
+        else
+            canOponentRotate = false;
+        Debug.Log(this.name + ":has stopped rotating");
     }
 
     private void GetAndroidInput()
