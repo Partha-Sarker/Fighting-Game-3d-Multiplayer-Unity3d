@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private float HInput = 0, VInput = 0;
     public float speed = 1.2f;
+    public int jumpForce = 5;
     private Rigidbody rb;
     private Vector3 velocity = Vector3.zero;
     public Joystick joystick;
@@ -18,10 +19,13 @@ public class PlayerMovement : MonoBehaviour
     public bool canMove = true;
     public bool canSelfRotate = true;
     public bool canOponentRotate = true;
+    public bool isGrounded = true;
+    public bool isJumping = false;
     private float AngularDistance;
     private Vector3 direction;
     private Quaternion rotation;
     public float stopRotationWaitTime = .2f;
+    //public Transform target;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +57,10 @@ public class PlayerMovement : MonoBehaviour
         {
             RotatePlayer();
         }
+        //TestRotate();
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isJumping)
+            Jump();
             
 
         animator.SetFloat("HInput", HInput, .05f, Time.deltaTime);
@@ -63,12 +71,21 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private void Jump()
+    {
+        animator.applyRootMotion = false;
+        animator.SetBool("IsJumping", true);
+        isJumping = true;
+        rb.AddForce(Vector3.up * jumpForce , ForceMode.Impulse);
+    }
+
     private void RotatePlayer()
     {
         if (canSelfRotate)
         {
             AngularDistance = Quaternion.Angle(transform.rotation, oponent.rotation);
             direction = oponent.position - transform.position;
+            direction.y = 0;
             rotation = Quaternion.LookRotation(direction);
             transform.rotation = rotation;
             //print("local: "+AngularDistance + "|" + direction + "|" + rotation);
@@ -77,6 +94,7 @@ public class PlayerMovement : MonoBehaviour
         {
             AngularDistance = Quaternion.Angle(oponent.rotation, transform.rotation);
             direction = transform.position - oponent.position;
+            direction.y = 0;
             rotation = Quaternion.LookRotation(direction);
             oponent.rotation = rotation;
             //print("oponent: " + AngularDistance + "|" + direction + "|" + rotation);

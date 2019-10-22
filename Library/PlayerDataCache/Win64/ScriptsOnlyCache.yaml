@@ -3,6 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - AnimationEvent
     - FixedJoystick
+    - GroundCheck
     - Manager
     - MyNetManager
     - PlayerMovement
@@ -26,11 +27,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -41,6 +39,11 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    com.unity.multiplayer-hlapi.Editor.dll:
+    - UnityEditor.NetworkAnimatorEditor
+    - UnityEditor.NetworkBehaviourInspector
+    - UnityEditor.NetworkIdentityEditor
+    - UnityEditor.NetworkTransformEditor
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkAnimator
     - UnityEngine.Networking.NetworkCallbacks
@@ -138,18 +141,22 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10656}
     - Class: 114
-      Script: {instanceID: 10816}
+      Script: {instanceID: 10802}
     - Class: 114
-      Script: {instanceID: 10894}
+      Script: {instanceID: 10818}
     - Class: 114
-      Script: {instanceID: 10926}
+      Script: {instanceID: 10896}
     - Class: 114
-      Script: {instanceID: 10962}
+      Script: {instanceID: 10928}
     - Class: 114
-      Script: {instanceID: 11048}
+      Script: {instanceID: 10964}
+    - Class: 114
+      Script: {instanceID: 11050}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
+      Script: {instanceID: 0}
+    - Class: 135
       Script: {instanceID: 0}
     - Class: 136
       Script: {instanceID: 0}
@@ -824,7 +831,7 @@ ScriptsOnlyBuild:
     className: NetworkManager
   - hash:
       serializedVersion: 2
-      Hash: 8481c7bf7803d90a55ac325691b8d845
+      Hash: 1e0b4966a54e944063ed25536ca67e9d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
@@ -1014,6 +1021,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: JoystickPlayerExample
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GroundCheck
   - hash:
       serializedVersion: 2
       Hash: 9719c189c00b997a055a76e8d770a5fc
