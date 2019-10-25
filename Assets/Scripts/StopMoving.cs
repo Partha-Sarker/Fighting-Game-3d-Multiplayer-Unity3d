@@ -15,7 +15,6 @@ public class StopMoving : StateMachineBehaviour
             player.GetComponent<PlayerMovement>().StopSelfRotation();
         else
             GameObject.Find("local player").GetComponent<PlayerMovement>().StopOponentRotation();
-        Debug.Log(player.name + ":should stop rotating");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

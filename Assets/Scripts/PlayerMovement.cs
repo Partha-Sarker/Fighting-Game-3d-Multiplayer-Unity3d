@@ -10,7 +10,9 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private float HInput = 0, VInput = 0;
     public float speed = 1.2f;
-    public int jumpForce = 5;
+    private Vector3 jumpForce;
+    public int jumpUpForce = 5;
+    public int jumpDashForce = 5;
     private Rigidbody rb;
     private Vector3 velocity = Vector3.zero;
     public Joystick joystick;
@@ -42,26 +44,26 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnDestroy()
     {
-        if(!pcInput)
-        joystick.gameObject.SetActive(false);
+        if (!pcInput)
+            joystick.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(pcInput)
+        if (pcInput)
             GetPcInput();
         else
             GetAndroidInput();
-        if(oponent != null)
+        if (oponent != null)
         {
             RotatePlayer();
         }
         //TestRotate();
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isJumping)
+        if (Input.GetKeyDown(KeyCode.Space))
             Jump();
-            
+
 
         animator.SetFloat("HInput", HInput, .05f, Time.deltaTime);
         animator.SetFloat("VInput", VInput, .05f, Time.deltaTime);
@@ -71,12 +73,15 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void Jump()
+    public void Jump()
     {
+        if (!isGrounded || isJumping)
+            return;
         animator.applyRootMotion = false;
         animator.SetBool("IsJumping", true);
         isJumping = true;
-        rb.AddForce(Vector3.up * jumpForce , ForceMode.Impulse);
+        jumpForce = new Vector3(HInput * jumpDashForce, jumpUpForce, VInput * jumpDashForce);
+        rb.AddForce(jumpForce, ForceMode.Impulse);
     }
 
     private void RotatePlayer()
@@ -118,7 +123,6 @@ public class PlayerMovement : MonoBehaviour
             canSelfRotate = false;
         else
             canOponentRotate = false;
-        Debug.Log(this.name + ":has stopped rotating");
     }
 
     private void GetAndroidInput()
@@ -145,7 +149,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveVertical = transform.forward * VInput;
 
         velocity = (moveHorizontal + moveVertical).normalized * speed;
-        if(velocity != Vector3.zero)
+        if (velocity != Vector3.zero)
         {
             rb.MovePosition(rb.position + velocity * Time.deltaTime);
         }

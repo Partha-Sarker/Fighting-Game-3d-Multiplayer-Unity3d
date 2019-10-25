@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Networking;
+using System.Collections;
 using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
@@ -11,13 +11,19 @@ public class Manager : MonoBehaviour
     private GameObject oponent;
     public GameObject rightPanel;
     public GameObject controlPanel;
-    public GameObject sheathButton;
-    public GameObject unsheathButton;
+    public Button jumpButton;
+    public Button sheathButton;
+    public Button unsheathButton;
+    public Button attackButton;
+    public float jumpButtonDelay = 1.5f;
+    public float sheathUnsheathDelay = 1f;
+    public float attackButtonDelay = .5f;
+    public float attackOtherButtonDelay = .5f;
+    public byte currentAttackCount = 0;
+
+
     private Animator animator;
     private NetworkAnimator networkAnimator;
-    //public bool transitioning = false;
-    //public float showTimer = .3f;
-    //public float hideTimer = .45f;
 
     void Update()
     {
@@ -37,43 +43,67 @@ public class Manager : MonoBehaviour
                 controlPanel.SetActive(true);
         }
             
-        //if (oponent == null && rightPanel.activeSelf)
-        //    rightPanel.SetActive(false);
-        //else if (oponent != null && !rightPanel.activeSelf)
-        //    rightPanel.SetActive(true);
-            
     }
-
-    //public void LockOponent()
-    //{
-    //    localPlayer.GetComponent<PlayerMovement>().lockOponent = true;
-    //}
-
-    //public void UnlockOponent()
-    //{
-    //    localPlayer.GetComponent<PlayerMovement>().lockOponent = false;
-    //}
 
     public void Unsheath()
     {
-        //transitioning = true;
-        //sheathButton.GetComponent<Button>().interactable = false;
+        currentAttackCount = 0;
         animator.ResetTrigger("Attacking");
         animator.SetBool("Armed", true);
+        DisableButtons();
+        StartCoroutine(EnableButtons(sheathUnsheathDelay));
     }
 
     public void Sheath()
     {
-        //transitioning = true;
-        //unsheathButton.GetComponent<Button>().interactable = false;
+        currentAttackCount = 0;
         animator.SetBool("Armed", false);
+        DisableButtons();
+        StartCoroutine(EnableButtons(sheathUnsheathDelay));
     }
 
     public void Attack()
     {
+        currentAttackCount++;
         animator.SetTrigger("Attacking");
         networkAnimator.SetTrigger("Attacking");
         animator.SetInteger("AttackNO", Random.Range(1, 6));
+        DisableButtons();
+        StartCoroutine(EnableButtons(attackButtonDelay));
+    }
+
+    public void Jump()
+    {
+        currentAttackCount = 0;
+        localPlayer.GetComponent<PlayerMovement>().Jump();
+        DisableButtons();
+        StartCoroutine(EnableButtons(jumpButtonDelay));
+    }
+
+    private void DisableButtons()
+    {
+        jumpButton.interactable = false;
+        sheathButton.interactable = false;
+        unsheathButton.interactable = false;
+        attackButton.interactable = false;
+    }
+
+    IEnumerator EnableButtons(float timer)
+    {
+        yield return new WaitForSeconds(timer);
+        attackButton.interactable = true;
+        if(currentAttackCount > 0)
+        {
+            yield return new WaitForSeconds(attackOtherButtonDelay);
+        }
+        if(currentAttackCount <= 1)
+        {
+            jumpButton.interactable = true;
+            sheathButton.interactable = true;
+            unsheathButton.interactable = true;
+        }
+        if (currentAttackCount > 0)
+            currentAttackCount--;
     }
 
 }

@@ -3,20 +3,14 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - AnimationEvent
     - FixedJoystick
+    - GroundCheck
     - Manager
     - MyNetManager
     - PlayerMovement
     - PlayerSetup
-    - RPGCharacterAnims.GUIControlsFREE
-    - RPGCharacterAnims.IKHandsFREE
-    - RPGCharacterAnims.RPGCharacterControllerFREE
-    - RPGCharacterAnims.RPGCharacterInputControllerFREE
-    - RPGCharacterAnims.RPGCharacterMovementControllerFREE
-    - RPGCharacterAnims.RPGCharacterWeaponControllerFREE
     - ResetTrigger
     - StartMoving
     - StopMoving
-    - SuperCharacterController
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
     - TMPro.TMP_Settings
@@ -26,12 +20,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateMachineBehaviourEditor
-    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -44,7 +34,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Image
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkAnimator
-    - UnityEngine.Networking.NetworkCallbacks
     - UnityEngine.Networking.NetworkDiscovery
     - UnityEngine.Networking.NetworkIdentity
     - UnityEngine.Networking.NetworkManagerHUD
@@ -121,36 +110,40 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10142}
     - Class: 114
-      Script: {instanceID: 10242}
+      Script: {instanceID: 10244}
     - Class: 114
-      Script: {instanceID: 10270}
+      Script: {instanceID: 10272}
     - Class: 114
-      Script: {instanceID: 10374}
+      Script: {instanceID: 10376}
     - Class: 114
-      Script: {instanceID: 10386}
+      Script: {instanceID: 10388}
     - Class: 114
-      Script: {instanceID: 10478}
+      Script: {instanceID: 10480}
     - Class: 114
-      Script: {instanceID: 10492}
+      Script: {instanceID: 10494}
     - Class: 114
-      Script: {instanceID: 10556}
+      Script: {instanceID: 10558}
     - Class: 114
-      Script: {instanceID: 10584}
+      Script: {instanceID: 10586}
     - Class: 114
-      Script: {instanceID: 10654}
+      Script: {instanceID: 10656}
     - Class: 114
-      Script: {instanceID: 10814}
+      Script: {instanceID: 10802}
     - Class: 114
-      Script: {instanceID: 10892}
+      Script: {instanceID: 10818}
     - Class: 114
-      Script: {instanceID: 10924}
+      Script: {instanceID: 10896}
     - Class: 114
-      Script: {instanceID: 10960}
+      Script: {instanceID: 10928}
     - Class: 114
-      Script: {instanceID: 11046}
+      Script: {instanceID: 10964}
+    - Class: 114
+      Script: {instanceID: 11050}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
+      Script: {instanceID: 0}
+    - Class: 135
       Script: {instanceID: 0}
     - Class: 136
       Script: {instanceID: 0}
@@ -783,6 +776,12 @@ ScriptsOnlyBuild:
     className: ResetTrigger
   - hash:
       serializedVersion: 2
+      Hash: d2892a5e325c58745485b83ba744be45
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CameraMovement
+  - hash:
+      serializedVersion: 2
       Hash: 3a28aa1b6a241d053beaca5eee7a911f
     assemblyName: Assembly-CSharp.dll
     namespaceName: RPGCharacterAnims
@@ -819,7 +818,7 @@ ScriptsOnlyBuild:
     className: NetworkManager
   - hash:
       serializedVersion: 2
-      Hash: d31e3a28d8e7f2b6f60debf993847f0b
+      Hash: c7eea003ef163b5b510b85f06e1ecc48
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
@@ -1011,7 +1010,13 @@ ScriptsOnlyBuild:
     className: JoystickPlayerExample
   - hash:
       serializedVersion: 2
-      Hash: 9719c189c00b997a055a76e8d770a5fc
+      Hash: 870f9de677a6c7db783f870b6199a53a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GroundCheck
+  - hash:
+      serializedVersion: 2
+      Hash: bc7e4c18f07767590ace7145182753d6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Manager

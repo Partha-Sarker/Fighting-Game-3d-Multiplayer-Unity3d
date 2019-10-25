@@ -16,7 +16,6 @@ public class StartMoving : StateMachineBehaviour
         {
             GameObject.Find("local player").GetComponent<PlayerMovement>().canOponentRotate = true;
         }
-        Debug.Log(player.name + ":should start rotating");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

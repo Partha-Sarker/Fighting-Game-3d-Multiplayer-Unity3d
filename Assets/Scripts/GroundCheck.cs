@@ -6,6 +6,8 @@ public class GroundCheck : MonoBehaviour
 {
     PlayerMovement playerMovement;
     Animator animator;
+    public GroundCheck otherGroundCHeck;
+    public bool isGrounded = true;
 
     private void Start()
     {
@@ -17,6 +19,7 @@ public class GroundCheck : MonoBehaviour
     {
         if(other.tag == "Ground")
         {
+            isGrounded = true;
             animator.applyRootMotion = true;
             playerMovement.isGrounded = true;
             animator.SetBool("IsGrounded", true);
@@ -29,6 +32,9 @@ public class GroundCheck : MonoBehaviour
     {
         if (other.tag == "Ground")
         {
+            isGrounded = false;
+            if (otherGroundCHeck.isGrounded != false)
+                return;
             playerMovement.isGrounded = false;
             animator.SetBool("IsGrounded", false);
         }
