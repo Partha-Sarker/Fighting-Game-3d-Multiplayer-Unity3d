@@ -17,13 +17,18 @@ public class Manager : MonoBehaviour
     public Button attackButton;
     public float jumpButtonDelay = 1.5f;
     public float sheathUnsheathDelay = 1f;
-    public float attackButtonDelay = .5f;
+    public float unarmedAttackButtonDelay = .5f;
+    private float defaultUnarmedAttackButtonDelay;
     public float attackOtherButtonDelay = .5f;
     public byte currentAttackCount = 0;
-
-
+    private bool armed = false;
     private Animator animator;
     private NetworkAnimator networkAnimator;
+
+    private void Start()
+    {
+        defaultUnarmedAttackButtonDelay = unarmedAttackButtonDelay;
+    }
 
     void Update()
     {
@@ -50,6 +55,7 @@ public class Manager : MonoBehaviour
         currentAttackCount = 0;
         animator.ResetTrigger("Attacking");
         animator.SetBool("Armed", true);
+        unarmedAttackButtonDelay += .2f;
         DisableButtons();
         StartCoroutine(EnableButtons(sheathUnsheathDelay));
     }
@@ -58,6 +64,7 @@ public class Manager : MonoBehaviour
     {
         currentAttackCount = 0;
         animator.SetBool("Armed", false);
+        unarmedAttackButtonDelay = defaultUnarmedAttackButtonDelay;
         DisableButtons();
         StartCoroutine(EnableButtons(sheathUnsheathDelay));
     }
@@ -69,7 +76,7 @@ public class Manager : MonoBehaviour
         networkAnimator.SetTrigger("Attacking");
         animator.SetInteger("AttackNO", Random.Range(1, 6));
         DisableButtons();
-        StartCoroutine(EnableButtons(attackButtonDelay));
+        StartCoroutine(EnableButtons(unarmedAttackButtonDelay));
     }
 
     public void Jump()

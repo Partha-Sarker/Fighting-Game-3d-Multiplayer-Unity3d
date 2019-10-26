@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private float HInput = 0, VInput = 0;
     public float speed = 1.2f;
+    public byte airSpeedMultiplier = 6;
     private Vector3 jumpForce;
     public int jumpUpForce = 5;
     public int jumpDashForce = 5;
@@ -80,8 +81,8 @@ public class PlayerMovement : MonoBehaviour
         animator.applyRootMotion = false;
         animator.SetBool("IsJumping", true);
         isJumping = true;
-        jumpForce = new Vector3(HInput * jumpDashForce, jumpUpForce, VInput * jumpDashForce);
-        rb.AddForce(jumpForce, ForceMode.Impulse);
+        jumpForce = new Vector3(HInput * jumpDashForce, jumpUpForce, VInput * jumpDashForce).normalized;
+        rb.AddRelativeForce(jumpForce*airSpeedMultiplier, ForceMode.Impulse);
     }
 
     private void RotatePlayer()

@@ -8,9 +8,16 @@ ScriptsOnlyBuild:
     - MyNetManager
     - PlayerMovement
     - PlayerSetup
+    - RPGCharacterAnims.GUIControlsFREE
+    - RPGCharacterAnims.IKHandsFREE
+    - RPGCharacterAnims.RPGCharacterControllerFREE
+    - RPGCharacterAnims.RPGCharacterInputControllerFREE
+    - RPGCharacterAnims.RPGCharacterMovementControllerFREE
+    - RPGCharacterAnims.RPGCharacterWeaponControllerFREE
     - ResetTrigger
     - StartMoving
     - StopMoving
+    - SuperCharacterController
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
     - TMPro.TMP_Settings
@@ -20,8 +27,11 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -34,6 +44,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Image
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkAnimator
+    - UnityEngine.Networking.NetworkCallbacks
     - UnityEngine.Networking.NetworkDiscovery
     - UnityEngine.Networking.NetworkIdentity
     - UnityEngine.Networking.NetworkManagerHUD
@@ -818,7 +829,7 @@ ScriptsOnlyBuild:
     className: NetworkManager
   - hash:
       serializedVersion: 2
-      Hash: c7eea003ef163b5b510b85f06e1ecc48
+      Hash: 1ac17670f333399e5f8411671b7116bd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
@@ -1016,7 +1027,7 @@ ScriptsOnlyBuild:
     className: GroundCheck
   - hash:
       serializedVersion: 2
-      Hash: bc7e4c18f07767590ace7145182753d6
+      Hash: 2960beac5bfbf5831dfd8d28dec44232
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Manager
