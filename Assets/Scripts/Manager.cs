@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
+    private static Dictionary<string, Player> players = new Dictionary<string, Player>();
     public bool pcInput = true;
     public GameObject joystick;
     private GameObject localPlayer;
@@ -21,7 +23,7 @@ public class Manager : MonoBehaviour
     private float defaultUnarmedAttackButtonDelay;
     public float attackOtherButtonDelay = .5f;
     public byte currentAttackCount = 0;
-    private bool armed = false;
+    //private bool armed = false;
     private Animator animator;
     private NetworkAnimator networkAnimator;
 
@@ -42,8 +44,10 @@ public class Manager : MonoBehaviour
         }
         else
         {
-            animator = localPlayer.GetComponent<Animator>();
-            networkAnimator = localPlayer.GetComponent<NetworkAnimator>();
+            if(animator == null)
+                animator = localPlayer.GetComponent<Animator>();
+            if(networkAnimator == null)
+                networkAnimator = localPlayer.GetComponent<NetworkAnimator>();
             if (!controlPanel.activeSelf)
                 controlPanel.SetActive(true);
         }
@@ -99,7 +103,7 @@ public class Manager : MonoBehaviour
     {
         yield return new WaitForSeconds(timer);
         attackButton.interactable = true;
-        if(currentAttackCount > 0)
+        if (currentAttackCount > 0)
         {
             yield return new WaitForSeconds(attackOtherButtonDelay);
         }
@@ -113,4 +117,32 @@ public class Manager : MonoBehaviour
             currentAttackCount--;
     }
 
+    public static void RegisterPlayer(string id, Player player)
+    {
+        players.Add(id, player);
+    }
+
+    public static void UnRegisterPlayer(string _playerID)
+    {
+        players.Remove(_playerID);
+    }
+
+    public static Player GetPlayer(string _playerID)
+    {
+        return players[_playerID];
+    }
+
+    void OnGUI()
+    {
+        GUILayout.BeginArea(new Rect(0, 200, 200, 500));
+        GUILayout.BeginVertical();
+
+        foreach (string _playerID in players.Keys)
+        {
+            GUILayout.Label(_playerID + "  -  " + players[_playerID].transform.name);
+        }
+
+        GUILayout.EndVertical();
+        GUILayout.EndArea();
+    }
 }

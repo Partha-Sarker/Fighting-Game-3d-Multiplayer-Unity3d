@@ -11,8 +11,13 @@ public class StopMoving : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = animator.gameObject;
+        
+
         if (player.name == "local player")
+        {
             player.GetComponent<PlayerMovement>().StopSelfRotation();
+            Attack.CanDamage();
+        }
         else
             GameObject.Find("local player").GetComponent<PlayerMovement>().StopOponentRotation();
     }

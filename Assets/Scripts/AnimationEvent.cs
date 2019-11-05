@@ -5,13 +5,26 @@ using UnityEngine;
 public class AnimationEvent : MonoBehaviour
 {
     private string player;
-    
+    public FistAttack leftAttack;
+    public Collider leftAttackCollider;
+    public FistAttack rightAttack;
+    public Collider rightAttackCollider;
+    public SwordAttack swordAttack;
+    public Collider swordAttackCollider;
+
     public void HideSword()
     {
         player = "/" + this.name;
         GameObject sword = GameObject.Find
                 (player + "/Motion/B_Pelvis/B_Spine/B_Spine1/B_Spine2/B_R_Clavicle/B_R_UpperArm/B_R_Forearm/B_R_Hand/2Hand-Sword");
         sword.GetComponent<MeshRenderer>().enabled = false;
+        if(this.name == "local player")
+        {
+            swordAttack.enabled = false;
+            swordAttackCollider.enabled = false;
+            leftAttack.enabled = rightAttack.enabled = true;
+            leftAttackCollider.enabled = rightAttackCollider.enabled = true;
+        }
     }
 
     public void ShowSword()
@@ -20,5 +33,12 @@ public class AnimationEvent : MonoBehaviour
         GameObject sword = GameObject.Find
                 (player + "/Motion/B_Pelvis/B_Spine/B_Spine1/B_Spine2/B_R_Clavicle/B_R_UpperArm/B_R_Forearm/B_R_Hand/2Hand-Sword");
         sword.GetComponent<MeshRenderer>().enabled = true;
+        if(this.name == "local player")
+        {
+            swordAttack.enabled = true;
+            swordAttackCollider.enabled = true;
+            leftAttack.enabled = rightAttack.enabled = false;
+            leftAttackCollider.enabled = rightAttackCollider.enabled = false;
+        }
     }
 }

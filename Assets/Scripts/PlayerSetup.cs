@@ -6,6 +6,7 @@ public class PlayerSetup : NetworkBehaviour
     public Behaviour[] componentsToDisable;
     
     public string player_id;
+    public string net_id;
 
     Camera sceneCamera;
 
@@ -23,10 +24,6 @@ public class PlayerSetup : NetworkBehaviour
             {
                 localPlayer.GetComponent<PlayerMovement>().oponent = this.transform;
                 print("oponent set for local player");
-            }
-            else
-            {
-                Debug.Log("local player not found");
             }
 
             for (int i = 0; i < componentsToDisable.Length; i++)
@@ -54,6 +51,14 @@ public class PlayerSetup : NetworkBehaviour
         }
     }
 
+    public override void OnStartClient()
+    {
+        base.OnStartClient();
+        net_id = GetComponent<NetworkIdentity>().netId.ToString();
+        Player player = GetComponent<Player>();
+        Manager.RegisterPlayer(net_id, player);
+    }
+
     // When we are destroyed
     void OnDisable()
     {
@@ -62,6 +67,7 @@ public class PlayerSetup : NetworkBehaviour
         {
             sceneCamera.gameObject.SetActive(true);
         }
+        Manager.UnRegisterPlayer(net_id);
     }
 
 }

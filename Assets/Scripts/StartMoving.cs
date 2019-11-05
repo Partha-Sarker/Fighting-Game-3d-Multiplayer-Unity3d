@@ -11,7 +11,10 @@ public class StartMoving : StateMachineBehaviour
         player = animator.gameObject;
 
         if (player.name == "local player")
+        {
             player.GetComponent<PlayerMovement>().canSelfRotate = true;
+            Attack.CantDamage();
+        }
         else
         {
             GameObject.Find("local player").GetComponent<PlayerMovement>().canOponentRotate = true;
