@@ -35,6 +35,11 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    com.unity.multiplayer-hlapi.Editor.dll:
+    - UnityEditor.NetworkAnimatorEditor
+    - UnityEditor.NetworkBehaviourInspector
+    - UnityEditor.NetworkIdentityEditor
+    - UnityEditor.NetworkTransformEditor
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkAnimator
     - UnityEngine.Networking.NetworkCallbacks
@@ -134,21 +139,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10592}
     - Class: 114
-      Script: {instanceID: 10662}
+      Script: {instanceID: 10624}
     - Class: 114
-      Script: {instanceID: 10810}
+      Script: {instanceID: 10664}
     - Class: 114
-      Script: {instanceID: 10826}
+      Script: {instanceID: 10812}
     - Class: 114
-      Script: {instanceID: 10904}
+      Script: {instanceID: 10828}
     - Class: 114
-      Script: {instanceID: 10936}
+      Script: {instanceID: 10906}
     - Class: 114
-      Script: {instanceID: 10972}
+      Script: {instanceID: 10938}
     - Class: 114
-      Script: {instanceID: 11058}
+      Script: {instanceID: 10974}
     - Class: 114
-      Script: {instanceID: 20998}
+      Script: {instanceID: 11060}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -864,7 +869,7 @@ ScriptsOnlyBuild:
     className: Math3d
   - hash:
       serializedVersion: 2
-      Hash: 13b5df226c55b0b5d1434e0e46a9cdfc
+      Hash: be563127a244ecdb949e730f34f24cdb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerSetup
@@ -1006,6 +1011,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: StartMoving
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ActionControl
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1162,12 +1173,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ActionControl
   platform: 19
   scenePathNames:
   - Assets/Scenes/FightScene.unity

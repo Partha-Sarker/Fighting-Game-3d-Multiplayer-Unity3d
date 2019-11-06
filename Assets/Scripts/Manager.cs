@@ -8,6 +8,7 @@ public class Manager : MonoBehaviour
 {
     private static Dictionary<string, Player> players = new Dictionary<string, Player>();
     public bool pcInput = true;
+    public static bool isServer = false;
     public GameObject joystick;
     private GameObject localPlayer;
     private GameObject oponent;

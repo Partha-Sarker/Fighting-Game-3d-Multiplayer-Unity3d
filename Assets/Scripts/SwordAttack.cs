@@ -9,6 +9,10 @@ public class SwordAttack : Attack
     [Client]
     public override void DealDamage(string id)
     {
-        actionControl.CmdDamage(id, damage);
+
+        if (Manager.isServer)
+            actionControl.RpcDamage(id, damage);
+        else
+            actionControl.CmdDamage(id, damage);
     }
 }

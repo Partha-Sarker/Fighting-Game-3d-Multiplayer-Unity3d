@@ -4,7 +4,8 @@ using UnityEngine.Networking;
 public class PlayerSetup : NetworkBehaviour
 {
     public Behaviour[] componentsToDisable;
-    
+    public Collider[] collidersToDisable;
+
     public string player_id;
     public string net_id;
 
@@ -30,10 +31,16 @@ public class PlayerSetup : NetworkBehaviour
             {
                 componentsToDisable[i].enabled = false;
             }
+            for (int i = 0; i < collidersToDisable.Length; i++)
+            {
+                collidersToDisable[i].enabled = false;
+            }
         }
         else
         {
             this.gameObject.name = "local player";
+            if (isServer)
+                Manager.isServer = true;
             GameObject oponent = GameObject.Find("oponent");
             // We are the local player: Disable the scene camera
             if(this.GetComponent<PlayerMovement>().oponent == null && oponent != null)
@@ -57,6 +64,7 @@ public class PlayerSetup : NetworkBehaviour
         net_id = GetComponent<NetworkIdentity>().netId.ToString();
         Player player = GetComponent<Player>();
         Manager.RegisterPlayer(net_id, player);
+        //Debug.Log("I am " + GetComponent<NetworkIdentity>().netId + " and client is started");
     }
 
     // When we are destroyed
