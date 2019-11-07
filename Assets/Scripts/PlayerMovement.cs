@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private float HInput = 0, VInput = 0;
     public float speed = 1.2f;
+    public float rotationSpeed = 10;
     public byte airSpeedMultiplier = 6;
     private Vector3 jumpForce;
     public int jumpUpForce = 5;
@@ -93,7 +94,8 @@ public class PlayerMovement : MonoBehaviour
             direction = oponent.position - transform.position;
             direction.y = 0;
             rotation = Quaternion.LookRotation(direction);
-            transform.rotation = rotation;
+            //transform.rotation = rotation;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
             //print("local: "+AngularDistance + "|" + direction + "|" + rotation);
         }
         if (canOponentRotate)

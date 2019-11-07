@@ -20,7 +20,7 @@ public class ActionControl : NetworkBehaviour
         //    oponent = GameObject.Find("oponent").GetComponent<Player>();
         //Debug.Log("Oponent is hit");
         //oponent.TakeDamage(damage);
-        Debug.Log("Inside command method from: "+transform.name+" and "+id+" got hit");
+        //Debug.Log("Inside command method from: "+transform.name+" and "+id+" got hit");
         RpcDamage(id, damage);
     }
 
@@ -32,10 +32,8 @@ public class ActionControl : NetworkBehaviour
         //Debug.Log("Oponent is hit");
         //oponent.TakeDamage(damage);
         Debug.Log("Inside ClientRPC method from: " + transform.name + " and " + id + " got hit");
+        Player player = Manager.GetPlayer(id);
+        player.TakeDamage(damage);
     }
 
-    public void JustDamage(string id, int damage)
-    {
-
-    }
 }
