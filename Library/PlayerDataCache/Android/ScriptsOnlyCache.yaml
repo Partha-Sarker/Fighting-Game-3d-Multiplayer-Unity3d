@@ -14,6 +14,7 @@ ScriptsOnlyBuild:
     - StartMoving
     - StopMoving
     - SwordAttack
+    - jumpControl
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
     - TMPro.TMP_Settings
@@ -152,6 +153,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10974}
     - Class: 114
       Script: {instanceID: 11060}
+    - Class: 114
+      Script: {instanceID: 16196}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1171,6 +1174,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: jumpControl
   platform: 13
   scenePathNames:
   - Assets/Scenes/FightScene.unity

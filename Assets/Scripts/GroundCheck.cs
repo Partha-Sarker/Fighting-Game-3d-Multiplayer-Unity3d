@@ -21,7 +21,7 @@ public class GroundCheck : MonoBehaviour
         {
             isGrounded = true;
             animator.applyRootMotion = true;
-            playerMovement.isGrounded = true;
+            //playerMovement.isGrounded = true;
             animator.SetBool("IsGrounded", true);
             playerMovement.isJumping = false;
             animator.SetBool("IsJumping", false);
