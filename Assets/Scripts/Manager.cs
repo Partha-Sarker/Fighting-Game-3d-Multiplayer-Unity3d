@@ -18,13 +18,16 @@ public class Manager : MonoBehaviour
     public Button sheathButton;
     public Button unsheathButton;
     public Button attackButton;
+    public Button guardButton;
+    public Button unguardButton;
     public float jumpButtonDelay = 1.5f;
     public float sheathUnsheathDelay = 1f;
+    public float guardUnguardDelay = .5f;
     public float unarmedAttackButtonDelay = .5f;
+    public float armedAttackExtraDelay = .2f;
     private float defaultUnarmedAttackButtonDelay;
     public float attackOtherButtonDelay = .5f;
     public byte currentAttackCount = 0;
-    //private bool armed = false;
     private Animator animator;
     private NetworkAnimator networkAnimator;
 
@@ -58,9 +61,10 @@ public class Manager : MonoBehaviour
     public void Unsheath()
     {
         currentAttackCount = 0;
-        animator.ResetTrigger("Attacking");
+        //animator.ResetTrigger("Attacking");
+        UnguardIfGuarded();
         animator.SetBool("Armed", true);
-        unarmedAttackButtonDelay += .2f;
+        unarmedAttackButtonDelay += armedAttackExtraDelay;
         DisableButtons();
         StartCoroutine(EnableButtons(sheathUnsheathDelay));
     }
@@ -68,6 +72,7 @@ public class Manager : MonoBehaviour
     public void Sheath()
     {
         currentAttackCount = 0;
+        UnguardIfGuarded();
         animator.SetBool("Armed", false);
         unarmedAttackButtonDelay = defaultUnarmedAttackButtonDelay;
         DisableButtons();
@@ -77,6 +82,7 @@ public class Manager : MonoBehaviour
     public void Attack()
     {
         currentAttackCount++;
+        UnguardIfGuarded();
         animator.SetTrigger("Attacking");
         networkAnimator.SetTrigger("Attacking");
         animator.SetInteger("AttackNO", Random.Range(1, 6));
@@ -88,8 +94,36 @@ public class Manager : MonoBehaviour
     {
         currentAttackCount = 0;
         localPlayer.GetComponent<PlayerMovement>().Jump();
+        UnguardIfGuarded();
         DisableButtons();
         StartCoroutine(EnableButtons(jumpButtonDelay));
+    }
+
+    public void Guard()
+    {
+        currentAttackCount = 0;
+        animator.SetBool("IsBlocking", true);
+        DisableButtons();
+        StartCoroutine(EnableButtons(guardUnguardDelay));
+    }
+
+    public void Unguard()
+    {
+        currentAttackCount = 0;
+        animator.SetBool("IsBlocking", false);
+        DisableButtons();
+        StartCoroutine(EnableButtons(guardUnguardDelay));
+    }
+
+    private void UnguardIfGuarded()
+    {
+
+        if (animator.GetBool("IsBlocking"))
+        {
+            animator.SetBool("IsBlocking", false);
+            unguardButton.gameObject.SetActive(false);
+            guardButton.gameObject.SetActive(true);
+        }
     }
 
     private void DisableButtons()
@@ -98,6 +132,8 @@ public class Manager : MonoBehaviour
         sheathButton.interactable = false;
         unsheathButton.interactable = false;
         attackButton.interactable = false;
+        guardButton.interactable = false;
+        unguardButton.interactable = false;
     }
 
     IEnumerator EnableButtons(float timer)
@@ -113,6 +149,8 @@ public class Manager : MonoBehaviour
             jumpButton.interactable = true;
             sheathButton.interactable = true;
             unsheathButton.interactable = true;
+            guardButton.interactable = true;
+            unguardButton.interactable = true;
         }
         if (currentAttackCount > 0)
             currentAttackCount--;

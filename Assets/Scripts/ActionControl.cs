@@ -5,7 +5,6 @@ using UnityEngine.Networking;
 
 public class ActionControl : NetworkBehaviour
 {
-    Player oponent;
 
     // Start is called before the first frame update
     void Start()

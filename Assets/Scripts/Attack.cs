@@ -19,6 +19,8 @@ public class Attack : NetworkBehaviour
             return;
         if (other.tag != "Player" && other.tag != "PlayerParts")
             return;
+        if (other.tag == "Shield")
+            Debug.Log("Oponent has block the attack!");
         string id = other.transform.root.GetComponent<NetworkIdentity>().netId.ToString();
         DealDamage(id);
         canDamage = false;

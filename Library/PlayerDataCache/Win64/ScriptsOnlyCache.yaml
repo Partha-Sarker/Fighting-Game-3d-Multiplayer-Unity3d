@@ -27,6 +27,7 @@ ScriptsOnlyBuild:
     - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateMachineBehaviourEditor
     - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
     - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
@@ -130,31 +131,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10394}
     - Class: 114
-      Script: {instanceID: 10486}
+      Script: {instanceID: 10484}
     - Class: 114
-      Script: {instanceID: 10500}
+      Script: {instanceID: 10488}
     - Class: 114
-      Script: {instanceID: 10564}
+      Script: {instanceID: 10502}
     - Class: 114
-      Script: {instanceID: 10592}
+      Script: {instanceID: 10566}
     - Class: 114
-      Script: {instanceID: 10624}
+      Script: {instanceID: 10594}
     - Class: 114
-      Script: {instanceID: 10664}
+      Script: {instanceID: 10626}
     - Class: 114
-      Script: {instanceID: 10812}
+      Script: {instanceID: 10666}
     - Class: 114
-      Script: {instanceID: 10828}
+      Script: {instanceID: 10814}
     - Class: 114
-      Script: {instanceID: 10906}
+      Script: {instanceID: 10830}
     - Class: 114
-      Script: {instanceID: 10938}
+      Script: {instanceID: 10908}
     - Class: 114
-      Script: {instanceID: 10974}
+      Script: {instanceID: 10940}
     - Class: 114
-      Script: {instanceID: 11060}
+      Script: {instanceID: 10976}
     - Class: 114
-      Script: {instanceID: 16196}
+      Script: {instanceID: 11062}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -924,6 +925,12 @@ ScriptsOnlyBuild:
     className: SignalReceiver
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: jumpControl
+  - hash:
+      serializedVersion: 2
       Hash: 35a9693c388776aaf487636491a20f11
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -1062,7 +1069,7 @@ ScriptsOnlyBuild:
     className: GroundCheck
   - hash:
       serializedVersion: 2
-      Hash: 2960beac5bfbf5831dfd8d28dec44232
+      Hash: 9d5a15e56e4f2f149cd15610d4606684
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Manager
@@ -1174,12 +1181,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: jumpControl
   platform: 19
   scenePathNames:
   - Assets/Scenes/FightScene.unity

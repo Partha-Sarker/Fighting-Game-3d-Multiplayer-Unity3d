@@ -65,17 +65,8 @@ namespace UnityEngine.Networking
         [SerializeField]
         bool m_UseNetworkManager = false;
 
-
-        [SerializeField]
-        int check = 47777;
-
         [SerializeField]
         string m_BroadcastData = "HELLO";
-
-        NetworkBroadcastResult value;
-
-        public GameObject EnterButton;
-        public GameObject WaitingText;
 
         [SerializeField]
         bool m_ShowGUI = true;
@@ -510,34 +501,24 @@ namespace UnityEngine.Networking
 
                 if (m_BroadcastsReceived != null)
                 {
-                    if (m_BroadcastsReceived.Keys.Count > 0)
+                    foreach (var addr in m_BroadcastsReceived.Keys)
                     {
-                        EnterButton.SetActive(true);
-                        WaitingText.SetActive(false);
-                        foreach (var addr in m_BroadcastsReceived.Keys)
+                        var value = m_BroadcastsReceived[addr];
+                        if (GUI.Button(new Rect(xpos, ypos + 20, 200, 20), "Game at " + addr) && m_UseNetworkManager)
                         {
-                            value = m_BroadcastsReceived[addr];
-                            if (GUI.Button(new Rect(xpos, ypos + 20, 200, 20), "Game at " + addr) && m_UseNetworkManager)
+                            string dataString = BytesToString(value.broadcastData);
+                            var items = dataString.Split(':');
+                            if (items.Length == 3 && items[0] == "NetworkManager")
                             {
-                                string dataString = BytesToString(value.broadcastData);
-                                var items = dataString.Split(':');
-                                if (items.Length == 3 && items[0] == "NetworkManager")
+                                if (NetworkManager.singleton != null && NetworkManager.singleton.client == null)
                                 {
-                                    if (NetworkManager.singleton != null && NetworkManager.singleton.client == null)
-                                    {
-                                        NetworkManager.singleton.networkAddress = value.serverAddress;
-                                        NetworkManager.singleton.networkPort = Convert.ToInt32(items[2]);
-                                        NetworkManager.singleton.StartClient();
-                                    }
+                                    NetworkManager.singleton.networkAddress = items[1];
+                                    NetworkManager.singleton.networkPort = Convert.ToInt32(items[2]);
+                                    NetworkManager.singleton.StartClient();
                                 }
                             }
-                            ypos += spacing;
                         }
-                    }
-                    else
-                    {
-                        EnterButton.SetActive(false);
-                        WaitingText.SetActive(true);
+                        ypos += spacing;
                     }
                 }
             }
@@ -554,21 +535,6 @@ namespace UnityEngine.Networking
                     StartAsClient();
                 }
                 ypos += spacing;
-            }
-        }
-
-        public void EnterGame()
-        {
-            string dataString = BytesToString(value.broadcastData);
-            var items = dataString.Split(':');
-            if (items.Length == 3 && items[0] == "NetworkManager")
-            {
-                if (NetworkManager.singleton != null && NetworkManager.singleton.client == null)
-                {
-                    NetworkManager.singleton.networkAddress = value.serverAddress;
-                    NetworkManager.singleton.networkPort = Convert.ToInt32(items[2]);
-                    NetworkManager.singleton.StartClient();
-                }
             }
         }
     }
