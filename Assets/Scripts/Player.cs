@@ -9,12 +9,17 @@ public class Player : NetworkBehaviour
     public int maxHealth = 100;
     //public TextMeshProUGUI myScore;
     public Image myHealth;
+    private Animator animator;
+    private NetworkAnimator networkAnimator;
 
     [SyncVar]
     public int currentHealth;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
+        networkAnimator = GetComponent<NetworkAnimator>();
+
         currentHealth = maxHealth;
 
         if (isLocalPlayer)
@@ -39,6 +44,18 @@ public class Player : NetworkBehaviour
         //Debug.Log(transform.name + "now has " + currentHealth + " health");
         //myScore.SetText(currentHealth.ToString());
         myHealth.fillAmount = (float)currentHealth / (float)maxHealth;
+
+        if (isLocalPlayer)
+        {
+            animator.SetInteger("HitNO", Random.Range(1, 4));
+            animator.SetTrigger("GotHit");
+            networkAnimator.SetTrigger("GotHit");
+        }
+    }
+
+    public void BlockAttack()
+    {
+
     }
 
     public void DisableShield()

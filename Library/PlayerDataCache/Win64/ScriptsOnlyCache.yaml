@@ -11,6 +11,8 @@ ScriptsOnlyBuild:
     - Player
     - PlayerMovement
     - PlayerSetup
+    - ResetHitTrigger
+    - ResetTrigger
     - SlowRotation
     - StartMoving
     - StopMoving
@@ -124,6 +126,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10034}
     - Class: 114
+      Script: {instanceID: 10156}
+    - Class: 114
       Script: {instanceID: 10258}
     - Class: 114
       Script: {instanceID: 10286}
@@ -159,6 +163,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10986}
     - Class: 114
       Script: {instanceID: 11072}
+    - Class: 114
+      Script: {instanceID: 52068}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1190,6 +1196,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ResetHitTrigger
   platform: 19
   scenePathNames:
   - Assets/Scenes/FightScene.unity

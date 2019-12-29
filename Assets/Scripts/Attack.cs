@@ -21,7 +21,9 @@ public class Attack : NetworkBehaviour
             return;
 
         if (other.tag == "Shield")
+        {
             Debug.Log("Oponent has blocked the attack!");
+        }
         else
         {
             Debug.Log("You have hit the oponent");

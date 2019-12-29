@@ -99,6 +99,7 @@
     <Compile Include="Assets\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Math3d.cs" />
     <Compile Include="Assets\Scripts\ActionControl.cs" />
     <Compile Include="Assets\Scripts\Animation\jumpControl.cs" />
+    <Compile Include="Assets\Scripts\Animation\ResetHitTrigger.cs" />
     <Compile Include="Assets\Scripts\Animation\ResetTrigger.cs" />
     <Compile Include="Assets\Scripts\Animation\SlowRotation.cs" />
     <Compile Include="Assets\Scripts\Animation\StartMoving.cs" />

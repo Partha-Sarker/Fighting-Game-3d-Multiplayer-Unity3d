@@ -9,7 +9,6 @@ public class SwordAttack : Attack
     [Client]
     public override void DealDamage(string id)
     {
-
         if (Manager.isServer)
             actionControl.RpcDamage(id, damage);
         else

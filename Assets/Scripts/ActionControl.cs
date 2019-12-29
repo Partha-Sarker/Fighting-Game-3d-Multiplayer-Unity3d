@@ -26,7 +26,7 @@ public class ActionControl : NetworkBehaviour
     {
         player = Manager.GetPlayer(id);
         player.TakeDamage(damage);
-        Debug.Log("Inside ClientRPC method from: " + transform.name + " and " + id + "(" +player.transform.name+") got hit");
+        //Debug.Log("Inside ClientRPC method from: " + transform.name + " and " + id + "(" +player.transform.name+") got hit");
     }
 
 }
