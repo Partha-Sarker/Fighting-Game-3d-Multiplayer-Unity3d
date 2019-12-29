@@ -10,8 +10,10 @@ public class Manager : MonoBehaviour
     public bool pcInput = true;
     public static bool isServer = false;
     public GameObject joystick;
-    private GameObject localPlayer;
-    private GameObject oponent;
+    [HideInInspector]
+    public GameObject localPlayer;
+    [HideInInspector]
+    public GameObject oponent;
     public GameObject rightPanel;
     public GameObject controlPanel;
     public Button jumpButton;

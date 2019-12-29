@@ -17,13 +17,20 @@ public class Attack : NetworkBehaviour
             return;
         if (other.name == "local player")
             return;
-        if (other.tag != "Player" && other.tag != "PlayerParts")
+        if (other.tag != "Player" && other.tag != "PlayerParts" && other.tag != "Shield")
             return;
+
         if (other.tag == "Shield")
-            Debug.Log("Oponent has block the attack!");
-        string id = other.transform.root.GetComponent<NetworkIdentity>().netId.ToString();
-        DealDamage(id);
+            Debug.Log("Oponent has blocked the attack!");
+        else
+        {
+            Debug.Log("You have hit the oponent");
+            string id = other.transform.root.GetComponent<NetworkIdentity>().netId.ToString();
+            DealDamage(id);
+        }
+
         canDamage = false;
+
     }
     
     public virtual void DealDamage(string id)

@@ -41,7 +41,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Image
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkAnimator
-    - UnityEngine.Networking.NetworkCallbacks
     - UnityEngine.Networking.NetworkDiscovery
     - UnityEngine.Networking.NetworkIdentity
     - UnityEngine.Networking.NetworkManagerHUD
@@ -94,67 +93,67 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9404}
+      Script: {instanceID: 9412}
     - Class: 114
-      Script: {instanceID: 9420}
+      Script: {instanceID: 9428}
     - Class: 114
-      Script: {instanceID: 9482}
-    - Class: 114
-      Script: {instanceID: 9526}
-    - Class: 114
-      Script: {instanceID: 9528}
+      Script: {instanceID: 9490}
     - Class: 114
       Script: {instanceID: 9534}
     - Class: 114
-      Script: {instanceID: 9540}
+      Script: {instanceID: 9536}
+    - Class: 114
+      Script: {instanceID: 9542}
     - Class: 114
       Script: {instanceID: 9548}
     - Class: 114
-      Script: {instanceID: 9584}
+      Script: {instanceID: 9556}
     - Class: 114
-      Script: {instanceID: 9602}
+      Script: {instanceID: 9592}
     - Class: 114
-      Script: {instanceID: 9624}
+      Script: {instanceID: 9610}
     - Class: 114
       Script: {instanceID: 9632}
     - Class: 114
-      Script: {instanceID: 10018}
+      Script: {instanceID: 9640}
     - Class: 114
       Script: {instanceID: 10026}
     - Class: 114
-      Script: {instanceID: 10250}
+      Script: {instanceID: 10034}
     - Class: 114
-      Script: {instanceID: 10278}
+      Script: {instanceID: 10258}
     - Class: 114
-      Script: {instanceID: 10382}
+      Script: {instanceID: 10286}
     - Class: 114
-      Script: {instanceID: 10394}
+      Script: {instanceID: 10390}
     - Class: 114
-      Script: {instanceID: 10486}
+      Script: {instanceID: 10402}
     - Class: 114
-      Script: {instanceID: 10500}
+      Script: {instanceID: 10492}
     - Class: 114
-      Script: {instanceID: 10564}
+      Script: {instanceID: 10496}
     - Class: 114
-      Script: {instanceID: 10592}
+      Script: {instanceID: 10510}
     - Class: 114
-      Script: {instanceID: 10624}
+      Script: {instanceID: 10574}
     - Class: 114
-      Script: {instanceID: 10664}
+      Script: {instanceID: 10602}
     - Class: 114
-      Script: {instanceID: 10812}
+      Script: {instanceID: 10634}
     - Class: 114
-      Script: {instanceID: 10828}
+      Script: {instanceID: 10674}
     - Class: 114
-      Script: {instanceID: 10906}
+      Script: {instanceID: 10822}
     - Class: 114
-      Script: {instanceID: 10938}
+      Script: {instanceID: 10838}
     - Class: 114
-      Script: {instanceID: 10974}
+      Script: {instanceID: 10916}
     - Class: 114
-      Script: {instanceID: 11060}
+      Script: {instanceID: 10948}
     - Class: 114
-      Script: {instanceID: 16196}
+      Script: {instanceID: 10984}
+    - Class: 114
+      Script: {instanceID: 11070}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -924,6 +923,12 @@ ScriptsOnlyBuild:
     className: SignalReceiver
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: jumpControl
+  - hash:
+      serializedVersion: 2
       Hash: 35a9693c388776aaf487636491a20f11
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -1062,7 +1067,7 @@ ScriptsOnlyBuild:
     className: GroundCheck
   - hash:
       serializedVersion: 2
-      Hash: 2960beac5bfbf5831dfd8d28dec44232
+      Hash: 9d5a15e56e4f2f149cd15610d4606684
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Manager
@@ -1174,12 +1179,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: jumpControl
   platform: 13
   scenePathNames:
   - Assets/Scenes/FightScene.unity

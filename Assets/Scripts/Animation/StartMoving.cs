@@ -4,6 +4,7 @@ using UnityEngine;
 public class StartMoving : StateMachineBehaviour
 {
     private GameObject player;
+    private PlayerMovement playerMovement;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -12,12 +13,18 @@ public class StartMoving : StateMachineBehaviour
 
         if (player.name == "local player")
         {
-            player.GetComponent<PlayerMovement>().canSelfRotate = true;
+            if(playerMovement == null)
+                playerMovement = player.GetComponent<PlayerMovement>();
+            playerMovement.canSelfRotate = true;
+            playerMovement.ResetSelfRotation();
             Attack.CantDamage();
         }
         else
         {
-            GameObject.Find("local player").GetComponent<PlayerMovement>().canOponentRotate = true;
+            if(playerMovement == null)
+                playerMovement = GameObject.Find("local player").GetComponent<PlayerMovement>();
+            playerMovement.canOponentRotate = true;
+            playerMovement.ResetOponentRotation();
         }
     }
 

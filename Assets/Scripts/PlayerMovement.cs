@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,7 +9,12 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private float HInput = 0, VInput = 0;
     public float speed = 1.2f;
-    public float rotationSpeed = 10;
+    public float rotationStartSpeed = 250;
+    public float slowRotationSpeed = 50;
+    [HideInInspector]
+    public float selfRotationSpeed;
+    [HideInInspector]
+    public float oponentRotationSpeed;
     public byte airSpeedMultiplier = 6;
     private Vector3 jumpForce;
     public int jumpUpForce = 5;
@@ -19,21 +23,22 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     public Joystick joystick;
     public Transform oponent;
-    //public bool lockOponent = true;
     public bool canMove = true;
     public bool canSelfRotate = true;
     public bool canOponentRotate = true;
     public bool isGrounded = true;
     public bool isJumping = false;
-    private float AngularDistance;
+    public bool isSelfDefending = false;
+    public bool isOponentDefending = false;
+    //private float AngularDistance;
     private Vector3 direction;
     private Quaternion rotation;
     public float stopRotationWaitTime = .2f;
-    //public Transform target;
 
     // Start is called before the first frame update
     void Start()
     {
+        selfRotationSpeed = rotationStartSpeed;
         pcInput = FindObjectOfType<Manager>().pcInput;
         if (!pcInput)
         {
@@ -61,7 +66,6 @@ public class PlayerMovement : MonoBehaviour
         {
             RotatePlayer();
         }
-        //TestRotate();
 
         if (Input.GetKeyDown(KeyCode.Space))
             Jump();
@@ -90,42 +94,70 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canSelfRotate)
         {
-            AngularDistance = Quaternion.Angle(transform.rotation, oponent.rotation);
+            //AngularDistance = Quaternion.Angle(transform.rotation, oponent.rotation);
             direction = oponent.position - transform.position;
             direction.y = 0;
             rotation = Quaternion.LookRotation(direction);
+            if (rotation.y - transform.rotation.y > 0)
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, selfRotationSpeed * Time.deltaTime);
             //transform.rotation = rotation;
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
             //print("local: "+AngularDistance + "|" + direction + "|" + rotation);
+            
         }
         if (canOponentRotate)
         {
-            AngularDistance = Quaternion.Angle(oponent.rotation, transform.rotation);
+            //AngularDistance = Quaternion.Angle(oponent.rotation, transform.rotation);
             direction = transform.position - oponent.position;
             direction.y = 0;
             rotation = Quaternion.LookRotation(direction);
-            oponent.rotation = rotation;
+            oponent.rotation = Quaternion.RotateTowards(oponent.rotation, rotation, oponentRotationSpeed * Time.deltaTime);
+            //oponent.rotation = rotation;
             //print("oponent: " + AngularDistance + "|" + direction + "|" + rotation);
         }
     }
 
     public void StopSelfRotation()
     {
-        StartCoroutine(disableRotation(true));
+        StartCoroutine(DisableRotation(true));
     }
 
     public void StopOponentRotation()
     {
-        StartCoroutine(disableRotation(false));
+        StartCoroutine(DisableRotation(false));
     }
 
-    IEnumerator disableRotation(bool isSelf)
+    IEnumerator DisableRotation(bool isSelf)
     {
         yield return new WaitForSeconds(stopRotationWaitTime);
         if (isSelf)
             canSelfRotate = false;
         else
             canOponentRotate = false;
+    }
+
+    public void SlowSelfRotation()
+    {
+        //Debug.Log("Slowing Self Rotation");
+        selfRotationSpeed = slowRotationSpeed;
+
+    }
+
+    public void SlowOponentRotation()
+    {
+        //Debug.Log("Slowing Oponent Rotation");
+        oponentRotationSpeed = slowRotationSpeed;
+    }
+
+    public void ResetSelfRotation()
+    {
+        //Debug.Log("Resetting Self Rotation");
+        selfRotationSpeed = rotationStartSpeed;
+    }
+
+    public void ResetOponentRotation()
+    {
+        //Debug.Log("Resetting Oponent Rotation");
+        oponentRotationSpeed = rotationStartSpeed;
     }
 
     private void GetAndroidInput()
