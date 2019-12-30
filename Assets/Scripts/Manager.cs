@@ -87,7 +87,7 @@ public class Manager : MonoBehaviour
         UnguardIfGuarded();
         animator.SetInteger("AttackNO", Random.Range(1, 6));
         animator.SetTrigger("Attacking");
-        networkAnimator.SetTrigger("Attacking");
+        //networkAnimator.SetTrigger("Attacking");
         DisableButtons();
         StartCoroutine(EnableButtons(unarmedAttackButtonDelay));
     }

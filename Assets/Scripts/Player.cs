@@ -49,7 +49,7 @@ public class Player : NetworkBehaviour
         {
             animator.SetInteger("HitNO", Random.Range(1, 4));
             animator.SetTrigger("GotHit");
-            networkAnimator.SetTrigger("GotHit");
+            //networkAnimator.SetTrigger("GotHit");
         }
     }
 

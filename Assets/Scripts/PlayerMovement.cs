@@ -98,7 +98,6 @@ public class PlayerMovement : MonoBehaviour
             direction = oponent.position - transform.position;
             direction.y = 0;
             rotation = Quaternion.LookRotation(direction);
-            if (rotation.y - transform.rotation.y > 0)
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, selfRotationSpeed * Time.deltaTime);
             //transform.rotation = rotation;
             //print("local: "+AngularDistance + "|" + direction + "|" + rotation);

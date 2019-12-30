@@ -10,14 +10,14 @@ public class Attack : NetworkBehaviour
     {
 
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (!canDamage)
             return;
         if (other.name == "local player")
             return;
-        if (other.tag != "Player" && other.tag != "PlayerParts" && other.tag != "Shield")
+        if (other.tag != "Player" && other.tag != "Shield")
             return;
 
         if (other.tag == "Shield")
@@ -34,7 +34,7 @@ public class Attack : NetworkBehaviour
         canDamage = false;
 
     }
-    
+
     public virtual void DealDamage(string id)
     {
         //Debug.Log("Dealing damage");

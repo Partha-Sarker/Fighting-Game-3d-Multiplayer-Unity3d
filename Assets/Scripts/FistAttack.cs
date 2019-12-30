@@ -9,7 +9,6 @@ public class FistAttack : Attack
     
     public override void DealDamage(string id)
     {
-        //Debug.Log("Inside client method from: " + transform.root.name);
         if (Manager.isServer)
             actionControl.RpcDamage(id, damage);
         else
