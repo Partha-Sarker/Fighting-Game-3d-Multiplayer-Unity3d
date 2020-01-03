@@ -5,13 +5,39 @@ public class SwordAttack : Attack
 {
     public ActionControl actionControl;
     public int damage = 7;
+    public Animator animator;
+    public NetworkAnimator networkAnimator;
 
     [Client]
-    public override void DealDamage(string id)
+    public override void DealDamage(string id, bool isBlocked)
     {
-        if (Manager.isServer)
-            actionControl.RpcDamage(id, damage);
+        if (!isBlocked)
+        {
+            if (Manager.isServer)
+                actionControl.RpcDamage(id, damage);
+            else
+                actionControl.CmdDamage(id, damage);
+        }
         else
-            actionControl.CmdDamage(id, damage);
+        {
+            animator.SetTrigger("Deflected");
+            networkAnimator.SetTrigger("Deflected");
+            if (Manager.isServer)
+                actionControl.RpcDamage(id, 0);
+            else
+                actionControl.CmdDamage(id, 0);
+        }
     }
+
+    //public override void Deflect(string id)
+    //{
+    //    base.Deflect(id);
+    //    animator.SetTrigger("Deflected");
+    //    networkAnimator.SetTrigger("Deflected");
+
+    //    if (Manager.isServer)
+    //        actionControl.RpcDamage(id, 0);
+    //    else
+    //        actionControl.CmdDamage(id, 0);
+    //}
 }

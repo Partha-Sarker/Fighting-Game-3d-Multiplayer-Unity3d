@@ -38,6 +38,15 @@ public class Player : NetworkBehaviour
 
     public void TakeDamage(int damage)
     {
+        if(damage == 0)
+        {
+            if (isLocalPlayer)
+            {
+                networkAnimator.SetTrigger("Blocked");
+                animator.SetTrigger("Blocked");
+            }
+            return;
+        }
         currentHealth -= damage;
         if (currentHealth < 0)
             currentHealth = 0;

@@ -20,25 +20,31 @@ public class Attack : NetworkBehaviour
         if (other.tag != "Player" && other.tag != "Shield")
             return;
 
+        string id = other.transform.root.GetComponent<NetworkIdentity>().netId.ToString();
+        Debug.Log(other.tag);
+
         if (other.tag == "Shield")
         {
-            Debug.Log("Oponent has blocked the attack!");
+            DealDamage(id, true);
         }
         else
         {
-            Debug.Log("You have hit the oponent");
-            string id = other.transform.root.GetComponent<NetworkIdentity>().netId.ToString();
-            DealDamage(id);
+            DealDamage(id, false);
         }
 
         canDamage = false;
 
     }
 
-    public virtual void DealDamage(string id)
+    public virtual void DealDamage(string id, bool isBlocked)
     {
-        //Debug.Log("Dealing damage");
+        Debug.Log("You have hit the oponent. Dealing damage");
     }
+
+    //public virtual void Deflect(string id)
+    //{
+    //    Debug.Log("Oponent has blocked the attack!");
+    //}
 
     public static void CanDamage()
     {
