@@ -40,6 +40,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Image
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkAnimator
+    - UnityEngine.Networking.NetworkCallbacks
     - UnityEngine.Networking.NetworkDiscovery
     - UnityEngine.Networking.NetworkIdentity
     - UnityEngine.Networking.NetworkManagerHUD
@@ -122,41 +123,41 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10036}
     - Class: 114
-      Script: {instanceID: 10260}
-    - Class: 114
-      Script: {instanceID: 10288}
+      Script: {instanceID: 10262}
     - Class: 114
       Script: {instanceID: 10290}
     - Class: 114
-      Script: {instanceID: 10394}
+      Script: {instanceID: 10292}
     - Class: 114
-      Script: {instanceID: 10406}
+      Script: {instanceID: 10396}
     - Class: 114
-      Script: {instanceID: 10496}
+      Script: {instanceID: 10408}
     - Class: 114
-      Script: {instanceID: 10500}
+      Script: {instanceID: 10498}
     - Class: 114
-      Script: {instanceID: 10514}
+      Script: {instanceID: 10502}
     - Class: 114
-      Script: {instanceID: 10578}
+      Script: {instanceID: 10516}
     - Class: 114
-      Script: {instanceID: 10606}
+      Script: {instanceID: 10580}
     - Class: 114
-      Script: {instanceID: 10638}
+      Script: {instanceID: 10608}
     - Class: 114
-      Script: {instanceID: 10678}
+      Script: {instanceID: 10640}
     - Class: 114
-      Script: {instanceID: 10826}
+      Script: {instanceID: 10680}
     - Class: 114
-      Script: {instanceID: 10842}
+      Script: {instanceID: 10828}
     - Class: 114
-      Script: {instanceID: 10920}
+      Script: {instanceID: 10844}
     - Class: 114
-      Script: {instanceID: 10952}
+      Script: {instanceID: 10922}
     - Class: 114
-      Script: {instanceID: 10988}
+      Script: {instanceID: 10954}
     - Class: 114
-      Script: {instanceID: 11074}
+      Script: {instanceID: 10990}
+    - Class: 114
+      Script: {instanceID: 11076}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -212,7 +213,7 @@ ScriptsOnlyBuild:
     className: Player
   - hash:
       serializedVersion: 2
-      Hash: 4dae57686416a5a3d52a1d4fa5f05c2e
+      Hash: 38f82b4f8b0f003368b2d01e8193b21f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SwordAttack
@@ -446,7 +447,7 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
-      Hash: 4dae57686416a5a3d52a1d4fa5f05c2e
+      Hash: 38f82b4f8b0f003368b2d01e8193b21f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: FistAttack
@@ -792,6 +793,12 @@ ScriptsOnlyBuild:
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
     className: NetworkTransformVisualizer
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Hit
   - hash:
       serializedVersion: 2
       Hash: ce669872a2be11bc686ea22961d8a3bb

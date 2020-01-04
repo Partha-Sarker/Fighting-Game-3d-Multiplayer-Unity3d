@@ -27,7 +27,6 @@ public class FistAttack : Attack
             else
                 actionControl.CmdDamage(id, 0);
         }
-
     }
 
     //public override void Deflect(string id)

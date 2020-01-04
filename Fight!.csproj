@@ -672,6 +672,7 @@
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\FistAttack.cs" />
     <Compile Include="Assets\Scripts\GroundCheck.cs" />
+    <Compile Include="Assets\Scripts\Hit.cs" />
     <Compile Include="Assets\Scripts\LocalPlayerManager.cs" />
     <Compile Include="Assets\Scripts\Manager.cs" />
     <Compile Include="Assets\Scripts\MyNetManager.cs" />
