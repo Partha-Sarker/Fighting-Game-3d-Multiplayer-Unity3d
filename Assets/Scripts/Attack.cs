@@ -21,8 +21,6 @@ public class Attack : NetworkBehaviour
             return;
 
         string id = other.transform.root.GetComponent<NetworkIdentity>().netId.ToString();
-        Debug.Log(other.tag);
-
         if (other.tag == "Shield")
         {
             DealDamage(id, true);

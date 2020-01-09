@@ -6,31 +6,45 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private bool pcInput;
+
     private Animator animator;
+
     private float HInput = 0, VInput = 0;
+    private Vector3 velocity = Vector3.zero;
     public float speed = 1.2f;
+
     public float rotationStartSpeed = 250;
     public float slowRotationSpeed = 50;
     [HideInInspector]
     public float selfRotationSpeed;
     [HideInInspector]
     public float oponentRotationSpeed;
-    public byte airSpeedMultiplier = 6;
-    private Vector3 jumpForce;
-    public int jumpUpForce = 5;
-    public int jumpDashForce = 5;
-    private Rigidbody rb;
-    private Vector3 velocity = Vector3.zero;
-    public Joystick joystick;
-    public Transform oponent;
-    public bool canMove = true;
     public bool canSelfRotate = true;
     public bool canOponentRotate = true;
+
+
+    [HideInInspector]
+    public Vector3 jumpForce;
+    public int jumpUpForce = 5;
+    public int jumpDashForce = 5;
+    public byte airSpeedMultiplier = 6;
+
+    private Rigidbody rb;
+
+    public Joystick joystick;
+
+    public Transform oponent;
+
+    [SerializeField]
+    private float oponentDistance;
+
+    public bool canMove = true;
     public bool isGrounded = true;
     public bool isJumping = false;
+
     public bool isSelfDefending = false;
     public bool isOponentDefending = false;
-    //private float AngularDistance;
+    
     private Vector3 direction;
     private Quaternion rotation;
     public float stopRotationWaitTime = .2f;
@@ -64,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
             GetAndroidInput();
         if (oponent != null)
         {
+            //oponentDistance = Vector3.Distance(transform.position, oponent.position);
             RotatePlayer();
         }
 
@@ -83,11 +98,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isGrounded || isJumping)
             return;
+        isJumping = true;
+        jumpForce = (new Vector3(HInput * jumpDashForce, jumpUpForce, VInput * jumpDashForce).normalized)*airSpeedMultiplier;
         animator.applyRootMotion = false;
         animator.SetBool("IsJumping", true);
-        isJumping = true;
-        jumpForce = new Vector3(HInput * jumpDashForce, jumpUpForce, VInput * jumpDashForce).normalized;
-        rb.AddRelativeForce(jumpForce*airSpeedMultiplier, ForceMode.Impulse);
+        rb.AddRelativeForce(jumpForce, ForceMode.Impulse);
     }
 
     private void RotatePlayer()
@@ -187,6 +202,17 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.MovePosition(rb.position + velocity * Time.deltaTime);
         }
+    }
+
+    public void FreezePosition()
+    {
+        rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezePositionX;
+    }
+
+    public void ResetConstraints()
+    {
+
+        rb.constraints = RigidbodyConstraints.None;
     }
 
 }

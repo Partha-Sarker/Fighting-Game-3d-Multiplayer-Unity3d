@@ -11,6 +11,8 @@ public class Player : NetworkBehaviour
     public Image myHealth;
     private Animator animator;
     private NetworkAnimator networkAnimator;
+    public Transform hitHolder, blockHolder;
+    public GameObject fistHitParticle, swordHitParticle;
 
     [SyncVar]
     public int currentHealth;
@@ -40,34 +42,33 @@ public class Player : NetworkBehaviour
     {
         if(damage == 0)
         {
-
             animator.SetTrigger("Blocked");
-            //if (isLocalPlayer)
-            //{
-            //    //networkAnimator.SetTrigger("Blocked");
-            //    animator.SetTrigger("Blocked");
-            //}
             return;
+        }
+
+        if(damage == 7)
+        {
+            //blood particle
+            GameObject particle = Instantiate(swordHitParticle, hitHolder);
+            Destroy(particle, 1f);
+        }
+        else
+        {
+            //hit effect
+            GameObject particle = Instantiate(fistHitParticle, hitHolder);
+            Destroy(particle, 1f);
         }
 
         currentHealth -= damage;
         if (currentHealth < 0)
             currentHealth = 0;
-        //Debug.Log(transform.name + "now has " + currentHealth + " health");
-        //myScore.SetText(currentHealth.ToString());
         myHealth.fillAmount = (float)currentHealth / (float)maxHealth;
 
         if (isLocalPlayer)
         {
             animator.SetInteger("HitNO", Random.Range(1, 4));
             animator.SetTrigger("GotHit");
-            //networkAnimator.SetTrigger("GotHit");
         }
-    }
-
-    public void BlockAttack()
-    {
-
     }
 
     public void DisableShield()

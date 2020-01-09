@@ -12,6 +12,7 @@ ScriptsOnlyBuild:
     - PlayerMovement
     - PlayerSetup
     - ResetHitTrigger
+    - ShieldImpactAnimation
     - SlowRotation
     - StartMoving
     - StopMoving
@@ -96,71 +97,73 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9412}
+      Script: {instanceID: 9416}
     - Class: 114
-      Script: {instanceID: 9428}
+      Script: {instanceID: 9432}
     - Class: 114
-      Script: {instanceID: 9490}
+      Script: {instanceID: 9494}
     - Class: 114
-      Script: {instanceID: 9534}
+      Script: {instanceID: 9538}
     - Class: 114
-      Script: {instanceID: 9536}
+      Script: {instanceID: 9540}
     - Class: 114
-      Script: {instanceID: 9542}
+      Script: {instanceID: 9546}
     - Class: 114
-      Script: {instanceID: 9548}
+      Script: {instanceID: 9552}
     - Class: 114
-      Script: {instanceID: 9556}
+      Script: {instanceID: 9560}
     - Class: 114
-      Script: {instanceID: 9592}
+      Script: {instanceID: 9596}
     - Class: 114
-      Script: {instanceID: 9610}
+      Script: {instanceID: 9614}
     - Class: 114
-      Script: {instanceID: 9632}
+      Script: {instanceID: 9636}
     - Class: 114
-      Script: {instanceID: 9640}
+      Script: {instanceID: 9644}
     - Class: 114
-      Script: {instanceID: 10022}
+      Script: {instanceID: 10026}
     - Class: 114
-      Script: {instanceID: 10028}
+      Script: {instanceID: 10032}
     - Class: 114
-      Script: {instanceID: 10036}
+      Script: {instanceID: 10040}
     - Class: 114
-      Script: {instanceID: 10262}
+      Script: {instanceID: 10268}
     - Class: 114
-      Script: {instanceID: 10290}
+      Script: {instanceID: 10296}
     - Class: 114
-      Script: {instanceID: 10292}
+      Script: {instanceID: 10298}
     - Class: 114
-      Script: {instanceID: 10396}
+      Script: {instanceID: 10344}
     - Class: 114
-      Script: {instanceID: 10408}
+      Script: {instanceID: 10404}
     - Class: 114
-      Script: {instanceID: 10498}
+      Script: {instanceID: 10416}
     - Class: 114
-      Script: {instanceID: 10502}
+      Script: {instanceID: 10506}
     - Class: 114
-      Script: {instanceID: 10516}
+      Script: {instanceID: 10510}
     - Class: 114
-      Script: {instanceID: 10580}
+      Script: {instanceID: 10524}
     - Class: 114
-      Script: {instanceID: 10608}
+      Script: {instanceID: 10588}
     - Class: 114
-      Script: {instanceID: 10640}
+      Script: {instanceID: 10616}
     - Class: 114
-      Script: {instanceID: 10680}
+      Script: {instanceID: 10648}
     - Class: 114
-      Script: {instanceID: 10828}
+      Script: {instanceID: 10688}
     - Class: 114
-      Script: {instanceID: 10844}
+      Script: {instanceID: 10836}
     - Class: 114
-      Script: {instanceID: 10922}
+      Script: {instanceID: 10852}
     - Class: 114
-      Script: {instanceID: 10954}
+      Script: {instanceID: 10930}
     - Class: 114
-      Script: {instanceID: 10990}
+      Script: {instanceID: 10962}
     - Class: 114
-      Script: {instanceID: 11076}
+      Script: {instanceID: 10998}
+    - Class: 114
+      Script: {instanceID: 11084}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -172,6 +175,10 @@ ScriptsOnlyBuild:
     - Class: 137
       Script: {instanceID: 0}
     - Class: 157
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -210,7 +217,7 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
-      Hash: 5cd1d69dde79297c4d30ff12e964afa2
+      Hash: dd4e01ab142b4f65dc97fc61fbe5b07f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -840,6 +847,12 @@ ScriptsOnlyBuild:
     className: GUIControlsFREE
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: JumpAnimation
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -870,7 +883,7 @@ ScriptsOnlyBuild:
     className: NetworkManager
   - hash:
       serializedVersion: 2
-      Hash: 6ef5d823ca35a68eaaa624d4359d640c
+      Hash: 74e2fdf61f7b6700d949784142ac5ad2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
@@ -904,6 +917,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextContainer
+  - hash:
+      serializedVersion: 2
+      Hash: 6586ae29b319ac852fa7d72e3ad95169
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ShieldImpactAnimation
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1092,7 +1111,7 @@ ScriptsOnlyBuild:
     className: GroundCheck
   - hash:
       serializedVersion: 2
-      Hash: 1030cecf41b8d30f7aaf607b02117406
+      Hash: b27dceb92ca437726e0eb221bd2c7adc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Manager
@@ -1104,7 +1123,7 @@ ScriptsOnlyBuild:
     className: LocalPlayerManager
   - hash:
       serializedVersion: 2
-      Hash: 7dabd5160fb606458b37b84b7eabe98e
+      Hash: 1dcb82730d983b77cec736c6ef19f814
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
     className: NetworkDiscovery

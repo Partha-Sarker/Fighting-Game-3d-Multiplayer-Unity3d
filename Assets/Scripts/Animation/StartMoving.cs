@@ -5,11 +5,18 @@ public class StartMoving : StateMachineBehaviour
 {
     private GameObject player;
     private PlayerMovement playerMovement;
+    private Player playerScript;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        player = animator.gameObject;
+        if(player == null)
+        {
+            player = animator.gameObject;
+            playerScript = player.GetComponent<Player>();
+        }
+
+        playerScript.DisableShield();
 
         if (player.name == "local player")
         {
@@ -17,6 +24,7 @@ public class StartMoving : StateMachineBehaviour
                 playerMovement = player.GetComponent<PlayerMovement>();
             playerMovement.canSelfRotate = true;
             playerMovement.ResetSelfRotation();
+            
             Attack.CantDamage();
         }
         else

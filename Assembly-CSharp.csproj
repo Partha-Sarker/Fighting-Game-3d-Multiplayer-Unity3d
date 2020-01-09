@@ -98,9 +98,11 @@
     <Compile Include="Assets\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\DebugDraw.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Math3d.cs" />
     <Compile Include="Assets\Scripts\ActionControl.cs" />
+    <Compile Include="Assets\Scripts\Animation\JumpAnimation.cs" />
     <Compile Include="Assets\Scripts\Animation\jumpControl.cs" />
     <Compile Include="Assets\Scripts\Animation\ResetHitTrigger.cs" />
     <Compile Include="Assets\Scripts\Animation\ResetTrigger.cs" />
+    <Compile Include="Assets\Scripts\Animation\ShieldImpactAnimation.cs" />
     <Compile Include="Assets\Scripts\Animation\SlowRotation.cs" />
     <Compile Include="Assets\Scripts\Animation\StartMoving.cs" />
     <Compile Include="Assets\Scripts\Animation\StopMoving.cs" />
@@ -161,6 +163,7 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\CameraMotionBlurDX11.shader" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\_BloomAndFlares\SeparableBlurPlus.shader" />
+    <None Include="Assets\Prefabs\UnlitVertexColour_Alpha.shader" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\_BloomAndFlares\MultiPassHollywoodFlares.shader" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\BlurEffectConeTaps.shader" />
     <None Include="Assets\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\CameraMotionBlur.shader" />

@@ -16,6 +16,7 @@ public class Manager : MonoBehaviour
     public GameObject oponent;
     public GameObject rightPanel;
     public GameObject controlPanel;
+    public GameObject lifePanel;
     public Button jumpButton;
     public Button sheathButton;
     public Button unsheathButton;
