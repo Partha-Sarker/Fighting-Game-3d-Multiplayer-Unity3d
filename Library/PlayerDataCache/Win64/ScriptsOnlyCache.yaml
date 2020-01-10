@@ -3,6 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - ActionControl
     - AnimationEvent
+    - AudioManager
     - FistAttack
     - FixedJoystick
     - GroundCheck
@@ -81,6 +82,10 @@ ScriptsOnlyBuild:
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
@@ -164,6 +169,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10998}
     - Class: 114
       Script: {instanceID: 11084}
+    - Class: 114
+      Script: {instanceID: 16008}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -781,7 +788,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAsset
   - hash:
       serializedVersion: 2
-      Hash: 29cae1413b1db43542d00fbf5ec28593
+      Hash: bb2b18d58acc899f21153bd868276ebf
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AnimationEvent
@@ -1223,6 +1230,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 51e6365c1e15fe2c7ecc13efed766a6d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AudioManager
   platform: 19
   scenePathNames:
   - Assets/Scenes/FightScene.unity
