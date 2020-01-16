@@ -16,8 +16,6 @@ public class ActionControl : NetworkBehaviour
     [Command]
     public void CmdDamage(string id, int damage)
     {
-        //player = Manager.GetPlayer(id);
-        //Debug.Log("Inside Command method from: "+ transform.name + " and " + id + "(" + player.transform.name + ") got hit");
         RpcDamage(id, damage);
     }
 
@@ -26,7 +24,6 @@ public class ActionControl : NetworkBehaviour
     {
         player = Manager.GetPlayer(id);
         player.TakeDamage(damage);
-        //Debug.Log("Inside ClientRPC method from: " + transform.name + " and " + id + "(" +player.transform.name+") got hit");
     }
 
 }

@@ -8,11 +8,14 @@ public class Player : NetworkBehaviour
     public Collider shieldCollider;
     public int maxHealth = 100;
     //public TextMeshProUGUI myScore;
-    public Image myHealth;
+    public RectTransform myHealth;
+    public RectTransform myHealthHolder;
     private Animator animator;
     private NetworkAnimator networkAnimator;
     public Transform hitHolder, blockHolder;
     public GameObject fistHitParticle, swordHitParticle;
+    private Vector3 scale;
+    private bool isDead;
 
     [SyncVar]
     public int currentHealth;
@@ -22,24 +25,31 @@ public class Player : NetworkBehaviour
         animator = GetComponent<Animator>();
         networkAnimator = GetComponent<NetworkAnimator>();
 
-        currentHealth = maxHealth;
-
         if (isLocalPlayer)
-            myHealth = GameObject.Find("local player health").GetComponent<Image>();
+        {
+            myHealth = GameObject.Find("local player health").GetComponent<RectTransform>();
+            myHealthHolder = GameObject.Find("local player health holder").GetComponent<RectTransform>();
+        }
         else
-            myHealth = GameObject.Find("oponent health").GetComponent<Image>();
+        {
+            myHealth = GameObject.Find("oponent health").GetComponent<RectTransform>();
+            myHealthHolder = GameObject.Find("oponent health holder").GetComponent<RectTransform>();
+        }
 
-        myHealth.fillAmount = 1;
+        ResetPlayer();
 
-        //if (isLocalPlayer)
-        //    myScore = GameObject.Find("my score").GetComponent<TextMeshProUGUI>();
-        //else
-        //    myScore = GameObject.Find("oponent score").GetComponent<TextMeshProUGUI>();
+    }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+            TakeDamage(40);
     }
 
     public void TakeDamage(int damage)
     {
+        if (isDead)
+            return;
         if(damage == 0)
         {
             animator.SetTrigger("Blocked");
@@ -62,13 +72,21 @@ public class Player : NetworkBehaviour
         currentHealth -= damage;
         if (currentHealth < 0)
             currentHealth = 0;
-        myHealth.fillAmount = (float)currentHealth / (float)maxHealth;
+        SetHealthBar(currentHealth);
 
         if (isLocalPlayer)
         {
+            if (currentHealth == 0)
+                Die();
             animator.SetInteger("HitNO", Random.Range(1, 4));
             animator.SetTrigger("GotHit");
         }
+    }
+
+    private void SetHealthBar(int amount)
+    {
+        scale.x = (float)amount / (float)maxHealth;
+        myHealth.localScale = scale;
     }
 
     public void DisableShield()
@@ -80,4 +98,27 @@ public class Player : NetworkBehaviour
     {
         shieldCollider.enabled = true;
     }
+
+    private void ResetPlayer()
+    {
+        isDead = false;
+        animator.SetBool("Dead", false);
+        scale = Vector3.one;
+        myHealthHolder.localScale = scale;
+        currentHealth = maxHealth;
+        SetHealthBar(maxHealth);
+    }
+
+    private void OnDestroy()
+    {
+        scale = Vector3.zero;
+        myHealthHolder.localScale = scale;
+    }
+
+    public void Die()
+    {
+        isDead = true;
+        animator.SetBool("Dead", true);
+    }
+
 }

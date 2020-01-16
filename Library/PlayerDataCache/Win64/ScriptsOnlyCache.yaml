@@ -126,51 +126,51 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9644}
     - Class: 114
-      Script: {instanceID: 10026}
+      Script: {instanceID: 10028}
     - Class: 114
-      Script: {instanceID: 10032}
+      Script: {instanceID: 10034}
     - Class: 114
-      Script: {instanceID: 10040}
+      Script: {instanceID: 10042}
     - Class: 114
-      Script: {instanceID: 10268}
-    - Class: 114
-      Script: {instanceID: 10296}
+      Script: {instanceID: 10270}
     - Class: 114
       Script: {instanceID: 10298}
     - Class: 114
-      Script: {instanceID: 10344}
+      Script: {instanceID: 10300}
     - Class: 114
-      Script: {instanceID: 10404}
+      Script: {instanceID: 10346}
     - Class: 114
-      Script: {instanceID: 10416}
+      Script: {instanceID: 10406}
     - Class: 114
-      Script: {instanceID: 10506}
+      Script: {instanceID: 10418}
     - Class: 114
-      Script: {instanceID: 10510}
+      Script: {instanceID: 10508}
     - Class: 114
-      Script: {instanceID: 10524}
+      Script: {instanceID: 10512}
     - Class: 114
-      Script: {instanceID: 10588}
+      Script: {instanceID: 10526}
     - Class: 114
-      Script: {instanceID: 10616}
+      Script: {instanceID: 10590}
     - Class: 114
-      Script: {instanceID: 10648}
+      Script: {instanceID: 10618}
     - Class: 114
-      Script: {instanceID: 10688}
+      Script: {instanceID: 10650}
     - Class: 114
-      Script: {instanceID: 10836}
+      Script: {instanceID: 10690}
     - Class: 114
-      Script: {instanceID: 10852}
+      Script: {instanceID: 10738}
     - Class: 114
-      Script: {instanceID: 10930}
+      Script: {instanceID: 10840}
     - Class: 114
-      Script: {instanceID: 10962}
+      Script: {instanceID: 10856}
     - Class: 114
-      Script: {instanceID: 10998}
+      Script: {instanceID: 10934}
     - Class: 114
-      Script: {instanceID: 11084}
+      Script: {instanceID: 10966}
     - Class: 114
-      Script: {instanceID: 16008}
+      Script: {instanceID: 11002}
+    - Class: 114
+      Script: {instanceID: 11088}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -224,7 +224,7 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
-      Hash: dd4e01ab142b4f65dc97fc61fbe5b07f
+      Hash: 5d833067ba7b8dd692dfe7c245f598a5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -1100,6 +1100,12 @@ ScriptsOnlyBuild:
     className: AudioTrack
   - hash:
       serializedVersion: 2
+      Hash: 51e6365c1e15fe2c7ecc13efed766a6d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AudioManager
+  - hash:
+      serializedVersion: 2
       Hash: 528e9858840cb8370d93939fff6b42d9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1230,12 +1236,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 51e6365c1e15fe2c7ecc13efed766a6d
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: AudioManager
   platform: 19
   scenePathNames:
   - Assets/Scenes/FightScene.unity

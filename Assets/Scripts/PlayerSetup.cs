@@ -15,8 +15,6 @@ public class PlayerSetup : NetworkBehaviour
     {
         player_id = GetComponent<NetworkIdentity>().netId.ToString();
 
-        // Disable components that should only be
-        // active on the player that we control
         if (!isLocalPlayer)
         {
             this.gameObject.name = "oponent";
@@ -42,7 +40,6 @@ public class PlayerSetup : NetworkBehaviour
             if (isServer)
                 Manager.isServer = true;
             GameObject oponent = GameObject.Find("oponent");
-            // We are the local player: Disable the scene camera
             if(this.GetComponent<PlayerMovement>().oponent == null && oponent != null)
             {
                 this.GetComponent<PlayerMovement>().oponent = oponent.transform;
@@ -64,13 +61,11 @@ public class PlayerSetup : NetworkBehaviour
         net_id = GetComponent<NetworkIdentity>().netId.ToString();
         Player player = GetComponent<Player>();
         Manager.RegisterPlayer(net_id, player);
-        //Debug.Log("I am " + GetComponent<NetworkIdentity>().netId + " and client is started");
     }
 
-    // When we are destroyed
+
     void OnDisable()
     {
-        // Re-enable the scene camera
         if (sceneCamera != null)
         {
             sceneCamera.gameObject.SetActive(true);
