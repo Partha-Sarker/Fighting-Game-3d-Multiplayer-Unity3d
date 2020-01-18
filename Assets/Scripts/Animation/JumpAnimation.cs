@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class JumpAnimation : StateMachineBehaviour
 {
-    Rigidbody rb;
-    PlayerMovement playerMovement;
-    private Vector3 jumpForce;
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    public AudioManager audioManager;
+
+    // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(rb == null)
+        if (audioManager == null)
         {
-            rb = animator.GetComponent<Rigidbody>();
-            playerMovement = animator.GetComponent<PlayerMovement>();
+            audioManager = animator.GetComponent<AudioManager>();
         }
-        jumpForce = playerMovement.jumpForce;
-        rb.AddRelativeForce(jumpForce, ForceMode.Impulse);
-
+        audioManager.PlaySFX("Jump");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -21,13 +21,21 @@ public class AudioData
     [Range(0.3f, 3f)]
     public float m_pitch = 1;
 
+    public bool m_randomPitch = true;
+
+    [Range(0.3f, 3f)]
+    public float m_startPitch = .8f;
+
+    [Range(0.3f, 3f)]
+    public float m_endPitch = 1.2f;
+
+    public bool m_fade = false;
+
     [Range(0f, 5f)]
     public float m_fadeInSpeed = 1;
 
     [Range(0f, 5f)]
     public float m_fadeOutSpeed = 1;
-
-    public bool m_fade = false;
 
     [HideInInspector]
     public GameObject m_object;

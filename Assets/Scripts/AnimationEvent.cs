@@ -51,4 +51,9 @@ public class AnimationEvent : MonoBehaviour
             leftAttackCollider.enabled = rightAttackCollider.enabled = false;
         }
     }
+
+    public void PlayFootStep()
+    {
+        audioManager.PlaySFX("Footstep");
+    }
 }

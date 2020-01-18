@@ -661,6 +661,8 @@
     <Compile Include="Assets\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\DebugDraw.cs" />
     <Compile Include="Assets\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Math3d.cs" />
     <Compile Include="Assets\Scripts\ActionControl.cs" />
+    <Compile Include="Assets\Scripts\Animation\DeathAnimation.cs" />
+    <Compile Include="Assets\Scripts\Animation\FistAttackAnimation.cs" />
     <Compile Include="Assets\Scripts\Animation\JumpAnimation.cs" />
     <Compile Include="Assets\Scripts\Animation\jumpControl.cs" />
     <Compile Include="Assets\Scripts\Animation\ResetHitTrigger.cs" />
@@ -669,8 +671,11 @@
     <Compile Include="Assets\Scripts\Animation\SlowRotation.cs" />
     <Compile Include="Assets\Scripts\Animation\StartMoving.cs" />
     <Compile Include="Assets\Scripts\Animation\StopMoving.cs" />
+    <Compile Include="Assets\Scripts\Animation\SwordAttackAnimation.cs" />
     <Compile Include="Assets\Scripts\AnimationEvent.cs" />
     <Compile Include="Assets\Scripts\Attack.cs" />
+    <Compile Include="Assets\Scripts\AudioData.cs" />
+    <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Scripts\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\FistAttack.cs" />
     <Compile Include="Assets\Scripts\GroundCheck.cs" />

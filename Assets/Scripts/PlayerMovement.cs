@@ -10,6 +10,11 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
 
     private float HInput = 0, VInput = 0;
+    private float tempH = 0, tempV = 0;
+    [SerializeField]
+    private float lerpSpeed = 10;
+    [SerializeField]
+    private float movementThreshold = .01f;
     private Vector3 velocity = Vector3.zero;
     public float speed = 1.2f;
 
@@ -61,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
         }
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        animator.SetFloat("Speed", speed);
     }
 
     private void OnDestroy()
@@ -76,6 +82,9 @@ public class PlayerMovement : MonoBehaviour
             GetPcInput();
         else
             GetAndroidInput();
+
+        SmoothInput();
+        
         if (oponent != null)
         {
             //oponentDistance = Vector3.Distance(transform.position, oponent.position);
@@ -86,9 +95,10 @@ public class PlayerMovement : MonoBehaviour
             Jump();
 
 
-        animator.SetFloat("HInput", HInput, .05f, Time.deltaTime);
-        animator.SetFloat("VInput", VInput, .05f, Time.deltaTime);
-        animator.SetFloat("Speed", speed);
+        //animator.SetFloat("HInput", HInput, .04f, Time.deltaTime);
+        //animator.SetFloat("VInput", VInput, .04f, Time.deltaTime);
+        animator.SetFloat("VInput", VInput);
+        animator.SetFloat("HInput", HInput);
 
         //if(canMove) MovePlayer();
 
@@ -176,20 +186,37 @@ public class PlayerMovement : MonoBehaviour
 
     private void GetAndroidInput()
     {
-        HInput = joystick.Horizontal;
-        if (HInput > .33) HInput = 1;
-        else if (HInput < -.33) HInput = -1;
-        else HInput = 0;
-        VInput = joystick.Vertical;
-        if (VInput > .33) VInput = 1;
-        else if (VInput < -.33) VInput = -1;
-        else VInput = 0;
+        tempH = joystick.Horizontal;
+        if (tempH > .33) tempH = 1;
+        else if (tempH < -.33) tempH = -1;
+        else tempH = 0;
+        tempV = joystick.Vertical;
+        if (tempV > .33) tempV = 1;
+        else if (tempV < -.33) tempV = -1;
+        else tempV = 0;
     }
 
     private void GetPcInput()
     {
-        HInput = Input.GetAxisRaw("Horizontal");
-        VInput = Input.GetAxisRaw("Vertical");
+        tempH = Input.GetAxisRaw("Horizontal");
+        tempV = Input.GetAxisRaw("Vertical");
+
+        //VInput = Input.GetAxisRaw("Vertical");
+        //HInput = Input.GetAxisRaw("Horizontal");
+
+        //HInput = Input.GetAxis("Horizontal");
+        //VInput = Input.GetAxis("Vertical");
+    }
+
+    public void SmoothInput()
+    {
+        HInput = Mathf.Lerp(HInput, tempH, lerpSpeed * Time.deltaTime);
+        VInput = Mathf.Lerp(VInput, tempV, lerpSpeed * Time.deltaTime);
+        if (HInput < movementThreshold && HInput > -movementThreshold && tempH == 0)
+            HInput = 0;
+
+        if (VInput < movementThreshold && VInput > -movementThreshold && tempV == 0)
+            VInput = 0;
     }
 
     private void MovePlayer()

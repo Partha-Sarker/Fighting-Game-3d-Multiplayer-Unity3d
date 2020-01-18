@@ -4,9 +4,12 @@ ScriptsOnlyBuild:
     - ActionControl
     - AnimationEvent
     - AudioManager
+    - DeathAnimation
     - FistAttack
+    - FistAttackAnimation
     - FixedJoystick
     - GroundCheck
+    - JumpAnimation
     - Manager
     - MyNetManager
     - Player
@@ -18,6 +21,7 @@ ScriptsOnlyBuild:
     - StartMoving
     - StopMoving
     - SwordAttack
+    - SwordAttackAnimation
     - jumpControl
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
@@ -28,11 +32,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -45,7 +46,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Image
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkAnimator
-    - UnityEngine.Networking.NetworkCallbacks
     - UnityEngine.Networking.NetworkDiscovery
     - UnityEngine.Networking.NetworkIdentity
     - UnityEngine.Networking.NetworkManagerHUD
@@ -82,8 +82,6 @@ ScriptsOnlyBuild:
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
-      Script: {instanceID: 0}
-    - Class: 82
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
@@ -132,6 +130,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10042}
     - Class: 114
+      Script: {instanceID: 10198}
+    - Class: 114
       Script: {instanceID: 10270}
     - Class: 114
       Script: {instanceID: 10298}
@@ -140,37 +140,43 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10346}
     - Class: 114
-      Script: {instanceID: 10406}
+      Script: {instanceID: 10360}
     - Class: 114
-      Script: {instanceID: 10418}
+      Script: {instanceID: 10408}
     - Class: 114
-      Script: {instanceID: 10508}
+      Script: {instanceID: 10410}
+    - Class: 114
+      Script: {instanceID: 10422}
     - Class: 114
       Script: {instanceID: 10512}
     - Class: 114
-      Script: {instanceID: 10526}
+      Script: {instanceID: 10516}
     - Class: 114
-      Script: {instanceID: 10590}
+      Script: {instanceID: 10530}
     - Class: 114
-      Script: {instanceID: 10618}
+      Script: {instanceID: 10594}
     - Class: 114
-      Script: {instanceID: 10650}
+      Script: {instanceID: 10622}
     - Class: 114
-      Script: {instanceID: 10690}
+      Script: {instanceID: 10654}
     - Class: 114
-      Script: {instanceID: 10738}
+      Script: {instanceID: 10676}
     - Class: 114
-      Script: {instanceID: 10840}
+      Script: {instanceID: 10696}
     - Class: 114
-      Script: {instanceID: 10856}
+      Script: {instanceID: 10744}
     - Class: 114
-      Script: {instanceID: 10934}
+      Script: {instanceID: 10846}
     - Class: 114
-      Script: {instanceID: 10966}
+      Script: {instanceID: 10862}
     - Class: 114
-      Script: {instanceID: 11002}
+      Script: {instanceID: 10940}
     - Class: 114
-      Script: {instanceID: 11088}
+      Script: {instanceID: 10972}
+    - Class: 114
+      Script: {instanceID: 11008}
+    - Class: 114
+      Script: {instanceID: 11094}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -854,7 +860,7 @@ ScriptsOnlyBuild:
     className: GUIControlsFREE
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: b2a9ef4bc0589aec4377eff6288259cc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: JumpAnimation
@@ -890,7 +896,7 @@ ScriptsOnlyBuild:
     className: NetworkManager
   - hash:
       serializedVersion: 2
-      Hash: 74e2fdf61f7b6700d949784142ac5ad2
+      Hash: ff18ace25bc9a7739aab194531c7d913
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
@@ -932,6 +938,12 @@ ScriptsOnlyBuild:
     className: ShieldImpactAnimation
   - hash:
       serializedVersion: 2
+      Hash: b2a9ef4bc0589aec4377eff6288259cc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SwordAttackAnimation
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -956,6 +968,12 @@ ScriptsOnlyBuild:
     className: ScreenSpaceAmbientOcclusion
   - hash:
       serializedVersion: 2
+      Hash: b2a9ef4bc0589aec4377eff6288259cc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DeathAnimation
+  - hash:
+      serializedVersion: 2
       Hash: a43c1c1350f46bf3820a27711e5b4c47
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -974,7 +992,7 @@ ScriptsOnlyBuild:
     className: SignalReceiver
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: b2a9ef4bc0589aec4377eff6288259cc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: jumpControl
@@ -1082,6 +1100,12 @@ ScriptsOnlyBuild:
     className: NetworkBehaviour
   - hash:
       serializedVersion: 2
+      Hash: b2a9ef4bc0589aec4377eff6288259cc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FistAttackAnimation
+  - hash:
+      serializedVersion: 2
       Hash: ee0cef6caaac8ae485bfa82f000f0f7b
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -1100,7 +1124,7 @@ ScriptsOnlyBuild:
     className: AudioTrack
   - hash:
       serializedVersion: 2
-      Hash: 51e6365c1e15fe2c7ecc13efed766a6d
+      Hash: a6639f5ceb988967b897e08571402017
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AudioManager
@@ -1136,7 +1160,7 @@ ScriptsOnlyBuild:
     className: LocalPlayerManager
   - hash:
       serializedVersion: 2
-      Hash: 1dcb82730d983b77cec736c6ef19f814
+      Hash: 7dabd5160fb606458b37b84b7eabe98e
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
     className: NetworkDiscovery

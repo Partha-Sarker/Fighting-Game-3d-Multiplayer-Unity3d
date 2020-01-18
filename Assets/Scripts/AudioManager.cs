@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -113,6 +112,10 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
+            if (t_data.m_randomPitch)
+            {
+                t_data.m_audioSource.pitch = UnityEngine.Random.Range(t_data.m_startPitch, t_data.m_endPitch);
+            }
             t_data.m_audioSource.Play();
         }
     }

@@ -14,16 +14,19 @@ public class Player : NetworkBehaviour
     private NetworkAnimator networkAnimator;
     public Transform hitHolder, blockHolder;
     public GameObject fistHitParticle, swordHitParticle;
-    private Vector3 scale;
-    private bool isDead;
+    private AudioManager audioManager;
 
     [SyncVar]
+    private Vector3 scale;
+    [SyncVar]
+    private bool isDead;
     public int currentHealth;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         networkAnimator = GetComponent<NetworkAnimator>();
+        audioManager = GetComponent<AudioManager>();
 
         if (isLocalPlayer)
         {
@@ -40,16 +43,17 @@ public class Player : NetworkBehaviour
 
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-            TakeDamage(40);
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.K))
+    //        TakeDamage(40);
+    //}
 
     public void TakeDamage(int damage)
     {
         if (isDead)
             return;
+
         if(damage == 0)
         {
             animator.SetTrigger("Blocked");
@@ -59,15 +63,19 @@ public class Player : NetworkBehaviour
         if(damage == 7)
         {
             //blood particle
+            audioManager.PlaySFX("Sword Hit");
             GameObject particle = Instantiate(swordHitParticle, hitHolder);
             Destroy(particle, 1f);
         }
         else
         {
             //hit effect
+            audioManager.PlaySFX("Fist Hit");
             GameObject particle = Instantiate(fistHitParticle, hitHolder);
             Destroy(particle, 1f);
         }
+
+        audioManager.PlaySFX("Pain");
 
         currentHealth -= damage;
         if (currentHealth < 0)
@@ -112,7 +120,8 @@ public class Player : NetworkBehaviour
     private void OnDestroy()
     {
         scale = Vector3.zero;
-        myHealthHolder.localScale = scale;
+        if(myHealthHolder != null)
+            myHealthHolder.localScale = scale;
     }
 
     public void Die()
