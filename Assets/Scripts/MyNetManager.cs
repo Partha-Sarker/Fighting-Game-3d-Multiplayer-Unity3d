@@ -11,6 +11,7 @@ public class MyNetManager : NetworkManager
     public GameObject CancelButton;
     public GameObject EnterButton;
     public GameObject WaitingText;
+    public Animator fadeAnimator;
     public string state;
 
     public override void OnStartHost()
@@ -19,8 +20,14 @@ public class MyNetManager : NetworkManager
 		discovery.StartAsServer();
 
 	}
-    
-	public override void OnStartClient(NetworkClient client)
+
+    public override void OnClientDisconnect(NetworkConnection conn)
+    {
+        StopClient();
+        print("Client is disconnected");
+    }
+
+    public override void OnStartClient(NetworkClient client)
     {
         discovery.showGUI = false;
         HideUI();
@@ -35,8 +42,21 @@ public class MyNetManager : NetworkManager
 
     public void StartGameHost()
     {
+        fadeAnimator.SetTrigger("Fade In");
+        StartCoroutine(StartingGameHost());
+    }
+
+    IEnumerator StartingGameHost()
+    {
+        yield return new WaitForSeconds(.75f);
         state = "Hosting";
-        StartHost();
+        try
+        {
+            StartHost();
+        } catch(Exception e)
+        {
+            print("The port is occupied");
+        }
     }
 
     public void StartJoinRequest()
@@ -67,7 +87,14 @@ public class MyNetManager : NetworkManager
 
     public void Cancel()
     {
-        if(state == "Joining")
+        fadeAnimator.SetTrigger("Fade In");
+        StartCoroutine(Cancelling());
+    }
+
+    IEnumerator Cancelling()
+    {
+        yield return new WaitForSeconds(.75f);
+        if (state == "Joining")
         {
             discovery.StopBroadcast();
         }

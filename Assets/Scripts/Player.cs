@@ -15,6 +15,8 @@ public class Player : NetworkBehaviour
     public Transform hitHolder, blockHolder;
     public GameObject fistHitParticle, swordHitParticle;
     private AudioManager audioManager;
+    private Shake camShake;
+    public float shakeDelay = .1f;
 
     [SyncVar]
     private Vector3 scale;
@@ -27,6 +29,7 @@ public class Player : NetworkBehaviour
         animator = GetComponent<Animator>();
         networkAnimator = GetComponent<NetworkAnimator>();
         audioManager = GetComponent<AudioManager>();
+        camShake = FindObjectOfType<Shake>();
 
         if (isLocalPlayer)
         {
@@ -43,11 +46,11 @@ public class Player : NetworkBehaviour
 
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.K))
-    //        TakeDamage(40);
-    //}
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K) && isLocalPlayer)
+            TakeDamage(40);
+    }
 
     public void TakeDamage(int damage)
     {
@@ -59,6 +62,8 @@ public class Player : NetworkBehaviour
             animator.SetTrigger("Blocked");
             return;
         }
+
+        camShake.ShakeCam(shakeDelay);
 
         if(damage == 7)
         {
@@ -89,6 +94,12 @@ public class Player : NetworkBehaviour
             animator.SetInteger("HitNO", Random.Range(1, 4));
             animator.SetTrigger("GotHit");
         }
+        if (currentHealth == 0 && !isLocalPlayer)
+        {
+            Win();
+        }
+        //if (currentHealth == 0)
+        //    print("Hola :(");
     }
 
     private void SetHealthBar(int amount)
@@ -128,6 +139,13 @@ public class Player : NetworkBehaviour
     {
         isDead = true;
         animator.SetBool("Dead", true);
+        print("I am dead :(");
+        //GetComponent<Manager>().oponent.GetComponent<Player>().Win();
+    }
+
+    public void Win()
+    {
+        print("I win :D");
     }
 
 }
