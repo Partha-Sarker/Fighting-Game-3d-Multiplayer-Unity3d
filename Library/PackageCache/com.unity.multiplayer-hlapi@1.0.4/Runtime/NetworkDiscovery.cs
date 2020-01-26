@@ -370,7 +370,7 @@ namespace UnityEngine.Networking
         {
             if (m_HostId == -1)
             {
-                //if (LogFilter.logError) { Debug.LogError("NetworkDiscovery StopBroadcast not initialized"); }
+                if (LogFilter.logError) { Debug.LogError("NetworkDiscovery StopBroadcast not initialized"); }
                 return;
             }
 

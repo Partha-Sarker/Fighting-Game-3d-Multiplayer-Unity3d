@@ -16,6 +16,7 @@ ScriptsOnlyBuild:
     - PlayerMovement
     - PlayerSetup
     - ResetHitTrigger
+    - Shake
     - ShieldImpactAnimation
     - SlowRotation
     - StartMoving
@@ -32,11 +33,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -134,53 +132,55 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10042}
     - Class: 114
-      Script: {instanceID: 10198}
+      Script: {instanceID: 10196}
     - Class: 114
-      Script: {instanceID: 10270}
+      Script: {instanceID: 10200}
     - Class: 114
-      Script: {instanceID: 10298}
+      Script: {instanceID: 10272}
     - Class: 114
       Script: {instanceID: 10300}
     - Class: 114
-      Script: {instanceID: 10346}
+      Script: {instanceID: 10302}
     - Class: 114
-      Script: {instanceID: 10360}
+      Script: {instanceID: 10348}
     - Class: 114
-      Script: {instanceID: 10408}
+      Script: {instanceID: 10362}
     - Class: 114
       Script: {instanceID: 10410}
     - Class: 114
-      Script: {instanceID: 10422}
+      Script: {instanceID: 10412}
     - Class: 114
-      Script: {instanceID: 10512}
+      Script: {instanceID: 10424}
     - Class: 114
-      Script: {instanceID: 10516}
+      Script: {instanceID: 10514}
     - Class: 114
-      Script: {instanceID: 10530}
+      Script: {instanceID: 10518}
     - Class: 114
-      Script: {instanceID: 10594}
+      Script: {instanceID: 10532}
     - Class: 114
-      Script: {instanceID: 10622}
+      Script: {instanceID: 10596}
     - Class: 114
-      Script: {instanceID: 10654}
+      Script: {instanceID: 10624}
     - Class: 114
-      Script: {instanceID: 10676}
+      Script: {instanceID: 10656}
     - Class: 114
-      Script: {instanceID: 10696}
+      Script: {instanceID: 10678}
     - Class: 114
-      Script: {instanceID: 10744}
+      Script: {instanceID: 10698}
     - Class: 114
-      Script: {instanceID: 10846}
+      Script: {instanceID: 10746}
     - Class: 114
-      Script: {instanceID: 10862}
+      Script: {instanceID: 10848}
     - Class: 114
-      Script: {instanceID: 10940}
+      Script: {instanceID: 10864}
     - Class: 114
-      Script: {instanceID: 10972}
+      Script: {instanceID: 10942}
     - Class: 114
-      Script: {instanceID: 11008}
+      Script: {instanceID: 10974}
     - Class: 114
-      Script: {instanceID: 11094}
+      Script: {instanceID: 11010}
+    - Class: 114
+      Script: {instanceID: 11096}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -236,7 +236,7 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
-      Hash: 5d833067ba7b8dd692dfe7c245f598a5
+      Hash: df01a9a9465e99684cf6daf4b8f7ffcc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -866,6 +866,12 @@ ScriptsOnlyBuild:
     className: GUIControlsFREE
   - hash:
       serializedVersion: 2
+      Hash: 9f566f16e5d577a713d96be0b3aa788e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Shake
+  - hash:
+      serializedVersion: 2
       Hash: b2a9ef4bc0589aec4377eff6288259cc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1154,7 +1160,7 @@ ScriptsOnlyBuild:
     className: GroundCheck
   - hash:
       serializedVersion: 2
-      Hash: b27dceb92ca437726e0eb221bd2c7adc
+      Hash: 6be7bc54c61cea4b3a09c371479448e1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Manager

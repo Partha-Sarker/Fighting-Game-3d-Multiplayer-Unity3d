@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine.Networking;
 using UnityEngine;
-using UnityEngine.Networking;
+using System.Collections.Generic;
 
 public class ActionControl : NetworkBehaviour
 {
@@ -13,17 +12,80 @@ public class ActionControl : NetworkBehaviour
         
     }
 
-    [Command]
-    public void CmdDamage(string id, int damage)
+    private void Update()
     {
-        RpcDamage(id, damage);
+        if (Input.GetKeyDown(KeyCode.R))
+            ResetALlPlayers();
+    }
+
+    public void Damage(string id, int damage, string type)
+    {
+        if (Manager.isServer)
+            RpcDamage(id, damage, type);
+        else
+            CmdDamage(id, damage, type);
+    }
+
+    public void Block(string id, string type)
+    {
+        if (Manager.isServer)
+            RpcBlock(id, type);
+        else
+            CmdBlock(id, type);
+    }
+
+    public void ResetALlPlayers()
+    {
+        List<string> allPlayerId = Manager.GetAllPlayer();
+
+        if (Manager.isServer)
+        {
+            foreach (string id in allPlayerId)
+                RpcResetPlayer(id);
+        }
+        else
+        {
+            foreach (string id in allPlayerId)
+                CmdResetPlayer(id);
+        }
+    }
+
+    [Command]
+    public void CmdDamage(string id, int damage, string type)
+    {
+        RpcDamage(id, damage, type);
     }
 
     [ClientRpc]
-    public void RpcDamage(string id, int damage)
+    public void RpcDamage(string id, int damage, string type)
     {
         player = Manager.GetPlayer(id);
-        player.TakeDamage(damage);
+        player.TakeDamage(damage, type);
+    }
+    
+    [Command]
+    public void CmdBlock(string id, string type)
+    {
+        RpcBlock(id, type);
+    }
+
+    [ClientRpc]
+    public void RpcBlock(string id, string type)
+    {
+        player = Manager.GetPlayer(id);
+        player.BlockAttack(type);
+    }
+    [Command]
+    public void CmdResetPlayer(string id)
+    {
+        RpcResetPlayer(id);
+    }
+
+    [ClientRpc]
+    public void RpcResetPlayer(string id)
+    {
+        player = Manager.GetPlayer(id);
+        player.ResetAll();
     }
 
 }

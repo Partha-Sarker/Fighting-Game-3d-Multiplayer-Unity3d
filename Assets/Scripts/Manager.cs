@@ -23,6 +23,7 @@ public class Manager : MonoBehaviour
     public Button attackButton;
     public Button guardButton;
     public Button unguardButton;
+    public Button reMatchButton;
     public float jumpButtonDelay = 1.5f;
     public float sheathUnsheathDelay = 1f;
     public float guardUnguardDelay = .5f;
@@ -31,8 +32,16 @@ public class Manager : MonoBehaviour
     private float defaultUnarmedAttackButtonDelay;
     public float attackOtherButtonDelay = .5f;
     public byte currentAttackCount = 0;
+
     private Animator animator;
     private NetworkAnimator networkAnimator;
+    private ActionControl actionControl;
+
+    private bool isGuarding = false;
+    private bool isArmed = false;
+
+    [HideInInspector]
+    public bool disableControl = false;
 
     private void Start()
     {
@@ -55,10 +64,40 @@ public class Manager : MonoBehaviour
                 animator = localPlayer.GetComponent<Animator>();
             if(networkAnimator == null)
                 networkAnimator = localPlayer.GetComponent<NetworkAnimator>();
-            if (!controlPanel.activeSelf)
+            if (actionControl == null)
+                actionControl = localPlayer.GetComponent<ActionControl>();
+            if (!controlPanel.activeSelf && !disableControl)
                 controlPanel.SetActive(true);
+            if (disableControl && controlPanel.activeSelf)
+                controlPanel.SetActive(false);
         }
-            
+
+        GetKeyInput();
+    }
+
+    private void GetKeyInput()
+    {
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            if (isGuarding && unguardButton.IsActive() && unguardButton.IsInteractable())
+                unguardButton.onClick.Invoke();
+            else if (!isGuarding && guardButton.IsActive() && guardButton.IsInteractable())
+                guardButton.onClick.Invoke();
+        }
+
+        if (Input.GetKeyUp(KeyCode.RightArrow) && attackButton.IsActive() && attackButton.IsInteractable())
+            attackButton.onClick.Invoke();
+
+        if (Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            if (isArmed && sheathButton.IsActive() && sheathButton.IsInteractable())
+                sheathButton.onClick.Invoke();
+            else if (!isArmed && unsheathButton.IsActive() && unsheathButton.IsInteractable())
+                unsheathButton.onClick.Invoke();
+        }
+
+        if ((Input.GetKeyUp(KeyCode.DownArrow) | Input.GetKeyUp(KeyCode.Space)) && jumpButton.IsActive() && jumpButton.IsInteractable())
+            jumpButton.onClick.Invoke();
     }
 
     public void Unsheath()
@@ -67,6 +106,7 @@ public class Manager : MonoBehaviour
         //animator.ResetTrigger("Attacking");
         UnguardIfGuarded();
         animator.SetBool("Armed", true);
+        isArmed = true;
         unarmedAttackButtonDelay += armedAttackExtraDelay;
         DisableButtons();
         StartCoroutine(EnableButtons(sheathUnsheathDelay));
@@ -77,6 +117,7 @@ public class Manager : MonoBehaviour
         currentAttackCount = 0;
         UnguardIfGuarded();
         animator.SetBool("Armed", false);
+        isArmed = false;
         unarmedAttackButtonDelay = defaultUnarmedAttackButtonDelay;
         DisableButtons();
         StartCoroutine(EnableButtons(sheathUnsheathDelay));
@@ -106,6 +147,7 @@ public class Manager : MonoBehaviour
     {
         currentAttackCount = 0;
         animator.SetBool("IsBlocking", true);
+        isGuarding = true;
         DisableButtons();
         StartCoroutine(EnableButtons(guardUnguardDelay));
     }
@@ -114,6 +156,7 @@ public class Manager : MonoBehaviour
     {
         currentAttackCount = 0;
         animator.SetBool("IsBlocking", false);
+        isGuarding = false;
         DisableButtons();
         StartCoroutine(EnableButtons(guardUnguardDelay));
     }
@@ -124,9 +167,15 @@ public class Manager : MonoBehaviour
         if (animator.GetBool("IsBlocking"))
         {
             animator.SetBool("IsBlocking", false);
+            isGuarding = false;
             unguardButton.gameObject.SetActive(false);
             guardButton.gameObject.SetActive(true);
         }
+    }
+
+    public void ReMatch()
+    {
+        actionControl.ResetALlPlayers();
     }
 
     private void DisableButtons()
@@ -174,17 +223,29 @@ public class Manager : MonoBehaviour
         return players[_playerID];
     }
 
-    void OnGUI()
+    public static List<string> GetAllPlayer()
     {
-        GUILayout.BeginArea(new Rect(0, 200, 200, 500));
-        GUILayout.BeginVertical();
-
-        foreach (string _playerID in players.Keys)
+        List<string> allPlayerKey = new List<string>();
+        foreach (KeyValuePair<string, Player> player in players)
         {
-            GUILayout.Label(_playerID + "  -  " + players[_playerID].transform.name);
+            allPlayerKey.Add(player.Key);
         }
 
-        GUILayout.EndVertical();
-        GUILayout.EndArea();
+        return allPlayerKey;
+
     }
+
+    //void OnGUI()
+    //{
+    //    GUILayout.BeginArea(new Rect(0, 200, 200, 500));
+    //    GUILayout.BeginVertical();
+
+    //    foreach (string _playerID in players.Keys)
+    //    {
+    //        GUILayout.Label(_playerID + "  -  " + players[_playerID].transform.name);
+    //    }
+
+    //    GUILayout.EndVertical();
+    //    GUILayout.EndArea();
+    //}
 }

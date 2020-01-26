@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Networking;
-using TMPro;
 
 public class Player : NetworkBehaviour
 {
     public Collider shieldCollider;
     public int maxHealth = 100;
-    //public TextMeshProUGUI myScore;
     public RectTransform myHealth;
     public RectTransform myHealthHolder;
     private Animator animator;
@@ -17,12 +14,15 @@ public class Player : NetworkBehaviour
     private AudioManager audioManager;
     private Shake camShake;
     public float shakeDelay = .1f;
+    public int currentHealth;
+    private Vector3 initialPos;
+    private Vector3 initialRot;
+    public Manager manager;
 
     [SyncVar]
     private Vector3 scale;
     [SyncVar]
     private bool isDead;
-    public int currentHealth;
 
     private void Start()
     {
@@ -31,6 +31,17 @@ public class Player : NetworkBehaviour
         audioManager = GetComponent<AudioManager>();
         camShake = FindObjectOfType<Shake>();
 
+        initialPos = transform.position;
+        initialRot = transform.eulerAngles;
+
+        SetupHealthBar();
+
+        ResetAll();
+
+    }
+
+    private void SetupHealthBar()
+    {
         if (isLocalPlayer)
         {
             myHealth = GameObject.Find("local player health").GetComponent<RectTransform>();
@@ -41,38 +52,29 @@ public class Player : NetworkBehaviour
             myHealth = GameObject.Find("oponent health").GetComponent<RectTransform>();
             myHealthHolder = GameObject.Find("oponent health holder").GetComponent<RectTransform>();
         }
-
-        ResetPlayer();
-
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.K) && isLocalPlayer)
-            TakeDamage(40);
+            TakeDamage(40, "Sword");
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, string type)
     {
         if (isDead)
             return;
 
-        if(damage == 0)
-        {
-            animator.SetTrigger("Blocked");
-            return;
-        }
-
         camShake.ShakeCam(shakeDelay);
 
-        if(damage == 7)
+        if (type == "Sword")
         {
             //blood particle
             audioManager.PlaySFX("Sword Hit");
             GameObject particle = Instantiate(swordHitParticle, hitHolder);
             Destroy(particle, 1f);
         }
-        else
+        else if(type == "Fist")
         {
             //hit effect
             audioManager.PlaySFX("Fist Hit");
@@ -98,8 +100,11 @@ public class Player : NetworkBehaviour
         {
             Win();
         }
-        //if (currentHealth == 0)
-        //    print("Hola :(");
+    }
+
+    public void BlockAttack(string type)
+    {
+        animator.SetTrigger("Blocked");
     }
 
     private void SetHealthBar(int amount)
@@ -118,34 +123,44 @@ public class Player : NetworkBehaviour
         shieldCollider.enabled = true;
     }
 
-    private void ResetPlayer()
+    public void ResetAll()
     {
+        if (manager != null)
+            manager.disableControl = false;
         isDead = false;
+        Attack.isWinner = false;
         animator.SetBool("Dead", false);
         scale = Vector3.one;
         myHealthHolder.localScale = scale;
         currentHealth = maxHealth;
         SetHealthBar(maxHealth);
-    }
-
-    private void OnDestroy()
-    {
-        scale = Vector3.zero;
-        if(myHealthHolder != null)
-            myHealthHolder.localScale = scale;
+        transform.position = initialPos;
+        transform.eulerAngles = initialRot;
+        GetComponent<PlayerMovement>().isGrounded = true;
     }
 
     public void Die()
     {
         isDead = true;
         animator.SetBool("Dead", true);
+        manager = FindObjectOfType<Manager>();
+        manager.reMatchButton.gameObject.SetActive(true);
+        manager.disableControl = true;
         print("I am dead :(");
-        //GetComponent<Manager>().oponent.GetComponent<Player>().Win();
     }
 
     public void Win()
     {
+        //isWinner = true;
+        //Attack.isWinner = true;
         print("I win :D");
+    }
+
+    private void OnDisable()
+    {
+        scale = Vector3.zero;
+        if(myHealthHolder != null)
+            myHealthHolder.localScale = scale;
     }
 
 }

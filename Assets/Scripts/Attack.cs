@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 public class Attack : NetworkBehaviour
 {
     private static bool canDamage = false;
+    public static bool isWinner;
 
     private void Start()
     {
@@ -13,8 +14,9 @@ public class Attack : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!canDamage)
+        if (!canDamage || isWinner)
             return;
+
         if (other.name == "local player")
             return;
         if (other.tag != "Player" && other.tag != "Shield")

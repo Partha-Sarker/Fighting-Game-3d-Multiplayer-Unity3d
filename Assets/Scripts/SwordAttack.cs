@@ -13,31 +13,13 @@ public class SwordAttack : Attack
     {
         if (!isBlocked)
         {
-            if (Manager.isServer)
-                actionControl.RpcDamage(id, damage);
-            else
-                actionControl.CmdDamage(id, damage);
+            actionControl.Damage(id, damage, "Sword");
         }
         else
         {
             animator.SetTrigger("Deflected");
             networkAnimator.SetTrigger("Deflected");
-            if (Manager.isServer)
-                actionControl.RpcDamage(id, 0);
-            else
-                actionControl.CmdDamage(id, 0);
+            actionControl.Block(id, "Sword");
         }
     }
-
-    //public override void Deflect(string id)
-    //{
-    //    base.Deflect(id);
-    //    animator.SetTrigger("Deflected");
-    //    networkAnimator.SetTrigger("Deflected");
-
-    //    if (Manager.isServer)
-    //        actionControl.RpcDamage(id, 0);
-    //    else
-    //        actionControl.CmdDamage(id, 0);
-    //}
 }

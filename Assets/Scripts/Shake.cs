@@ -34,7 +34,6 @@ public class Shake : MonoBehaviour
         yield return new WaitForSeconds(delay);
         prevPos = transform.localPosition;
         prevRot = transform.localEulerAngles;
-        print(transform.localEulerAngles);
         elapsed = 0f;
         startTime = Time.time;
 
