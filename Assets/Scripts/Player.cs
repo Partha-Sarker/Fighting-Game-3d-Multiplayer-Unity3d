@@ -18,11 +18,13 @@ public class Player : NetworkBehaviour
     private Vector3 initialPos;
     private Vector3 initialRot;
     public Manager manager;
+    [SerializeField]
+    private MeshRenderer shield;
 
     [SyncVar]
     private Vector3 scale;
     [SyncVar]
-    private bool isDead;
+    private bool isDead, isWinner;
 
     private void Start()
     {
@@ -30,6 +32,7 @@ public class Player : NetworkBehaviour
         networkAnimator = GetComponent<NetworkAnimator>();
         audioManager = GetComponent<AudioManager>();
         camShake = FindObjectOfType<Shake>();
+        manager = FindObjectOfType<Manager>();
 
         initialPos = transform.position;
         initialRot = transform.eulerAngles;
@@ -58,6 +61,9 @@ public class Player : NetworkBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K) && isLocalPlayer)
             TakeDamage(40, "Sword");
+
+        if (Input.GetKeyDown(KeyCode.V) && isLocalPlayer)
+            Win();
     }
 
     public void TakeDamage(int damage, string type)
@@ -98,7 +104,7 @@ public class Player : NetworkBehaviour
         }
         if (currentHealth == 0 && !isLocalPlayer)
         {
-            Win();
+            manager.localPlayer.GetComponent<Player>().Win();            
         }
     }
 
@@ -125,17 +131,24 @@ public class Player : NetworkBehaviour
 
     public void ResetAll()
     {
-        if (manager != null)
-            manager.disableControl = false;
+        //if (manager != null)
+        //    manager.disableControl = false;
+
+        manager.disableControl = false;
+        
         isDead = false;
+        isWinner = false;
         Attack.isWinner = false;
         animator.SetBool("Dead", false);
+        animator.SetBool("Win", false);
+        animator.SetBool("Armed", false);
         scale = Vector3.one;
         myHealthHolder.localScale = scale;
         currentHealth = maxHealth;
         SetHealthBar(maxHealth);
         transform.position = initialPos;
         transform.eulerAngles = initialRot;
+        shield.enabled = true;
         GetComponent<PlayerMovement>().isGrounded = true;
     }
 
@@ -143,7 +156,7 @@ public class Player : NetworkBehaviour
     {
         isDead = true;
         animator.SetBool("Dead", true);
-        manager = FindObjectOfType<Manager>();
+        //manager = FindObjectOfType<Manager>();
         manager.reMatchButton.gameObject.SetActive(true);
         manager.disableControl = true;
         print("I am dead :(");
@@ -151,8 +164,10 @@ public class Player : NetworkBehaviour
 
     public void Win()
     {
-        //isWinner = true;
-        //Attack.isWinner = true;
+        isWinner = true;
+        animator.SetBool("Win", true);
+        //manager = FindObjectOfType<Manager>();
+        manager.disableControl = true;
         print("I win :D");
     }
 
@@ -161,6 +176,11 @@ public class Player : NetworkBehaviour
         scale = Vector3.zero;
         if(myHealthHolder != null)
             myHealthHolder.localScale = scale;
+    }
+
+    public void HideShield()
+    {
+        shield.enabled = false;
     }
 
 }

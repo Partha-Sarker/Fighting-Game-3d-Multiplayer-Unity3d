@@ -67,12 +67,21 @@ public class Manager : MonoBehaviour
             if (actionControl == null)
                 actionControl = localPlayer.GetComponent<ActionControl>();
             if (!controlPanel.activeSelf && !disableControl)
-                controlPanel.SetActive(true);
+                ResetControl();
             if (disableControl && controlPanel.activeSelf)
                 controlPanel.SetActive(false);
         }
 
         GetKeyInput();
+    }
+
+    private void ResetControl()
+    {
+        controlPanel.SetActive(true);
+        unsheathButton.gameObject.SetActive(true);
+        sheathButton.gameObject.SetActive(false);
+        guardButton.gameObject.SetActive(true);
+        unguardButton.gameObject.SetActive(false);
     }
 
     private void GetKeyInput()

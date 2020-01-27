@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         }
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        animator.SetFloat("Speed", speed);
+        //animator.SetFloat("Speed", speed);
     }
 
     private void OnDestroy()

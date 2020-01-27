@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - ActionControl
     - AnimationEvent
     - AudioManager
+    - CelebrationAnimation
     - DeathAnimation
     - FistAttack
     - FistAttackAnimation
@@ -33,8 +34,12 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateMachineBehaviourEditor
+    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -181,6 +186,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11010}
     - Class: 114
       Script: {instanceID: 11096}
+    - Class: 114
+      Script: {instanceID: 40342}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -236,7 +243,7 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
-      Hash: df01a9a9465e99684cf6daf4b8f7ffcc
+      Hash: c081b1923aedda189ea50b9cf56ac90d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -800,7 +807,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAsset
   - hash:
       serializedVersion: 2
-      Hash: bb2b18d58acc899f21153bd868276ebf
+      Hash: d9a05b834404a8fcadcba09d77f7354b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AnimationEvent
@@ -1172,7 +1179,7 @@ ScriptsOnlyBuild:
     className: LocalPlayerManager
   - hash:
       serializedVersion: 2
-      Hash: 1dcb82730d983b77cec736c6ef19f814
+      Hash: 1bea29f5f083a682601fafdc44261cd1
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
     className: NetworkDiscovery
@@ -1272,6 +1279,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CelebrationAnimation
   platform: 19
   scenePathNames:
   - Assets/Scenes/FightScene.unity
