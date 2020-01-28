@@ -3,6 +3,10 @@ using UnityEngine.Networking;
 
 public class Player : NetworkBehaviour
 {
+    private AudioManager audioManager;
+    private Shake camShake;
+    public Manager manager;
+    private PlayerMovement playerMovement;
     public Collider shieldCollider;
     public int maxHealth = 100;
     public RectTransform myHealth;
@@ -11,13 +15,10 @@ public class Player : NetworkBehaviour
     private NetworkAnimator networkAnimator;
     public Transform hitHolder, blockHolder;
     public GameObject fistHitParticle, swordHitParticle;
-    private AudioManager audioManager;
-    private Shake camShake;
     public float shakeDelay = .1f;
     public int currentHealth;
     private Vector3 initialPos;
     private Vector3 initialRot;
-    public Manager manager;
     [SerializeField]
     private MeshRenderer shield;
 
@@ -33,6 +34,7 @@ public class Player : NetworkBehaviour
         audioManager = GetComponent<AudioManager>();
         camShake = FindObjectOfType<Shake>();
         manager = FindObjectOfType<Manager>();
+        playerMovement = GetComponent<PlayerMovement>();
 
         initialPos = transform.position;
         initialRot = transform.eulerAngles;
@@ -135,7 +137,7 @@ public class Player : NetworkBehaviour
         //    manager.disableControl = false;
 
         manager.disableControl = false;
-        
+        //playerMovement.isGrounded = true;
         isDead = false;
         isWinner = false;
         Attack.isWinner = false;
@@ -159,6 +161,7 @@ public class Player : NetworkBehaviour
         //manager = FindObjectOfType<Manager>();
         manager.reMatchButton.gameObject.SetActive(true);
         manager.disableControl = true;
+        audioManager.PlaySFX("Defeat");
         print("I am dead :(");
     }
 
@@ -166,6 +169,7 @@ public class Player : NetworkBehaviour
     {
         isWinner = true;
         animator.SetBool("Win", true);
+        audioManager.PlaySFX("Victory");
         //manager = FindObjectOfType<Manager>();
         manager.disableControl = true;
         print("I win :D");

@@ -24,6 +24,8 @@ public class Manager : MonoBehaviour
     public Button guardButton;
     public Button unguardButton;
     public Button reMatchButton;
+    private Image attackButtonImage;
+    public Sprite swordIcon, fistIcon;
     public float jumpButtonDelay = 1.5f;
     public float sheathUnsheathDelay = 1f;
     public float guardUnguardDelay = .5f;
@@ -46,6 +48,7 @@ public class Manager : MonoBehaviour
     private void Start()
     {
         defaultUnarmedAttackButtonDelay = unarmedAttackButtonDelay;
+        attackButtonImage = attackButton.GetComponent<Image>();
     }
 
     void Update()
@@ -82,6 +85,8 @@ public class Manager : MonoBehaviour
         sheathButton.gameObject.SetActive(false);
         guardButton.gameObject.SetActive(true);
         unguardButton.gameObject.SetActive(false);
+        attackButtonImage.sprite = fistIcon;
+        isArmed = false;
     }
 
     private void GetKeyInput()
@@ -116,6 +121,7 @@ public class Manager : MonoBehaviour
         UnguardIfGuarded();
         animator.SetBool("Armed", true);
         isArmed = true;
+        attackButtonImage.sprite = swordIcon;
         unarmedAttackButtonDelay += armedAttackExtraDelay;
         DisableButtons();
         StartCoroutine(EnableButtons(sheathUnsheathDelay));
@@ -127,6 +133,7 @@ public class Manager : MonoBehaviour
         UnguardIfGuarded();
         animator.SetBool("Armed", false);
         isArmed = false;
+        attackButtonImage.sprite = fistIcon;
         unarmedAttackButtonDelay = defaultUnarmedAttackButtonDelay;
         DisableButtons();
         StartCoroutine(EnableButtons(sheathUnsheathDelay));

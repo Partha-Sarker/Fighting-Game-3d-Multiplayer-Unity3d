@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
             RotatePlayer();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space))
             Jump();
 
 

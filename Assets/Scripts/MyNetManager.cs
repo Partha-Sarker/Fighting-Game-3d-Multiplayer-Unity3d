@@ -10,6 +10,7 @@ public class MyNetManager : NetworkManager
     public GameObject JoinButton;
     public GameObject CancelButton;
     public GameObject EnterButton;
+    public GameObject rematchButton;
     public GameObject WaitingText;
     public Animator fadeAnimator;
     public string state;
@@ -83,6 +84,7 @@ public class MyNetManager : NetworkManager
         CancelButton.SetActive(false);
         EnterButton.SetActive(false);
         WaitingText.SetActive(false);
+        rematchButton.SetActive(false);
     }
 
     public void Cancel()
