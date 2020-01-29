@@ -12,6 +12,7 @@ public class Player : NetworkBehaviour
     public RectTransform myHealth;
     public RectTransform myHealthHolder;
     private Animator animator;
+    private Animator shootAnimator;
     private NetworkAnimator networkAnimator;
     public Transform hitHolder, blockHolder;
     public GameObject fistHitParticle, swordHitParticle;
@@ -21,6 +22,13 @@ public class Player : NetworkBehaviour
     private Vector3 initialRot;
     [SerializeField]
     private MeshRenderer shield;
+
+    [SerializeField]
+    private Transform fireballPos;
+    [SerializeField]
+    private GameObject fireBall;
+    [SerializeField]
+    private int shootForce = 5;
 
     [SyncVar]
     private Vector3 scale;
@@ -35,6 +43,7 @@ public class Player : NetworkBehaviour
         camShake = FindObjectOfType<Shake>();
         manager = FindObjectOfType<Manager>();
         playerMovement = GetComponent<PlayerMovement>();
+        shootAnimator = manager.shootAnimator;
 
         initialPos = transform.position;
         initialRot = transform.eulerAngles;
@@ -152,6 +161,10 @@ public class Player : NetworkBehaviour
         transform.eulerAngles = initialRot;
         shield.enabled = true;
         GetComponent<PlayerMovement>().isGrounded = true;
+        if (isLocalPlayer)
+        {
+            shootAnimator.Play("Shoot Recovering");
+        }
     }
 
     public void Die()
@@ -185,6 +198,12 @@ public class Player : NetworkBehaviour
     public void HideShield()
     {
         shield.enabled = false;
+    }
+
+    public void ShootFireball()
+    {
+        GameObject tempFireBall = Instantiate(fireBall, fireballPos);
+        tempFireBall.GetComponent<Rigidbody>().AddForce(fireballPos.forward * shootForce, ForceMode.Impulse);
     }
 
 }

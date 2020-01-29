@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class Manager : MonoBehaviour
 {
-    private static Dictionary<string, Player> players = new Dictionary<string, Player>();
     public bool pcInput = true;
+    private static Dictionary<string, Player> players = new Dictionary<string, Player>();
     public static bool isServer = false;
+    private string localId;
     public GameObject joystick;
     [HideInInspector]
     public GameObject localPlayer;
@@ -24,11 +25,13 @@ public class Manager : MonoBehaviour
     public Button guardButton;
     public Button unguardButton;
     public Button reMatchButton;
+    public Button shootButton;
     private Image attackButtonImage;
     public Sprite swordIcon, fistIcon;
     public float jumpButtonDelay = 1.5f;
     public float sheathUnsheathDelay = 1f;
     public float guardUnguardDelay = .5f;
+    public float shootButtonDelay = 3f;
     public float unarmedAttackButtonDelay = .5f;
     public float armedAttackExtraDelay = .2f;
     private float defaultUnarmedAttackButtonDelay;
@@ -36,11 +39,14 @@ public class Manager : MonoBehaviour
     public byte currentAttackCount = 0;
 
     private Animator animator;
+    public Animator shootAnimator;
     private NetworkAnimator networkAnimator;
     private ActionControl actionControl;
 
     private bool isGuarding = false;
     private bool isArmed = false;
+    [SerializeField]
+    private bool isSet = false;
 
     [HideInInspector]
     public bool disableControl = false;
@@ -53,8 +59,6 @@ public class Manager : MonoBehaviour
 
     void Update()
     {
-        if (oponent == null)
-            oponent = GameObject.Find("oponent");
         if (localPlayer == null)
         {
             localPlayer = GameObject.Find("local player");
@@ -63,34 +67,42 @@ public class Manager : MonoBehaviour
         }
         else
         {
-            if(animator == null)
+            if(animator == null || networkAnimator == null || actionControl == null)
+            {
                 animator = localPlayer.GetComponent<Animator>();
-            if(networkAnimator == null)
                 networkAnimator = localPlayer.GetComponent<NetworkAnimator>();
-            if (actionControl == null)
                 actionControl = localPlayer.GetComponent<ActionControl>();
+                localId = actionControl.netId.ToString();
+            }
             if (!controlPanel.activeSelf && !disableControl)
                 ResetControl();
             if (disableControl && controlPanel.activeSelf)
                 controlPanel.SetActive(false);
         }
 
-        GetKeyInput();
-    }
+        if (oponent == null)
+        {
+            if(isSet)
+                isSet = false;
+            oponent = GameObject.Find("oponent");
+        }
+        else
+        {
+            if (!isSet)
+            {
+                shootAnimator.SetTrigger("Shoot");
+                isSet = true;
+            }
+        }
 
-    private void ResetControl()
-    {
-        controlPanel.SetActive(true);
-        unsheathButton.gameObject.SetActive(true);
-        sheathButton.gameObject.SetActive(false);
-        guardButton.gameObject.SetActive(true);
-        unguardButton.gameObject.SetActive(false);
-        attackButtonImage.sprite = fistIcon;
-        isArmed = false;
+        GetKeyInput();
     }
 
     private void GetKeyInput()
     {
+        if (Input.GetKeyUp(KeyCode.F) && shootButton.IsActive() && shootButton.IsInteractable())
+            shootButton.onClick.Invoke();
+
         if (Input.GetKeyUp(KeyCode.LeftArrow))
         {
             if (isGuarding && unguardButton.IsActive() && unguardButton.IsInteractable())
@@ -112,6 +124,17 @@ public class Manager : MonoBehaviour
 
         if ((Input.GetKeyUp(KeyCode.DownArrow) | Input.GetKeyUp(KeyCode.Space)) && jumpButton.IsActive() && jumpButton.IsInteractable())
             jumpButton.onClick.Invoke();
+    }
+
+    private void ResetControl()
+    {
+        controlPanel.SetActive(true);
+        unsheathButton.gameObject.SetActive(true);
+        sheathButton.gameObject.SetActive(false);
+        guardButton.gameObject.SetActive(true);
+        unguardButton.gameObject.SetActive(false);
+        attackButtonImage.sprite = fistIcon;
+        isArmed = false;
     }
 
     public void Unsheath()
@@ -202,6 +225,16 @@ public class Manager : MonoBehaviour
         attackButton.interactable = false;
         guardButton.interactable = false;
         unguardButton.interactable = false;
+    }
+
+    public void ShootFireBall()
+    {
+        //actionControl.Shoot(localId);
+        //animator.SetTrigger("Magic");
+        networkAnimator.SetTrigger("Magic");
+        shootAnimator.SetTrigger("Shoot");
+        DisableButtons();
+        StartCoroutine(EnableButtons(shootButtonDelay));
     }
 
     IEnumerator EnableButtons(float timer)

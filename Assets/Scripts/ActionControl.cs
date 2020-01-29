@@ -20,7 +20,7 @@ public class ActionControl : NetworkBehaviour
 
     public void Damage(string id, int damage, string type)
     {
-        if (Manager.isServer)
+        if (isServer)
             RpcDamage(id, damage, type);
         else
             CmdDamage(id, damage, type);
@@ -32,6 +32,14 @@ public class ActionControl : NetworkBehaviour
             RpcBlock(id, type);
         else
             CmdBlock(id, type);
+    }
+
+    public void Shoot(string id)
+    {
+        if (Manager.isServer)
+            RpcShoot(id);
+        else
+            CmdShoot(id);
     }
 
     public void ResetALlPlayers()
@@ -49,6 +57,7 @@ public class ActionControl : NetworkBehaviour
                 CmdResetPlayer(id);
         }
     }
+
 
     [Command]
     public void CmdDamage(string id, int damage, string type)
@@ -75,6 +84,20 @@ public class ActionControl : NetworkBehaviour
         player = Manager.GetPlayer(id);
         player.BlockAttack(type);
     }
+
+    [Command]
+    public void CmdShoot(string id)
+    {
+        RpcShoot(id);
+    }
+
+    [ClientRpc]
+    public void RpcShoot(string id)
+    {
+        player = Manager.GetPlayer(id);
+        player.ShootFireball();
+    }
+
     [Command]
     public void CmdResetPlayer(string id)
     {
