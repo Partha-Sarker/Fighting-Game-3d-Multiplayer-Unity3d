@@ -91,9 +91,6 @@ public class PlayerMovement : MonoBehaviour
             RotatePlayer();
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
-            Jump();
-
 
         //animator.SetFloat("HInput", HInput, .04f, Time.deltaTime);
         //animator.SetFloat("VInput", VInput, .04f, Time.deltaTime);

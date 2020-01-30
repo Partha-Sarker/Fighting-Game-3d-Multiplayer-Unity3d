@@ -26,6 +26,8 @@ public class Manager : MonoBehaviour
     public Button unguardButton;
     public Button reMatchButton;
     public Button shootButton;
+    public Button soundOnButton;
+    public Button soundOffButton;
     private Image attackButtonImage;
     public Sprite swordIcon, fistIcon;
     public float jumpButtonDelay = 1.5f;
@@ -55,6 +57,8 @@ public class Manager : MonoBehaviour
     {
         defaultUnarmedAttackButtonDelay = unarmedAttackButtonDelay;
         attackButtonImage = attackButton.GetComponent<Image>();
+        if (PlayerPrefs.GetInt("Sound") == 1)
+            soundOffButton.onClick.Invoke();
     }
 
     void Update()
@@ -122,7 +126,7 @@ public class Manager : MonoBehaviour
                 unsheathButton.onClick.Invoke();
         }
 
-        if ((Input.GetKeyUp(KeyCode.DownArrow) | Input.GetKeyUp(KeyCode.Space)) && jumpButton.IsActive() && jumpButton.IsInteractable())
+        if ((Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.Space)) && jumpButton.IsActive() && jumpButton.IsInteractable())
             jumpButton.onClick.Invoke();
     }
 
@@ -225,6 +229,7 @@ public class Manager : MonoBehaviour
         attackButton.interactable = false;
         guardButton.interactable = false;
         unguardButton.interactable = false;
+        //shootButton.interactable = false;
     }
 
     public void ShootFireBall()
@@ -252,6 +257,7 @@ public class Manager : MonoBehaviour
             unsheathButton.interactable = true;
             guardButton.interactable = true;
             unguardButton.interactable = true;
+            //shootButton.interactable = true;
         }
         if (currentAttackCount > 0)
             currentAttackCount--;
@@ -282,6 +288,18 @@ public class Manager : MonoBehaviour
 
         return allPlayerKey;
 
+    }
+
+    public void OnSoundOnClicked()
+    {
+        AudioManager.isMasterVolumeOn = true;
+        PlayerPrefs.SetInt("Sound", 0);
+    }
+
+    public void OnSoundOffClicked()
+    {
+        AudioManager.isMasterVolumeOn = false;
+        PlayerPrefs.SetInt("Sound", 1);
     }
 
     //void OnGUI()

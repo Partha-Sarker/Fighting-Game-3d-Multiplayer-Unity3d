@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PowerUpAnimation : StateMachineBehaviour
 {
+    AudioManager audioManager;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (audioManager == null)
+            audioManager = animator.GetComponent<AudioManager>();
+        audioManager.PlaySFX("Magic Charge");
+    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

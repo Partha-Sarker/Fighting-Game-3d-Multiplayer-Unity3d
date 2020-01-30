@@ -12,11 +12,13 @@ public class AudioData
 
     public bool m_looping = false;
 
+    public bool m_play_on_awake = false;
+
     [Range(0f, 1f)]
     public float m_volume = 1;
 
     [Range(0f, 1f)]
-    public float m_spatial_blend = 1;
+    public float m_spatial_blend = .5f;
 
     [Range(0.3f, 3f)]
     public float m_pitch = 1;

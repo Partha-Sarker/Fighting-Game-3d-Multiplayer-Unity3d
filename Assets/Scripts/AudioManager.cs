@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager m_instance;
 
+    public static bool isMasterVolumeOn = true;
+
     [SerializeField]
     private AudioData m_currentMusic;
 
@@ -41,6 +43,7 @@ public class AudioManager : MonoBehaviour
             _array[i].m_audioSource.pitch = _array[i].m_pitch;
             _array[i].m_audioSource.loop = _array[i].m_looping;
             _array[i].m_audioSource.spatialBlend = _array[i].m_spatial_blend;
+            _array[i].m_audioSource.playOnAwake = _array[i].m_play_on_awake;
         }
     }
 
@@ -52,6 +55,8 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(string _name)
     {
+        if (!isMasterVolumeOn)
+            return;
         Debug.Log("Playing Music");
         AudioData t_data = Array.Find(m_backgroundMusicList, bgm => bgm.m_name == _name);
         if (t_data == null)
@@ -69,6 +74,8 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(int _id)
     {
+        if (!isMasterVolumeOn)
+            return;
         if (_id >= 0 && _id < m_backgroundMusicList.Length)
         {
             Debug.Log("Playing Music");
@@ -104,6 +111,8 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(string _name)
     {
+        if (!isMasterVolumeOn)
+            return;
         AudioData t_data = Array.Find(m_sfxList, sfx => sfx.m_name == _name);
         if (t_data == null)
         {
@@ -122,6 +131,8 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(int _id)
     {
+        if (!isMasterVolumeOn)
+            return;
         if (_id >= 0 && _id < m_sfxList.Length)
         {
             Debug.Log("Playing sound");

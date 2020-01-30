@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class MagicAttackAnimation : StateMachineBehaviour
 {
+    AudioManager audioManager;
+    Player player;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponent<Player>().ShootFireball();
+        if(audioManager == null || player == null)
+        {
+            player = animator.GetComponent<Player>();
+            audioManager = animator.GetComponent<AudioManager>();
+        }
+        player.ShootFireball();
+        audioManager.PlaySFX("Magic Shoot");
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

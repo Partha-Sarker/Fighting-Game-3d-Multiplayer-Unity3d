@@ -6,26 +6,36 @@ public class Shake : MonoBehaviour
     public float duration = .5f, posMagnitude = .1f, rotMagnitude = 5;
     private float elapsed, x, y, z, xRot, yRot, zRot, startTime;
     private Vector3 prevPos, prevRot;
+    private bool shaking = false;
 
     // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Z))
-            ShakeCam();
-    }
+    //void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Z))
+    //        ShakeCam();
+    //}
 
     public void ShakeCam()
     {
+        if (shaking)
+            return;
+        shaking = true;
         StartCoroutine(Shaking(posMagnitude, rotMagnitude, 0));
     }
 
     public void ShakeCam(float delay)
     {
+        if (shaking)
+            return;
+        shaking = true;
         StartCoroutine(Shaking(posMagnitude, rotMagnitude, delay));
     }
 
     public void ShakeCam(float posMag, float rotMag)
     {
+        if (shaking)
+            return;
+        shaking = true;
         StartCoroutine(Shaking(posMag, posMag, 0));
     }
 
@@ -56,6 +66,7 @@ public class Shake : MonoBehaviour
 
         transform.localPosition = prevPos;
         transform.localEulerAngles = prevRot;
+        shaking = false;
     }
 
 

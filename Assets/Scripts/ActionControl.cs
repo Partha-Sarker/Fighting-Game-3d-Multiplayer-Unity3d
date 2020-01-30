@@ -12,11 +12,11 @@ public class ActionControl : NetworkBehaviour
         
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-            ResetALlPlayers();
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.R))
+    //        ResetALlPlayers();
+    //}
 
     public void Damage(string id, int damage, string type)
     {

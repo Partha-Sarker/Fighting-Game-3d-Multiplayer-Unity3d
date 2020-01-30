@@ -42,8 +42,6 @@ ScriptsOnlyBuild:
     - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateEditor
-    - UnityEditor.Graphs.AnimationStateMachine.StateMachineBehaviourEditor
     - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
     - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
@@ -96,6 +94,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
     - Class: 89
@@ -113,97 +113,97 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9416}
+      Script: {instanceID: 9420}
     - Class: 114
-      Script: {instanceID: 9432}
+      Script: {instanceID: 9426}
     - Class: 114
-      Script: {instanceID: 9436}
+      Script: {instanceID: 9438}
     - Class: 114
-      Script: {instanceID: 9496}
+      Script: {instanceID: 9442}
     - Class: 114
-      Script: {instanceID: 9540}
+      Script: {instanceID: 9494}
     - Class: 114
-      Script: {instanceID: 9542}
+      Script: {instanceID: 9504}
     - Class: 114
       Script: {instanceID: 9548}
     - Class: 114
-      Script: {instanceID: 9554}
+      Script: {instanceID: 9550}
+    - Class: 114
+      Script: {instanceID: 9556}
     - Class: 114
       Script: {instanceID: 9562}
     - Class: 114
-      Script: {instanceID: 9598}
+      Script: {instanceID: 9570}
     - Class: 114
-      Script: {instanceID: 9616}
+      Script: {instanceID: 9606}
     - Class: 114
-      Script: {instanceID: 9638}
+      Script: {instanceID: 9624}
     - Class: 114
       Script: {instanceID: 9646}
     - Class: 114
-      Script: {instanceID: 10030}
+      Script: {instanceID: 9654}
     - Class: 114
-      Script: {instanceID: 10036}
+      Script: {instanceID: 10018}
     - Class: 114
-      Script: {instanceID: 10044}
+      Script: {instanceID: 10040}
     - Class: 114
-      Script: {instanceID: 10198}
+      Script: {instanceID: 10046}
     - Class: 114
-      Script: {instanceID: 10202}
+      Script: {instanceID: 10054}
     - Class: 114
-      Script: {instanceID: 10274}
+      Script: {instanceID: 10208}
     - Class: 114
-      Script: {instanceID: 10302}
+      Script: {instanceID: 10212}
     - Class: 114
-      Script: {instanceID: 10304}
+      Script: {instanceID: 10246}
     - Class: 114
-      Script: {instanceID: 10350}
+      Script: {instanceID: 10286}
     - Class: 114
-      Script: {instanceID: 10364}
+      Script: {instanceID: 10314}
     - Class: 114
-      Script: {instanceID: 10412}
+      Script: {instanceID: 10316}
     - Class: 114
-      Script: {instanceID: 10414}
+      Script: {instanceID: 10362}
+    - Class: 114
+      Script: {instanceID: 10376}
+    - Class: 114
+      Script: {instanceID: 10424}
     - Class: 114
       Script: {instanceID: 10426}
     - Class: 114
-      Script: {instanceID: 10516}
+      Script: {instanceID: 10434}
     - Class: 114
-      Script: {instanceID: 10520}
+      Script: {instanceID: 10440}
+    - Class: 114
+      Script: {instanceID: 10530}
     - Class: 114
       Script: {instanceID: 10534}
     - Class: 114
-      Script: {instanceID: 10598}
+      Script: {instanceID: 10548}
     - Class: 114
-      Script: {instanceID: 10626}
+      Script: {instanceID: 10612}
     - Class: 114
-      Script: {instanceID: 10658}
+      Script: {instanceID: 10640}
     - Class: 114
-      Script: {instanceID: 10680}
+      Script: {instanceID: 10672}
     - Class: 114
-      Script: {instanceID: 10700}
+      Script: {instanceID: 10694}
     - Class: 114
-      Script: {instanceID: 10748}
+      Script: {instanceID: 10714}
     - Class: 114
-      Script: {instanceID: 10850}
+      Script: {instanceID: 10762}
     - Class: 114
-      Script: {instanceID: 10866}
+      Script: {instanceID: 10864}
     - Class: 114
-      Script: {instanceID: 10944}
+      Script: {instanceID: 10880}
     - Class: 114
-      Script: {instanceID: 10976}
+      Script: {instanceID: 10958}
     - Class: 114
-      Script: {instanceID: 11012}
+      Script: {instanceID: 10990}
     - Class: 114
-      Script: {instanceID: 11098}
+      Script: {instanceID: 11026}
     - Class: 114
-      Script: {instanceID: 21284}
-    - Class: 114
-      Script: {instanceID: 21290}
-    - Class: 114
-      Script: {instanceID: 23324}
-    - Class: 114
-      Script: {instanceID: 28858}
-    - Class: 114
-      Script: {instanceID: 36094}
+      Script: {instanceID: 11112}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -259,10 +259,16 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
-      Hash: 0e869ac84890906a62ab95fd44c924fc
+      Hash: ca54fd11660049bb9cbb0990c3845ffb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
+  - hash:
+      serializedVersion: 2
+      Hash: c5d01adccf0714d1217154ba0045a522
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DestroySelf
   - hash:
       serializedVersion: 2
       Hash: 38f82b4f8b0f003368b2d01e8193b21f
@@ -305,6 +311,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ActivationTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MagicAttackAnimation
   - hash:
       serializedVersion: 2
       Hash: eafb77726b67b7571818a7210a3ce11e
@@ -811,6 +823,12 @@ ScriptsOnlyBuild:
     className: AnalyticsTracker
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MagicAttack
+  - hash:
+      serializedVersion: 2
       Hash: 0fb27be807aa299702f28ad0bcad1f46
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -911,6 +929,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PowerUpAnimation
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1019,6 +1043,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MyNetManager
+  - hash:
+      serializedVersion: 2
+      Hash: bec510fc1ac82c1eaa25a5c6e9eb5638
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FireBall
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1301,36 +1331,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PowerUpAnimation
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: MagicAttackAnimation
-  - hash:
-      serializedVersion: 2
-      Hash: 5d1533e68059785d25b5688a6f6acd7d
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: FireBall
-  - hash:
-      serializedVersion: 2
-      Hash: c5d01adccf0714d1217154ba0045a522
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DestroySelf
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: MagicAttack
   platform: 13
   scenePathNames:
   - Assets/Scenes/FightScene.unity

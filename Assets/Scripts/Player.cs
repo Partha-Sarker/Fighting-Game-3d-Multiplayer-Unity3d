@@ -4,6 +4,7 @@ using UnityEngine.Networking;
 public class Player : NetworkBehaviour
 {
     private AudioManager audioManager;
+    [SerializeField]
     private Shake camShake;
     public Manager manager;
     private PlayerMovement playerMovement;
@@ -27,6 +28,7 @@ public class Player : NetworkBehaviour
     private Transform fireballPos;
     [SerializeField]
     private GameObject fireBall;
+    private float fireBallShakePosMag, fireBallShakeRotMag;
     [SerializeField]
     private int shootForce = 5;
 
@@ -40,10 +42,13 @@ public class Player : NetworkBehaviour
         animator = GetComponent<Animator>();
         networkAnimator = GetComponent<NetworkAnimator>();
         audioManager = GetComponent<AudioManager>();
-        camShake = FindObjectOfType<Shake>();
+        //camShake = FindObjectOfType<Shake>();
         manager = FindObjectOfType<Manager>();
         playerMovement = GetComponent<PlayerMovement>();
         shootAnimator = manager.shootAnimator;
+
+        fireBallShakePosMag = fireBall.GetComponent<FireBall>().explosionShakeMag;
+        fireBallShakeRotMag = fireBall.GetComponent<FireBall>().explosionRotMag;
 
         initialPos = transform.position;
         initialRot = transform.eulerAngles;
@@ -68,21 +73,21 @@ public class Player : NetworkBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K) && isLocalPlayer)
-            TakeDamage(40, "Sword");
-
-        if (Input.GetKeyDown(KeyCode.V) && isLocalPlayer)
-            Win();
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.K) && isLocalPlayer)
+    //        TakeDamage(0, "Magic");
+    //}
 
     public void TakeDamage(int damage, string type)
     {
         if (isDead)
             return;
+        if(type == "Magic")
+            camShake.ShakeCam(fireBallShakePosMag, fireBallShakeRotMag);
+        else
+            camShake.ShakeCam(shakeDelay);
 
-        camShake.ShakeCam(shakeDelay);
 
         if (type == "Sword")
         {
