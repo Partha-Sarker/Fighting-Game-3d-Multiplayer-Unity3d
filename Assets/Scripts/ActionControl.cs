@@ -58,6 +58,14 @@ public class ActionControl : NetworkBehaviour
         }
     }
 
+    public void SetOwnRatio(string id, string ratio)
+    {
+        if (Manager.isServer)
+            RpcSetOwnRatio(id, ratio);
+        else
+            CmdSetOwnRatio(id, ratio);
+    }
+
 
     [Command]
     public void CmdDamage(string id, int damage, string type)
@@ -83,6 +91,19 @@ public class ActionControl : NetworkBehaviour
     {
         player = Manager.GetPlayer(id);
         player.BlockAttack(type);
+    }
+    
+    [Command]
+    public void CmdSetOwnRatio(string id, string ratio)
+    {
+        RpcSetOwnRatio(id, ratio);
+    }
+
+    [ClientRpc]
+    public void RpcSetOwnRatio(string id, string ratio)
+    {
+        player = Manager.GetPlayer(id);
+        player.SetMyRatio(ratio);
     }
 
     [Command]

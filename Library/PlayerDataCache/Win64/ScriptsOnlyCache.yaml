@@ -31,6 +31,7 @@ ScriptsOnlyBuild:
     - SwordAttackAnimation
     - jumpControl
     Unity.TextMeshPro.dll:
+    - TMPro.TMP_ColorGradient
     - TMPro.TMP_FontAsset
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
@@ -53,6 +54,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Image
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkAnimator
+    - UnityEngine.Networking.NetworkCallbacks
     - UnityEngine.Networking.NetworkDiscovery
     - UnityEngine.Networking.NetworkIdentity
     - UnityEngine.Networking.NetworkManagerHUD
@@ -90,8 +92,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
-    - Class: 82
-      Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
     - Class: 89
@@ -109,97 +109,99 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9422}
+      Script: {instanceID: 9424}
     - Class: 114
-      Script: {instanceID: 9428}
+      Script: {instanceID: 9430}
     - Class: 114
-      Script: {instanceID: 9440}
+      Script: {instanceID: 9442}
     - Class: 114
-      Script: {instanceID: 9444}
+      Script: {instanceID: 9446}
     - Class: 114
-      Script: {instanceID: 9496}
+      Script: {instanceID: 9498}
     - Class: 114
-      Script: {instanceID: 9506}
+      Script: {instanceID: 9508}
     - Class: 114
-      Script: {instanceID: 9550}
+      Script: {instanceID: 9554}
     - Class: 114
-      Script: {instanceID: 9552}
+      Script: {instanceID: 9556}
     - Class: 114
-      Script: {instanceID: 9558}
+      Script: {instanceID: 9562}
     - Class: 114
-      Script: {instanceID: 9564}
+      Script: {instanceID: 9568}
     - Class: 114
-      Script: {instanceID: 9572}
+      Script: {instanceID: 9576}
     - Class: 114
-      Script: {instanceID: 9608}
+      Script: {instanceID: 9612}
     - Class: 114
-      Script: {instanceID: 9626}
+      Script: {instanceID: 9630}
     - Class: 114
-      Script: {instanceID: 9648}
+      Script: {instanceID: 9652}
     - Class: 114
-      Script: {instanceID: 9656}
+      Script: {instanceID: 9660}
     - Class: 114
-      Script: {instanceID: 10020}
+      Script: {instanceID: 10028}
     - Class: 114
-      Script: {instanceID: 10042}
+      Script: {instanceID: 10052}
     - Class: 114
-      Script: {instanceID: 10048}
+      Script: {instanceID: 10058}
     - Class: 114
-      Script: {instanceID: 10056}
+      Script: {instanceID: 10068}
     - Class: 114
-      Script: {instanceID: 10210}
+      Script: {instanceID: 10224}
     - Class: 114
-      Script: {instanceID: 10214}
+      Script: {instanceID: 10228}
     - Class: 114
-      Script: {instanceID: 10248}
+      Script: {instanceID: 10264}
     - Class: 114
-      Script: {instanceID: 10288}
+      Script: {instanceID: 10306}
     - Class: 114
-      Script: {instanceID: 10316}
+      Script: {instanceID: 10334}
     - Class: 114
-      Script: {instanceID: 10318}
+      Script: {instanceID: 10336}
     - Class: 114
-      Script: {instanceID: 10364}
+      Script: {instanceID: 10384}
     - Class: 114
-      Script: {instanceID: 10378}
+      Script: {instanceID: 10398}
     - Class: 114
-      Script: {instanceID: 10426}
+      Script: {instanceID: 10448}
     - Class: 114
-      Script: {instanceID: 10428}
+      Script: {instanceID: 10450}
     - Class: 114
-      Script: {instanceID: 10436}
+      Script: {instanceID: 10458}
     - Class: 114
-      Script: {instanceID: 10442}
+      Script: {instanceID: 10464}
     - Class: 114
-      Script: {instanceID: 10532}
+      Script: {instanceID: 10558}
     - Class: 114
-      Script: {instanceID: 10536}
+      Script: {instanceID: 10562}
     - Class: 114
-      Script: {instanceID: 10550}
+      Script: {instanceID: 10576}
     - Class: 114
-      Script: {instanceID: 10614}
-    - Class: 114
-      Script: {instanceID: 10642}
+      Script: {instanceID: 10646}
     - Class: 114
       Script: {instanceID: 10674}
     - Class: 114
-      Script: {instanceID: 10696}
+      Script: {instanceID: 10710}
     - Class: 114
-      Script: {instanceID: 10716}
+      Script: {instanceID: 10738}
     - Class: 114
-      Script: {instanceID: 10764}
+      Script: {instanceID: 10758}
     - Class: 114
-      Script: {instanceID: 10866}
+      Script: {instanceID: 10808}
     - Class: 114
-      Script: {instanceID: 10882}
+      Script: {instanceID: 10918}
     - Class: 114
-      Script: {instanceID: 10960}
+      Script: {instanceID: 10936}
     - Class: 114
-      Script: {instanceID: 10992}
+      Script: {instanceID: 11020}
     - Class: 114
-      Script: {instanceID: 11028}
+      Script: {instanceID: 11052}
     - Class: 114
-      Script: {instanceID: 11114}
+      Script: {instanceID: 11088}
+    - Class: 114
+      Script: {instanceID: 11146}
+    - Class: 114
+      Script: {instanceID: 11184}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -255,7 +257,7 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
-      Hash: ca54fd11660049bb9cbb0990c3845ffb
+      Hash: 74ffc1b157c44d1550ae6c8b04ade5a9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Player
@@ -319,6 +321,12 @@ ScriptsOnlyBuild:
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
     className: NetworkIdentity
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro
+    className: TMP_PhoneNumberValidator
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -807,6 +815,12 @@ ScriptsOnlyBuild:
     className: ScreenSpaceAmbientObscurance
   - hash:
       serializedVersion: 2
+      Hash: 4d16cfbaa8e821a2b370e80844a0e9bc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: Benchmark03
+  - hash:
+      serializedVersion: 2
       Hash: 303ad70ce203ad874efe2965d0fbcff9
     assemblyName: Unity.Analytics.Tracker.dll
     namespaceName: UnityEngine.Analytics
@@ -817,6 +831,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Analytics.Tracker.dll
     namespaceName: UnityEngine.Analytics
     className: AnalyticsTracker
+  - hash:
+      serializedVersion: 2
+      Hash: e6f0efd0e20669d577e9d21526b3d3f9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: WarpTextExample
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -831,6 +851,12 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: dd7520b7d4e690e8c593273e7b9fbe80
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: TMP_TextEventCheck
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -843,6 +869,12 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAsset
   - hash:
       serializedVersion: 2
+      Hash: 0769963ca05483a9f7e743b9118b3fba
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro
+    className: TMP_TextEventHandler
+  - hash:
+      serializedVersion: 2
       Hash: d9a05b834404a8fcadcba09d77f7354b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -853,6 +885,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ControlTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 47930f3b40e24ef5b3b5e3d9ada7097a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: Benchmark01
   - hash:
       serializedVersion: 2
       Hash: 265cf27ba050d55ff33a8acab4ded6c0
@@ -927,6 +965,12 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
+      Hash: 3375c3d749f8f4cad889721b431bdc27
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: CameraController
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -937,6 +981,12 @@ ScriptsOnlyBuild:
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
     className: NetworkCallbacks
+  - hash:
+      serializedVersion: 2
+      Hash: e63944317d2f5958e31963668bb29158
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: VertexJitter
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -993,6 +1043,12 @@ ScriptsOnlyBuild:
     className: TextContainer
   - hash:
       serializedVersion: 2
+      Hash: 3cae62e09a50c5d5aae8d0536b3d8fde
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ChatController
+  - hash:
+      serializedVersion: 2
       Hash: 6586ae29b319ac852fa7d72e3ad95169
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1029,13 +1085,19 @@ ScriptsOnlyBuild:
     className: ScreenSpaceAmbientOcclusion
   - hash:
       serializedVersion: 2
+      Hash: e244702e0dc05782229aa524e4d757f5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: TMP_ExampleScript_01
+  - hash:
+      serializedVersion: 2
       Hash: b2a9ef4bc0589aec4377eff6288259cc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DeathAnimation
   - hash:
       serializedVersion: 2
-      Hash: e17eae1510e57a1d4213d71d581d17e4
+      Hash: 1d7dd8f65fa796e54d403e7a1718d30a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MyNetManager
@@ -1053,10 +1115,22 @@ ScriptsOnlyBuild:
     className: NetworkStartPosition
   - hash:
       serializedVersion: 2
+      Hash: 11319334e5365797f8056694f9b5dae4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: ObjectSpin
+  - hash:
+      serializedVersion: 2
       Hash: 3f8d7b92a6be3c715e55d5cfa7cc8384
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalReceiver
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro
+    className: TMP_DigitValidator
   - hash:
       serializedVersion: 2
       Hash: b2a9ef4bc0589aec4377eff6288259cc
@@ -1081,6 +1155,24 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ActivationPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: TextConsoleSimulator
+  - hash:
+      serializedVersion: 2
+      Hash: 62fef86270a167c41a606cfca1ecc156
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: ShaderPropAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: TMP_TextSelector_A
   - hash:
       serializedVersion: 2
       Hash: 824e8d4cb47ffd88ddf959dbd4526585
@@ -1157,8 +1249,32 @@ ScriptsOnlyBuild:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: SimpleScript
+  - hash:
+      serializedVersion: 2
+      Hash: 274152c972478468d8321a977bbca8e3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: TMP_TextInfoDebugTool
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ActionControl
+  - hash:
+      serializedVersion: 2
+      Hash: bd3f0ca738703903e759f77536ed74fd
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: TMP_FrameRateCounter
+  - hash:
+      serializedVersion: 2
+      Hash: a1ca1237bad0f30ea5ba8f4060929114
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: TMP_TextSelector_B
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -1185,13 +1301,19 @@ ScriptsOnlyBuild:
     className: DataPrivacyButton
   - hash:
       serializedVersion: 2
+      Hash: 27e5341178f188b89bdc6495710b590c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: Benchmark01_UGUI
+  - hash:
+      serializedVersion: 2
       Hash: f336e086360abe49a3323e5f1583c35a
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AudioTrack
   - hash:
       serializedVersion: 2
-      Hash: a6639f5ceb988967b897e08571402017
+      Hash: 8b2f7a7f18c15dc3df49f37f8e5e530a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AudioManager
@@ -1203,10 +1325,34 @@ ScriptsOnlyBuild:
     className: JoystickPlayerExample
   - hash:
       serializedVersion: 2
+      Hash: 8a874a8207a7664bdf44e61f28717254
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: SkewTextExample
+  - hash:
+      serializedVersion: 2
+      Hash: fe2d355deb0ca31d59a0a7cf4d141fc3
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: Benchmark04
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Attack
+  - hash:
+      serializedVersion: 2
+      Hash: 4d16cfbaa8e821a2b370e80844a0e9bc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: TextMeshSpawner
+  - hash:
+      serializedVersion: 2
+      Hash: e63944317d2f5958e31963668bb29158
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: VertexShakeB
   - hash:
       serializedVersion: 2
       Hash: 870f9de677a6c7db783f870b6199a53a
@@ -1215,10 +1361,28 @@ ScriptsOnlyBuild:
     className: GroundCheck
   - hash:
       serializedVersion: 2
-      Hash: dce07891a75278bc1ffa4f8813f527c4
+      Hash: 5bb0c23ac2810973880e592724a69354
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: Benchmark02
+  - hash:
+      serializedVersion: 2
+      Hash: cc4809adbe96e6ab48d25bf694718cef
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Manager
+  - hash:
+      serializedVersion: 2
+      Hash: bd3f0ca738703903e759f77536ed74fd
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: TMP_UiFrameRateCounter
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: VertexColorCycler
   - hash:
       serializedVersion: 2
       Hash: fdf4cae5f3675d963d871e475e3f945d
@@ -1227,7 +1391,13 @@ ScriptsOnlyBuild:
     className: LocalPlayerManager
   - hash:
       serializedVersion: 2
-      Hash: 1dcb82730d983b77cec736c6ef19f814
+      Hash: e63944317d2f5958e31963668bb29158
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: VertexZoom
+  - hash:
+      serializedVersion: 2
+      Hash: 1bea29f5f083a682601fafdc44261cd1
     assemblyName: com.unity.multiplayer-hlapi.Runtime.dll
     namespaceName: UnityEngine.Networking
     className: NetworkDiscovery
@@ -1257,10 +1427,28 @@ ScriptsOnlyBuild:
     className: NetworkAnimator
   - hash:
       serializedVersion: 2
+      Hash: e80c1450883443c68d6c2dade213536f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: TMPro_InstructionOverlay
+  - hash:
+      serializedVersion: 2
       Hash: fdc124dcd73aa38f7a19ae31f8dbbf58
     assemblyName: Assembly-CSharp.dll
     namespaceName: RPGCharacterAnims
     className: RPGCharacterControllerFREE
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: TeleType
+  - hash:
+      serializedVersion: 2
+      Hash: c12f6929b034322884ced721fca65b10
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: TextMeshProFloatingText
   - hash:
       serializedVersion: 2
       Hash: 5372ed2ce39229b1ac910757999a8be2
@@ -1279,6 +1467,18 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: UnityStandardAssets.ImageEffects
     className: PostEffectsBase
+  - hash:
+      serializedVersion: 2
+      Hash: 0784d4fd5b93bd75440d01eb2fac4233
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: TMPro.Examples
+    className: VertexShakeA
+  - hash:
+      serializedVersion: 2
+      Hash: 8b1fe5dfdcf943fb3b72506b9f19335f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EnvMapAnimator
   - hash:
       serializedVersion: 2
       Hash: 9b895dcabbc1faf095c000c32d471fd0

@@ -12,6 +12,8 @@ public class MyNetManager : NetworkManager
     public GameObject EnterButton;
     public GameObject rematchButton;
     public GameObject WaitingText;
+    public GameObject winText;
+    public GameObject loseText;
     public Animator fadeAnimator;
     public string state;
 
@@ -75,12 +77,17 @@ public class MyNetManager : NetworkManager
         JoinButton.SetActive(false);
         EnterButton.SetActive(false);
         WaitingText.SetActive(false);
+        winText.SetActive(false);
+        loseText.SetActive(false);
     }
 
     public void ResetUI()
     {
         HostButton.SetActive(true);
         JoinButton.SetActive(true);
+        winText.SetActive(true);
+        loseText.SetActive(true);
+        Manager.isRefresed = false;
         CancelButton.SetActive(false);
         EnterButton.SetActive(false);
         WaitingText.SetActive(false);

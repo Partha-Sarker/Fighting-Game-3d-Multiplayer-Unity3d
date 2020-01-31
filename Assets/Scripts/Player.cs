@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.Networking;
+using TMPro;
 
 public class Player : NetworkBehaviour
 {
@@ -24,6 +26,10 @@ public class Player : NetworkBehaviour
     [SerializeField]
     private MeshRenderer shield;
 
+    private TextMeshProUGUI myRatio, oponentRatio;
+
+    private int winCount, loseCount;
+
     [SerializeField]
     private Transform fireballPos;
     [SerializeField]
@@ -31,11 +37,15 @@ public class Player : NetworkBehaviour
     private float fireBallShakePosMag, fireBallShakeRotMag;
     [SerializeField]
     private int shootForce = 5;
+    [SerializeField]
+    public float shootingDelay = .1f;
 
     [SyncVar]
-    private Vector3 scale;
+    public Vector3 scale;
     [SyncVar]
-    private bool isDead, isWinner;
+    public string ratio;
+    [SyncVar]
+    public bool isDead, isWinner;
 
     private void Start()
     {
@@ -65,18 +75,25 @@ public class Player : NetworkBehaviour
         {
             myHealth = GameObject.Find("local player health").GetComponent<RectTransform>();
             myHealthHolder = GameObject.Find("local player health holder").GetComponent<RectTransform>();
+            myRatio = GameObject.Find("local player ratio").GetComponent<TextMeshProUGUI>();
+            //oponentRatio = GameObject.Find("oponent ratio").GetComponent<TextMeshProUGUI>();
         }
         else
         {
             myHealth = GameObject.Find("oponent health").GetComponent<RectTransform>();
             myHealthHolder = GameObject.Find("oponent health holder").GetComponent<RectTransform>();
+            myRatio = GameObject.Find("oponent ratio").GetComponent<TextMeshProUGUI>();
         }
     }
 
     //private void Update()
     //{
     //    if (Input.GetKeyDown(KeyCode.K) && isLocalPlayer)
-    //        TakeDamage(0, "Magic");
+    //        TakeDamage(30, "Magic");
+    //    if (Input.GetKeyDown(KeyCode.V) && isLocalPlayer)
+    //        Win();
+    //    if (Input.GetKeyDown(KeyCode.C) && isLocalPlayer)
+    //        ratio = "Shit :(";
     //}
 
     public void TakeDamage(int damage, string type)
@@ -147,11 +164,7 @@ public class Player : NetworkBehaviour
 
     public void ResetAll()
     {
-        //if (manager != null)
-        //    manager.disableControl = false;
-
         manager.disableControl = false;
-        //playerMovement.isGrounded = true;
         isDead = false;
         isWinner = false;
         Attack.isWinner = false;
@@ -169,12 +182,38 @@ public class Player : NetworkBehaviour
         if (isLocalPlayer)
         {
             shootAnimator.Play("Shoot Recovering");
+            RefreshRatio();
         }
+    }
+
+    public void RefreshRatio()
+    {
+        winCount = PlayerPrefs.GetInt("Win Count");
+        loseCount = PlayerPrefs.GetInt("Lose Count");
+        if (winCount == 0 && loseCount == 0)
+            ratio = "First Match!";
+        else if (loseCount == 0)
+            ratio = "Undefeated!";
+        else
+        {
+            float winLoseRatio = (float)winCount / (float)loseCount;
+            ratio = winLoseRatio.ToString();
+        }
+        //myRatio.SetText(ratio);
+        GetComponent<ActionControl>().SetOwnRatio(netId.ToString(), ratio);
+    }
+
+    public void SetMyRatio(string ratio)
+    {
+        SetupHealthBar();
+        myRatio.SetText(ratio);
     }
 
     public void Die()
     {
         isDead = true;
+        PlayerPrefs.SetInt("Lose Count", PlayerPrefs.GetInt("Lose Count")+1);
+        RefreshRatio();
         animator.SetBool("Dead", true);
         //manager = FindObjectOfType<Manager>();
         manager.reMatchButton.gameObject.SetActive(true);
@@ -186,6 +225,8 @@ public class Player : NetworkBehaviour
     public void Win()
     {
         isWinner = true;
+        PlayerPrefs.SetInt("Win Count", PlayerPrefs.GetInt("Win Count")+1);
+        RefreshRatio();
         animator.SetBool("Win", true);
         audioManager.PlaySFX("Victory");
         //manager = FindObjectOfType<Manager>();
@@ -207,8 +248,16 @@ public class Player : NetworkBehaviour
 
     public void ShootFireball()
     {
+        //StartCoroutine(Shooting());
+        Invoke("Shooting", shootingDelay);
+    }
+
+    public void Shooting()
+    {
+        //yield return new WaitForSeconds(shootingDelay);
         GameObject tempFireBall = Instantiate(fireBall, fireballPos);
         tempFireBall.GetComponent<Rigidbody>().AddForce(fireballPos.forward * shootForce, ForceMode.Impulse);
+        audioManager.PlaySFX("Magic Shoot");
     }
 
 }

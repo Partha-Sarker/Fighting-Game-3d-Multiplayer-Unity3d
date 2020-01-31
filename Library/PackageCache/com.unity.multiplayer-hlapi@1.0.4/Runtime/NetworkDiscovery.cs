@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -65,8 +66,18 @@ namespace UnityEngine.Networking
         [SerializeField]
         bool m_UseNetworkManager = false;
 
+
+        [SerializeField]
+        int check = 47777;
+
         [SerializeField]
         string m_BroadcastData = "HELLO";
+
+        NetworkBroadcastResult value;
+
+        public GameObject EnterButton;
+        public GameObject WaitingText;
+        public Animator fadeAnimator;
 
         [SerializeField]
         bool m_ShowGUI = true;
@@ -370,7 +381,7 @@ namespace UnityEngine.Networking
         {
             if (m_HostId == -1)
             {
-                if (LogFilter.logError) { Debug.LogError("NetworkDiscovery StopBroadcast not initialized"); }
+                // if (LogFilter.logError) { Debug.LogError("NetworkDiscovery StopBroadcast not initialized"); }
                 return;
             }
 
@@ -501,24 +512,34 @@ namespace UnityEngine.Networking
 
                 if (m_BroadcastsReceived != null)
                 {
-                    foreach (var addr in m_BroadcastsReceived.Keys)
+                    if (m_BroadcastsReceived.Keys.Count > 0)
                     {
-                        var value = m_BroadcastsReceived[addr];
-                        if (GUI.Button(new Rect(xpos, ypos + 20, 200, 20), "Game at " + addr) && m_UseNetworkManager)
+                        EnterButton.SetActive(true);
+                        WaitingText.SetActive(false);
+                        foreach (var addr in m_BroadcastsReceived.Keys)
                         {
-                            string dataString = BytesToString(value.broadcastData);
-                            var items = dataString.Split(':');
-                            if (items.Length == 3 && items[0] == "NetworkManager")
+                            value = m_BroadcastsReceived[addr];
+                            if (GUI.Button(new Rect(xpos, ypos + 20, 200, 20), "Game at " + addr) && m_UseNetworkManager)
                             {
-                                if (NetworkManager.singleton != null && NetworkManager.singleton.client == null)
+                                string dataString = BytesToString(value.broadcastData);
+                                var items = dataString.Split(':');
+                                if (items.Length == 3 && items[0] == "NetworkManager")
                                 {
-                                    NetworkManager.singleton.networkAddress = items[1];
-                                    NetworkManager.singleton.networkPort = Convert.ToInt32(items[2]);
-                                    NetworkManager.singleton.StartClient();
+                                    if (NetworkManager.singleton != null && NetworkManager.singleton.client == null)
+                                    {
+                                        NetworkManager.singleton.networkAddress = value.serverAddress;
+                                        NetworkManager.singleton.networkPort = Convert.ToInt32(items[2]);
+                                        NetworkManager.singleton.StartClient();
+                                    }
                                 }
                             }
+                            ypos += spacing;
                         }
-                        ypos += spacing;
+                    }
+                    else
+                    {
+                        EnterButton.SetActive(false);
+                        WaitingText.SetActive(true);
                     }
                 }
             }
@@ -535,6 +556,28 @@ namespace UnityEngine.Networking
                     StartAsClient();
                 }
                 ypos += spacing;
+            }
+        }
+
+        public void EnterGame()
+        {
+            fadeAnimator.SetTrigger("Fade In");
+            StartCoroutine(Entering());
+        }
+
+        IEnumerator Entering()
+        {
+            yield return new WaitForSeconds(.75f);
+            string dataString = BytesToString(value.broadcastData);
+            var items = dataString.Split(':');
+            if (items.Length == 3 && items[0] == "NetworkManager")
+            {
+                if (NetworkManager.singleton != null && NetworkManager.singleton.client == null)
+                {
+                    NetworkManager.singleton.networkAddress = value.serverAddress;
+                    NetworkManager.singleton.networkPort = Convert.ToInt32(items[2]);
+                    NetworkManager.singleton.StartClient();
+                }
             }
         }
     }

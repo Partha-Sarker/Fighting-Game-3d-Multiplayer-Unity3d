@@ -3,6 +3,7 @@ using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 
 public class Manager : MonoBehaviour
 {
@@ -28,6 +29,8 @@ public class Manager : MonoBehaviour
     public Button shootButton;
     public Button soundOnButton;
     public Button soundOffButton;
+    public TextMeshProUGUI winStatus, loseStatus;
+    private int winCount, loseCount;
     private Image attackButtonImage;
     public Sprite swordIcon, fistIcon;
     public float jumpButtonDelay = 1.5f;
@@ -47,8 +50,8 @@ public class Manager : MonoBehaviour
 
     private bool isGuarding = false;
     private bool isArmed = false;
-    [SerializeField]
     private bool isSet = false;
+    public static bool isRefresed = false;
 
     [HideInInspector]
     public bool disableControl = false;
@@ -95,9 +98,14 @@ public class Manager : MonoBehaviour
             if (!isSet)
             {
                 shootAnimator.SetTrigger("Shoot");
+                RefreshEverything();
+                actionControl.SetOwnRatio(localPlayer.GetComponent<NetworkIdentity>().netId.ToString(), localPlayer.GetComponent<Player>().ratio);
                 isSet = true;
             }
         }
+
+        if (localPlayer == null && oponent == null && !isRefresed)
+            RefreshEverything();
 
         GetKeyInput();
     }
@@ -128,6 +136,29 @@ public class Manager : MonoBehaviour
 
         if ((Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.Space)) && jumpButton.IsActive() && jumpButton.IsInteractable())
             jumpButton.onClick.Invoke();
+    }
+
+    private void RefreshEverything()
+    {
+        winCount = PlayerPrefs.GetInt("Win Count");
+        loseCount = PlayerPrefs.GetInt("Lose Count");
+        string winText, loseText;
+        if (winCount == 0)
+            winText = "No\nWin";
+        else if (winCount == 1)
+            winText = "1\nWin";
+        else
+            winText = winCount + "\nWins";
+
+        if (loseCount == 0)
+            loseText = "No\nDefeat";
+        else if (winCount == 1)
+            loseText = "1\nDefeat";
+        else
+            loseText = loseCount + "\nDefeats";
+        winStatus.SetText(winText);
+        loseStatus.SetText(loseText);
+        isRefresed = true;
     }
 
     private void ResetControl()
