@@ -40,8 +40,11 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateMachineNode
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -1097,7 +1100,7 @@ ScriptsOnlyBuild:
     className: DeathAnimation
   - hash:
       serializedVersion: 2
-      Hash: 1d7dd8f65fa796e54d403e7a1718d30a
+      Hash: ebb2e12cb207ca691d74fafdc9a3ce9f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MyNetManager

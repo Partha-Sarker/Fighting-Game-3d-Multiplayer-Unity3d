@@ -333,6 +333,11 @@ public class Manager : MonoBehaviour
         PlayerPrefs.SetInt("Sound", 1);
     }
 
+    public void OnExitClicked()
+    {
+        Application.Quit();
+    }
+
     //void OnGUI()
     //{
     //    GUILayout.BeginArea(new Rect(0, 200, 200, 500));

@@ -39,10 +39,22 @@ public class SlowRotation : StateMachineBehaviour
     //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    playerScript.DisableShield();
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (player.name == "local player")
+        {
+            if (playerMovement == null) { }
+            playerMovement = player.GetComponent<PlayerMovement>();
+            playerMovement.ResetSelfRotation();
+
+        }
+        else
+        {
+            if (playerMovement == null)
+                playerMovement = GameObject.Find("local player").GetComponent<PlayerMovement>();
+            playerMovement.ResetOponentRotation();
+        }
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

@@ -11,6 +11,7 @@ public class MyNetManager : NetworkManager
     public GameObject CancelButton;
     public GameObject EnterButton;
     public GameObject rematchButton;
+    public GameObject exitButton;
     public GameObject WaitingText;
     public GameObject winText;
     public GameObject loseText;
@@ -73,6 +74,7 @@ public class MyNetManager : NetworkManager
     {
         state = "Playing";
         CancelButton.SetActive(true);
+        exitButton.SetActive(false);
         HostButton.SetActive(false);
         JoinButton.SetActive(false);
         EnterButton.SetActive(false);
@@ -87,6 +89,7 @@ public class MyNetManager : NetworkManager
         JoinButton.SetActive(true);
         winText.SetActive(true);
         loseText.SetActive(true);
+        exitButton.SetActive(true);
         Manager.isRefresed = false;
         CancelButton.SetActive(false);
         EnterButton.SetActive(false);

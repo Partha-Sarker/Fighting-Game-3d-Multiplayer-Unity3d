@@ -160,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Debug.Log("Slowing Self Rotation");
         selfRotationSpeed = slowRotationSpeed;
+        canSelfRotate = true;
 
     }
 
@@ -167,18 +168,21 @@ public class PlayerMovement : MonoBehaviour
     {
         //Debug.Log("Slowing Oponent Rotation");
         oponentRotationSpeed = slowRotationSpeed;
+        canOponentRotate = true;
     }
 
     public void ResetSelfRotation()
     {
         //Debug.Log("Resetting Self Rotation");
         selfRotationSpeed = rotationStartSpeed;
+        canSelfRotate = true;
     }
 
     public void ResetOponentRotation()
     {
         //Debug.Log("Resetting Oponent Rotation");
         oponentRotationSpeed = rotationStartSpeed;
+        canOponentRotate = true;
     }
 
     private void GetAndroidInput()
