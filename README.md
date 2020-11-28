@@ -41,7 +41,7 @@ After the game opens, in the home screen there will be two buttons. One is HOST 
 Now one user will have to click the HOST button. After clicking the HOST button, the character will appear in an arena.  
 <img src="Demo/home.png" width="400"> <img src="Demo/ui.png" width="400">  
 Now the other user has to click the JOIN button. Then a new button CLICK TO ENTER will appear. CLICK TO ENTER button only appears if the other user has already clicked HOST button and entered into the arena.  
-<img src="Demo/waiting.png" width="200"> <img src="Demo/join.png" width="245"> <img src="Demo/2_player_ui.png" width="380">  
+<img src="Demo/waiting.png" width="200"> <img src="Demo/join.png" width="245"> <img src="Demo/2_player_ui.png" width="400">  
 After clicking CLICK TO ENTER the other player will also join the arena.
 Now both of the players are in the arena and can fight each other.
 User can also click the CANCEL button and go back to the home screen.
