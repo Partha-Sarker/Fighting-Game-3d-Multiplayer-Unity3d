@@ -1,3 +1,8 @@
+# FIGHT!
+<p align="center">
+  <img width="300" height="300" src="Demo/icon.png">
+</p>
+
 # Introduction
 The game Fight is a 3d multiplayer game. This game is built upon the Unity3d game engine. The objective of this game is to fight the opponent and win.  
 **App Link Android**:[https://drive.google.com/file/d/1o6oKv7AC4TTkxTvRxYuknuteEUVRiXjj/view?usp=sharing](https://drive.google.com/file/d/1o6oKv7AC4TTkxTvRxYuknuteEUVRiXjj/view?usp=sharing)
